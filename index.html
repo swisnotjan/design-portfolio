@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-feed="filled" data-links="inline" data-cw="same" data-personality="sprinkled">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alexander Simonovsky — Product Designer</title>
+<meta name="description" content="Product designer focused on AI, productivity, and lifestyle consumer apps. Ships end-to-end, including in code." />
+<link rel="icon" href="assets/avatar.jpg" type="image/jpeg" />
+<link rel="apple-touch-icon" href="assets/avatar.jpg" />
+<link rel="stylesheet" href="styles.css" />
+<script>
+  /* pre-paint: apply dark mode before first render (no flash) */
+  (function () {
+    try {
+      var th = localStorage.getItem("pf_theme");
+      var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (th === "dark" || (th === null && sysDark))
+        document.documentElement.setAttribute("data-theme", "dark");
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+  <!-- theme toggle: top-right corner -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+    <span class="theme-icon-wrap">
+      <svg class="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z"/></svg>
+      <svg class="icon-sun"  viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="2.5"/><line x1="8" y1="13.5" x2="8" y2="15"/><line x1="1" y1="8" x2="2.5" y2="8"/><line x1="13.5" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.1" y2="4.1"/><line x1="11.9" y1="11.9" x2="12.95" y2="12.95"/><line x1="12.95" y1="3.05" x2="11.9" y2="4.1"/><line x1="4.1" y1="11.9" x2="3.05" y2="12.95"/></svg>
+    </span>
+  </button>
+
+  <main class="page" data-screen-label="Home">
+    <div class="col">
+
+      <!-- identity -->
+      <header class="id reveal">
+        <div class="avatar-wrap">
+          <img class="avatar" src="assets/avatar.jpg" width="46" height="46" alt="Alexander Simonovsky" />
+          <span class="online-dot" aria-hidden="true"></span>
+        </div>
+        <div class="id-text">
+          <span class="id-name">Alexander Simonovsky</span>
+          <span class="id-role">
+            <span class="role-slide">
+              <span class="role-a">Belgrade, Serbia</span>
+              <span class="role-b">Open to relocate / remote</span>
+            </span>
+          </span>
+        </div>
+      </header>
+
+      <!-- intro -->
+      <section class="intro reveal" data-delay="60">
+        <p class="lead">Product designer focused on AI and consumer apps, shipping end-to-end — including in code with AI.</p>
+
+        <p>I've led design on products reaching 150K+ users across 12 markets, grew an app from 0 to 27K+ users with 70%+ day-one activation, and worked with teams across UK and US, including <span class="tip-host lnk-nc">DMG&nbsp;Media<span class="tip" style="max-width:285px">Media group behind Daily Mail and MailOnline, one of the world's largest news publishers</span></span>, <span class="tip-host lnk-nc">Verto<span class="tip" style="max-width:248px">B2B cross-border payments platform for emerging markets. YC W19, $12M raised</span></span>, and <span class="tip-host lnk-nc">Lingopal<span class="tip" style="max-width:255px">Real-time AI speech-to-speech translation for live broadcasts. Series A, $14M raised</span></span>.</p>
+
+        <p>I also build and release my own products — <span class="tip-host"><img class="app-icon app-icon--yonder" src="assets/yonder_icon.png" width="20" height="20" alt="" aria-hidden="true" /><a class="lnk" href="cases/yonder/yonder.html">Yonder</a><a class="tip tip-link" href="https://yonder.site" target="_blank" rel="noopener" style="max-width:174px">Mac app for staying in sync across time zones<svg class="tip-ext" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8L8 2M4.5 2H8v3.5"/></svg></a></span>, and <span class="tip-host"><img class="app-icon app-icon--todoodle" src="assets/todoodle_icon.png" width="20" height="20" alt="" aria-hidden="true" /><a class="lnk" href="https://www.figma.com/community/widget/1615397206941614227" target="_blank" rel="noopener">Todoodle</a><a class="tip tip-link" href="https://www.figma.com/community/widget/1615397206941614227" target="_blank" rel="noopener" style="max-width:160px">Task tracker that lives on your Figma canvas<svg class="tip-ext" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8L8 2M4.5 2H8v3.5"/></svg></a></span>.</p>
+
+        <!-- contact -->
+        <div class="contact">
+          <button class="btn btn-copy" id="copy-btn" aria-label="Copy email address">
+            <span class="bcopy-icon" aria-hidden="true">
+              <svg class="bcopy-i bcopy-i--copy" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M9 5V3a1.5 1.5 0 0 0-1.5-1.5H3A1.5 1.5 0 0 0 1.5 3v4.5A1.5 1.5 0 0 0 3 9h2"/></svg>
+              <svg class="bcopy-i bcopy-i--check" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7.5L5.5 11 12 4"/></svg>
+            </span>
+            <span class="bcopy-lbl">Copy email</span>
+          </button>
+          <a class="btn-sec" href="cv.pdf" download>
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1.5v7M4 6l3 3 3-3"/><path d="M1.5 10.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1"/></svg>
+            Download CV
+          </a>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- case feed (can extend wider than text via data-cw) -->
+    <section class="feed-wrap reveal" data-delay="140">
+      <p class="sect-label">Selected work</p>
+      <div class="feed">
+
+        <a class="case" href="cases/lexie-studypaths/lexie-studypaths.html">
+          <span class="case-icon" aria-hidden="true">→</span>
+          <div class="thumb"><img src="assets/lexie x studypaths.webp" loading="lazy" alt="Lexie × StudyPaths" width="1600" height="1200" /></div>
+          <div class="case-main">
+            <div class="case-head">
+              <span class="case-title">Lexie × StudyPaths <span class="arrow">→</span></span>
+            </div>
+            <p class="case-desc">From a Master's thesis on adaptive learning to a full redesign of an AI-powered, gamified study app reaching 150K+ learners across 12 markets.</p>
+          </div>
+        </a>
+
+        <a class="case" href="cases/yonder/yonder.html">
+          <span class="case-icon" aria-hidden="true">→</span>
+          <div class="thumb"><img src="assets/yonder.webp" loading="lazy" alt="Yonder" width="1600" height="1200" /></div>
+          <div class="case-main">
+            <div class="case-head">
+              <span class="case-title">Yonder <span class="arrow">→</span></span>
+            </div>
+            <p class="case-desc">A native macOS app for world clocks and team timezones — designed and shipped end-to-end in code with AI-assisted development.</p>
+          </div>
+        </a>
+
+        <a class="case" href="cases/dreamerz/dreamerz.html">
+          <span class="case-icon" aria-hidden="true">→</span>
+          <div class="thumb">
+            <video autoplay muted loop playsinline width="1600" height="1200" poster="cases/dreamerz/videos/hero-poster.jpg">
+              <source src="cases/dreamerz/videos/hero.mp4" type="video/mp4; codecs=hvc1">
+              <source src="cases/dreamerz/videos/hero-compat.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="case-main">
+            <div class="case-head">
+              <span class="case-title">Dreamerz <span class="arrow">→</span></span>
+            </div>
+            <p class="case-desc">A competitive gaming app grown from zero to 27K+ users with 70%+ day-one activation. Sole designer across two major releases.</p>
+          </div>
+        </a>
+
+        <div class="case static">
+          <div class="thumb"><img src="assets/xi labs.webp" loading="lazy" alt="xi labs" width="1600" height="1200" /></div>
+          <!-- no case-icon: static, no link -->
+          <div class="case-main">
+            <div class="case-head">
+              <span class="case-title">Widgets for xi&nbsp;labs</span>
+            </div>
+            <p class="case-desc">A small family of focused interface widgets — quick explorations and shipped tools. Snapshots, no write-up.</p>
+          </div>
+        </div>
+
+        <a class="case" href="https://www.figma.com/community/widget/1615397206941614227" target="_blank" rel="noopener">
+          <span class="case-icon" aria-hidden="true">↗</span>
+          <div class="thumb"><img src="assets/todoodle.webp" loading="lazy" alt="Todoodle" width="1600" height="1200" /></div>
+          <div class="case-main">
+            <div class="case-head">
+              <span class="case-title">Todoodle <span class="arrow">↗</span></span>
+            </div>
+            <p class="case-desc">A task-management widget for Figma Community with 300+ active users. Live on the Community — try it there.</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="foot reveal" data-delay="180">
+      <div class="foot-row">
+        <span class="face" aria-hidden="true">ʕ<span class="bear-leye">•</span>ᴥ<span class="bear-reye">•</span>ʔ<span class="bear-exclaim" aria-hidden="true"><span>!</span><span>!</span></span></span>
+        <nav class="foot-links">
+          <button class="foot-copy" id="foot-copy">Copy email</button>
+          <a href="cv.pdf" download>Download CV</a>
+          <a href="https://www.linkedin.com/in/asimonovsky" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </footer>
+  </main>
+
+  <script src="site.js"></script>
+</body>
+</html>

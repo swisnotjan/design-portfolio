@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-feed="filled" data-links="inline" data-cw="same" data-personality="sprinkled">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yonder — Alexander Simonovsky</title>
+<meta name="description" content="A native macOS app for world clocks and team timezones — designed and shipped end-to-end in code." />
+<link rel="icon" href="../../assets/avatar.jpg" type="image/jpeg" />
+<link rel="apple-touch-icon" href="../../assets/avatar.jpg" />
+<link rel="stylesheet" href="../../styles.css" />
+<script>
+  /* pre-paint: apply dark mode before first render (no flash) */
+  (function () {
+    try {
+      var th = localStorage.getItem("pf_theme");
+      var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (th === "dark" || (th === null && sysDark))
+        document.documentElement.setAttribute("data-theme", "dark");
+    } catch (e) {}
+  })();
+</script>
+<script>
+  (function () {
+    try {
+      var t = JSON.parse(localStorage.getItem("pf_tweaks_v1")) || {};
+      var r = document.documentElement, s = r.style;
+      ["accent","feed","links","cw","personality","bg"].forEach(function (k) {
+        if (t[k] != null) r.setAttribute("data-" + k, t[k]);
+      });
+      var F = { hanken:'"Hanken Grotesk", ui-sans-serif, system-ui, sans-serif',
+        schibsted:'"Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif',
+        system:'ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif' };
+      if (t.font && F[t.font]) s.setProperty("--font", F[t.font]);
+      if (t.fontSize) s.setProperty("--fs", t.fontSize + "px");
+      if (t.colWidth) s.setProperty("--col", t.colWidth + "px");
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+  <a class="back-btn" href="../../index.html" aria-label="Back to home">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg>
+  </a>
+  <!-- theme toggle: top-right corner -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+    <span class="theme-icon-wrap">
+      <svg class="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z"/></svg>
+      <svg class="icon-sun"  viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="2.5"/><line x1="8" y1="13.5" x2="8" y2="15"/><line x1="1" y1="8" x2="2.5" y2="8"/><line x1="13.5" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.1" y2="4.1"/><line x1="11.9" y1="11.9" x2="12.95" y2="12.95"/><line x1="12.95" y1="3.05" x2="11.9" y2="4.1"/><line x1="4.1" y1="11.9" x2="3.05" y2="12.95"/></svg>
+    </span>
+  </button>
+
+  <main class="page case-page" data-screen-label="Case: Yonder">
+    <h1 class="cs-title reveal" data-delay="60">Yonder — world clocks that live in your menu bar</h1>
+    <p class="cs-lede reveal" data-delay="90">A native macOS app for tracking world clocks and teammates' timezones. I designed it and shipped it myself — in code, with AI-assisted development — and distributed it via Homebrew with its own product site.</p>
+
+    <dl class="cs-meta reveal" data-delay="120">
+      <div><dt>Role</dt><dd>Designer &amp; builder (solo)</dd></div>
+      <div><dt>Team</dt><dd>Solo</dd></div>
+      <div><dt>Timeline</dt><dd>2025</dd></div>
+    </dl>
+
+    <div class="cs-intro-people reveal" data-delay="150">
+      <div class="pics"><span></span></div>
+      <span class="who">A solo project — design, frontend and release, end to end.</span>
+    </div>
+
+    <div class="cs-body">
+
+      <h2 class="cs-h">Why</h2>
+      <p class="cs-p">Working across the UK and US, “what time is it for them right now?” was a question I asked a dozen times a day. Every tool I tried was either a heavy calendar add-on or a web page I forgot to open. I wanted something that <strong>lived where I already look</strong> — the menu bar — and disappeared the rest of the time.</p>
+
+      <div class="cs-hero">[ media — Yonder in the macOS menu bar ]</div>
+
+      <h2 class="cs-h">The shape of it</h2>
+      <p class="cs-p">One glanceable list: people and cities, their local time, and whether it's a reasonable hour to ping them. A quiet color cue does the social math — green for “go ahead”, dim for “they're probably asleep”. No accounts, no setup wizard, no notifications begging for attention.</p>
+
+      <div class="media tall">[ media — the dropdown: people, times, day/night cue ]</div>
+
+      <div class="sidenote">
+        Designing <b>in code</b> changed the work: I could feel latency, hit-targets and animation timing directly, and tune them in the same loop as the visuals — no handoff gap.
+      </div>
+
+      <h2 class="cs-h">Designing in code</h2>
+      <p class="cs-p">I built Yonder in SwiftUI with AI-assisted development — using AI tools to move from intent to working interface quickly, then refining by hand. The result is a real, native app: <strong>system-accurate type, motion and behavior</strong>, not a mockup pretending to be one.</p>
+
+      <p class="pullquote"><span class="mark">“</span>Shipping it myself meant the craft survived all the way to the build.<span class="mark">”</span></p>
+
+      <h2 class="cs-h">Getting it out there</h2>
+      <p class="cs-p">I packaged it for Homebrew so the people most likely to want it — developers and designers on distributed teams — could install it with one line, and gave it a small dedicated site to explain itself in a single scroll.</p>
+
+      <div class="media wide">[ media — yonder.site landing ]</div>
+
+    </div>
+
+    <div class="cs-next">
+      <span class="lbl">NEXT</span>
+      <a href="../dreamerz/dreamerz.html">Dreamerz <span class="go">→</span></a>
+    </div>
+
+    <footer class="foot reveal" data-delay="180">
+      <div class="foot-row">
+        <span class="face" aria-hidden="true">ʕ<span class="bear-leye">•</span>ᴥ<span class="bear-reye">•</span>ʔ<span class="bear-exclaim" aria-hidden="true"><span>!</span><span>!</span></span></span>
+        <nav class="foot-links">
+          <button class="foot-copy" id="foot-copy">Copy email</button>
+          <a href="../../cv.pdf" download>Download CV</a>
+          <a href="https://www.linkedin.com/in/asimonovsky" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="../../site.js"></script>
+</body>
+</html>

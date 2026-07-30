@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-feed="filled" data-links="inline" data-cw="same" data-personality="sprinkled">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lexie × StudyPaths — Alexander Simonovsky</title>
+<meta name="description" content="How a self-learning thesis project became StudyPaths, a gamified AI-tutoring app now used by 150K+ people, after the startup behind it offered to buy it instead of compete with it." />
+<link rel="icon" href="../../assets/avatar.jpg" type="image/jpeg" />
+<link rel="apple-touch-icon" href="../../assets/avatar.jpg" />
+<link rel="stylesheet" href="../../styles.css" />
+<script>
+  /* pre-paint: apply dark mode before first render (no flash) */
+  (function () {
+    try {
+      var th = localStorage.getItem("pf_theme");
+      var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (th === "dark" || (th === null && sysDark))
+        document.documentElement.setAttribute("data-theme", "dark");
+    } catch (e) {}
+  })();
+</script>
+<script>
+  (function () {
+    try {
+      var t = JSON.parse(localStorage.getItem("pf_tweaks_v1")) || {};
+      var r = document.documentElement, s = r.style;
+      ["accent","feed","links","cw","personality","bg"].forEach(function (k) {
+        if (t[k] != null) r.setAttribute("data-" + k, t[k]);
+      });
+      var F = { hanken:'"Hanken Grotesk", ui-sans-serif, system-ui, sans-serif',
+        schibsted:'"Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif',
+        system:'ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif' };
+      if (t.font && F[t.font]) s.setProperty("--font", F[t.font]);
+      if (t.fontSize) s.setProperty("--fs", t.fontSize + "px");
+      if (t.colWidth) s.setProperty("--col", t.colWidth + "px");
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+  <a class="back-btn" href="../../index.html" aria-label="Back to home">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg>
+  </a>
+  <!-- theme toggle: top-right corner -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+    <span class="theme-icon-wrap">
+      <svg class="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z"/></svg>
+      <svg class="icon-sun"  viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="2.5"/><line x1="8" y1="13.5" x2="8" y2="15"/><line x1="1" y1="8" x2="2.5" y2="8"/><line x1="13.5" y1="8" x2="15" y2="8"/><line x1="3.05" y1="3.05" x2="4.1" y2="4.1"/><line x1="11.9" y1="11.9" x2="12.95" y2="12.95"/><line x1="12.95" y1="3.05" x2="11.9" y2="4.1"/><line x1="4.1" y1="11.9" x2="3.05" y2="12.95"/></svg>
+    </span>
+  </button>
+
+  <main class="page case-page" data-screen-label="Case: Lexie × StudyPaths">
+
+    <div id="cs-reorder" style="overflow-x: clip">
+      <h1 class="cs-title reveal" data-delay="60" id="b-title">Lexie × StudyPaths</h1>
+      <p class="cs-lede reveal" data-delay="90" id="b-lede">How a self-learning thesis project became a live product used by 150K people</p>
+      <dl class="cs-meta reveal" data-delay="120" id="b-meta">
+        <div><dt>Role</dt><dd>Product Designer</dd></div>
+        <div><dt>Team</dt><dd>Solo → embedded in the product team (2 founders, 3 designers, and their dev team)</dd></div>
+        <div><dt>Timeline</dt><dd>Winter 2025 → Summer 2025</dd></div>
+      </dl>
+      <div id="b-intro" style="margin-top: 36px;">
+        <p class="cs-p">Lexie turns anything you feed it — a one-word prompt, a semester of lecture slides, or an entire textbook — into a gamified course with an AI tutor that remembers your strengths and weak spots. It started as a thesis project for students and young professionals teaching themselves outside a formal curriculum.</p>
+        <p class="cs-p">I defended it with honors and finished my master's — but the interesting part came after: a startup with 150K users offered to buy the app.</p>
+        <p class="cs-p">Instead, I joined the team to redesign their product. The hard part was rebuilding the core without breaking the experience for existing users. It worked so well the company renamed the product.</p>
+      </div>
+    </div>
+    <div class="cs-hero" id="b-hero">[ image: hero illustration ]</div>
+
+    <div class="cs-body">
+
+      <h2 class="cs-h">The gap nobody was closing</h2>
+      <p class="cs-p">If you've ever tried to teach yourself something, you know the problem usually isn't a lack of information — it's a lack of guidance.</p>
+      <p class="cs-p">By late 2024, LLMs were finally good enough to be a genuine learning companion, not just a chatbot — that's where the thesis idea came from.</p>
+      <p class="cs-p">Fourteen of the fifteen people I interviewed named the same three problems:</p>
+      <p class="cs-p">It's hard to start. It's hard to track progress. It's hard to stay focused and actually understand the material.</p>
+      <p class="cs-p">A survey of nearly 200 said the same: 92% ranked these three above all others, and most had quit a self-learning attempt at least once — half more than three times.</p>
+      <p class="cs-p">The existing tools didn't help much. StudyFetch and Knowt turn any material into flashcards and quizzes but leave setup, structure, and progress up to you; Duolingo and Mimo offer polished, gamified paths you can't bring your own material into. <mark class="cs-mark">The obvious fix: combine both sides into one product.</mark> That became the brief.</p>
+
+      <div class="media wide">[ image: product comparison table ]</div>
+      <p class="cs-caption">There were also education platforms with AI features, but those lean toward formal education — not quite what I was after.</p>
+
+      <h2 class="cs-h">Hard to start</h2>
+      <p class="cs-p">The first problem: cut the number of actions and decisions, and get people learning fast.</p>
+      <p class="cs-p">First up is onboarding. The conventional move is to make it long — easy questions that get people invested and more likely to stick around. But every extra question raises expectations, and with AI products those are still shaky, so better to let people just try something themselves.</p>
+
+      <div class="media tall">
+        <video autoplay muted loop playsinline width="1080" height="1080">
+          <source src="videos/Onboarding.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="cs-caption">Onboarding stays short — just enough to get out of the way.</p>
+
+      <p class="cs-p">Next comes the course. Apps that let you upload your own material make you configure everything yourself — scope, difficulty, the format of each task — with no sense of progression. So I had Lexie build the course automatically, turning anything you upload into a progressive learning path — editable in plain language if you need.</p>
+
+      <div class="media tall">
+        <video autoplay muted loop playsinline width="1080" height="1080">
+          <source src="videos/Course-creation.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="cs-caption">You can start a course from a single word — someone new to a subject shouldn't be expected to know its topics or terminology yet.</p>
+
+      <p class="cs-p">There's a tradeoff: control shifts from the interface toward the material you pick and the prompt you write. But lowering the barrier to entry mattered more — deeper tuning could come later.</p>
+
+      <h2 class="cs-h">Hard to track progress</h2>
+      <p class="cs-p">The survey showed most self-learning happened in short phone sessions — on a commute, or right before or after sleep. So instead of building yet another throwaway quiz generator, I focused on a long-term relationship with the user and a real sense of progress. How?</p>
+      <p class="cs-p">Duolingo was the obvious reference. Digging into the research, I understood why it's built that way — it's grounded in science:</p>
+      <p class="cs-p"><strong>Chunking.</strong> Short levels, five to fifteen minutes each, so they fit in working memory and actually get finished.</p>
+      <p class="cs-p"><strong>Retrieval practice.</strong> Using an exercise not to test knowledge but as the learning itself — the feedback of success or failure helps you retain material far better than rereading it.</p>
+      <p class="cs-p"><strong>Spacing.</strong> Every chunk mixes new and old material, so you review what you've covered without getting overwhelmed by what's new.</p>
+      <p class="cs-p">I built Lexie on the same principles, with tweaks: passive “review the concept” and “flashcard” steps — no answers required, but room for harder concepts — alongside active formats like choose the correct answer, match the pairs, and highlight the mistake. Every level ends on encouragement, whatever the result, with the numbers to back it up.</p>
+
+      <div class="media tall">
+        <video autoplay muted loop playsinline width="1080" height="1080">
+          <source src="videos/Review-the-concept.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="cs-caption">Breaking a concept into cards makes memorization a little more focused and active.</p>
+
+      <div class="media tall">[ image: level result ]</div>
+      <p class="cs-caption">The result screen stays positive, whatever the score.</p>
+
+      <h2 class="cs-h">Hard to stay focused and understand the material</h2>
+      <p class="cs-p">This was the one I set out to solve with AI — an assistant reachable from any step of any level, but not a simple chatbot. Its AI carries memory across all your courses and within each one: it remembers what you studied, what came easily, and where you stumbled. Over time it becomes a genuine tutor, pulling examples from what you know well and going deeper on what you find hard.</p>
+      <p class="cs-p">But memory alone isn't enough. Research on tutoring systems shows the students who need help most ask for it least, while those constantly asking for hints are just farming answers. So the hint had to appear only when actually needed.</p>
+
+      <div class="media tall">
+        <video autoplay muted loop playsinline width="1080" height="1080">
+          <source src="videos/Fill-in-the-blanks-hint.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="cs-caption">The button appears on any active level and essentially opens the same AI chat — except it requests a hint right away.</p>
+
+      <p class="cs-p">I spent weeks on this feature alone, running dozens of tests to find the right moment for it to appear without interrupting someone still thinking. What worked: 45 seconds of inactivity after a wrong attempt, or 90 seconds with no attempt at all — and never the first time new material appears.</p>
+      <p class="cs-p">That way, answer-farmers have to wait the button out or ask in the chat every time — enough friction to make it not worth it — while anyone genuinely stuck gets it right when they need it.</p>
+
+      <h2 class="cs-h">The finishing touches</h2>
+      <p class="cs-p">The last details: a simple daily streak so the material doesn't fade between sessions, plus smart reminders you can pin to a part of the day in onboarding or settings — or leave entirely up to the app.</p>
+
+      <div class="media tall">[ image: reminders ]</div>
+      <p class="cs-caption">Lexie learns when you tend to open it and gradually gets more precise about sending reminders at the right time.</p>
+
+      <h2 class="cs-h">When the scale changed dramatically</h2>
+      <p class="cs-p">That's when StudyPal came into the picture — the old name for StudyPaths. It was a live product built on exactly what Lexie was rethinking: flashcards and quizzes with no single path or sense of progress. <mark class="cs-mark">The overlap was so close that the founders offered to acquire Lexie before I'd even defended my thesis.</mark> Rather than sell, I joined their team to do the redesign myself.</p>
+      <p class="cs-p">StudyPal had 150K+ active users, but it was still a startup — no budget for long migrations or expensive rebuilds. Whatever I did had to be careful.</p>
+
+      <h2 class="cs-h">Starting with an audit</h2>
+      <p class="cs-p">With weeks of research already behind me, I went straight into a product audit: mapping the architecture, cleaning up flows, going through the interfaces. Then, to see whether these users wanted change, I ran a similar survey — asking, among other things, about a separate game-like path mode and an option to call the AI.</p>
+
+      <div class="media wide">[ image: in-app banner ]</div>
+      <p class="cs-caption">We ran a small but noticeable banner across every platform.</p>
+
+      <p class="cs-p">About 6% responded, overwhelmingly positive about the game-path mode — so we got to work, teasing it in parallel:</p>
+
+      <div class="media wide">[ image: StudyPaths teaser ]</div>
+      <p class="cs-caption">Yes — StudyPaths was originally just the name of the mode.</p>
+
+      <h2 class="cs-h">Building on top, not tearing down</h2>
+      <p class="cs-p">Lexie was built from scratch; here, hundreds of thousands of users relied on the existing tools, so I couldn't just rip them out. I turned that into an advantage: the game path became a separate, optional mode running on those same tools, which stayed for the people already used to them.</p>
+      <p class="cs-p">This was essentially my second time building the same mode, so I could have gone all in — branching courses, new step types, detailed stats. But I moved iteratively, rather than shift the whole development focus or spend on things that might never get adopted.</p>
+
+      <div class="media wide">[ image: main path screen ]</div>
+      <p class="cs-caption">So the new mode stayed fairly simple — a single-line game path with sequential levels and a preview of your progress.</p>
+
+      <p class="cs-p">Much of the rest was inherited almost unchanged — the proactive AI with memory (now with a few personalities to choose from), smart reminders, and the daily-streak system.</p>
+
+      <div class="media tall">[ image: streak and level widgets ]</div>
+      <p class="cs-caption">We also added levels on top of streaks so long-term progress would feel more tangible.</p>
+
+      <h2 class="cs-h">What didn't make it</h2>
+      <p class="cs-p">Not everything we planned made it to production. We figured a detailed course map would sharpen the sense of progress and give better context, but in testing almost no one found it useful.</p>
+
+      <div class="media wide">[ image: course map ]</div>
+      <p class="cs-caption">It might have come down to how the map was presented, but we decided to focus on polishing the more essential pieces instead.</p>
+
+      <p class="cs-p">And the call with the AI from the survey? The feedback was positive, but not exactly enthusiastic. I designed it anyway — a call that looks like an ordinary video call, using animated sprites for emotions to avoid real-time video generation in the test. But once we ran the numbers, the whole stack — the product's AI, an AI for fast text generation, and a real-time voice model — was too expensive to maintain and too complex to build for a feature nobody was really asking for. <mark class="cs-mark">So we killed that one too, before it ever shipped.</mark></p>
+
+      <div class="media tall">[ image: call with AI ]</div>
+      <p class="cs-caption">The call with the AI was designed to feel like a normal video call.</p>
+
+      <h2 class="cs-h">Outcome</h2>
+      <p class="cs-p">The redesign rolled out gradually to all 150K+ users. With almost no analytics in the product, the strongest adoption signal came from support tickets: within three or four weeks, questions and feedback about the game path outnumbered those about the standalone tools.</p>
+      <p class="cs-p">Most weren't complaints — they were clarifying questions, even thank-yous. Users said it was easier to just start a game course — everything decided for them, new and old material mixed in — and to drop into the familiar tools for a specific topic when needed. Adoption was so clear that before long <strong>the founders symbolically renamed StudyPal to StudyPaths</strong>.</p>
+
+      <h2 class="cs-h">What I'd do differently</h2>
+      <p class="cs-p">There's no point pretending otherwise — it was a big stroke of luck to come across a product tackling the exact problem I'd already spent so long on. But two things I'd do differently.</p>
+      <p class="cs-p">First, I'd go deeper on the technical side of working with AI: what input counts as legitimate, how to keep output consistent, reduce hallucinations, handle context once there's too much of it. We solved it all by trial and error, but I'd have saved real time and energy understanding it upfront.</p>
+      <p class="cs-p">Second, I'd push harder for basic analytics before rolling things out. The redesign worked, but I can't put exact numbers on how well.</p>
+      <p class="cs-p">Still, there's something great about having moved on from the team while the game path is still there.</p>
+
+    </div>
+
+    <div class="cs-next">
+      <span class="lbl">NEXT</span>
+      <a href="../yonder/yonder.html">Yonder <span class="go">→</span></a>
+    </div>
+
+    <footer class="foot reveal" data-delay="180">
+      <div class="foot-row">
+        <span class="face" aria-hidden="true">ʕ<span class="bear-leye">•</span>ᴥ<span class="bear-reye">•</span>ʔ<span class="bear-exclaim" aria-hidden="true"><span>!</span><span>!</span></span></span>
+        <nav class="foot-links">
+          <button class="foot-copy" id="foot-copy">Copy email</button>
+          <a href="../../cv.pdf" download>Download CV</a>
+          <a href="https://www.linkedin.com/in/asimonovsky" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="../../site.js"></script>
+</body>
+</html>
