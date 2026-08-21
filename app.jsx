@@ -1,6 +1,6 @@
 /* app.jsx — Tweaks panel for the portfolio. */
 
-const LEAD_DEFAULT = "Product designer focused on AI and consumer apps, shipping end-to-end \u2014 including in code with AI.";
+const LEAD_DEFAULT = "Product designer shipping end-to-end \u2014 including in code with AI.";
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "black",

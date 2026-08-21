@@ -1,148 +1,175 @@
-# Lexie × StudyPaths
+# Lexie × Studypaths — how a thesis took over a live product
 
-How a self-learning thesis project became a live product used by 150K people
+An AI-guided learning concept that moved from a master's thesis into an American product used worldwide.
 
 **Role:** Product Designer
-**Team:** Solo → embedded in the product team (2 founders, 3 designers, and their dev team)
+**Team:** Solo → embedded product team of 5
 **Timeline:** Winter 2025 → Summer 2025
 
-Lexie turns anything you feed it — a one-word prompt, a semester of lecture slides, or an entire textbook — into a gamified course with an AI tutor that remembers your strengths and weak spots. It started as a thesis project for students and young professionals teaching themselves outside a formal curriculum.
+I designed Lexie to turn uploaded materials into a game path of bite-sized stages, guided by an adaptive AI tutor that remembers the learner's progress.
 
-I defended it with honors and finished my master's — but the interesting part came after: a startup with 150K users offered to buy the app.
+I defended it as my master's thesis with honors, and the team behind a similar international learning product with 150,000+ users offered to acquire Lexie.
 
-Instead, I joined the team to redesign their product. The hard part was rebuilding the core without breaking the experience for existing users. It worked so well the company renamed the product.
+Instead, I joined the team to rebuild their product's core. The challenge was introducing a new game-path mode without disrupting existing users. It worked so well that it eventually gave the product its name.
 
 [hero illustration]
 
 ## The gap nobody was closing
 
-If you've ever tried to teach yourself something, you know the problem usually isn't a lack of information — it's a lack of guidance.
+If you've ever tried to teach yourself something, you know the problem usually isn't a lack of information, but a lack of guidance.
 
-By late 2024, LLMs were finally good enough to be a genuine learning companion, not just a chatbot — that's where the thesis idea came from.
+By late 2024, LLMs could act as genuine companions rather than just chatbots. That inspired the idea behind my master's thesis: using AI to guide self-directed learning.
 
-Fourteen of the fifteen people I interviewed named the same three problems:
+I validated the need for better guidance through 15 in-depth interviews and a survey of around 200 people.
 
-It's hard to start. It's hard to track progress. It's hard to stay focused and actually understand the material.
+Existing solutions split into two camps. For example, StudyFetch, Knowt, and MagicSchool created tools like flashcards and quizzes from uploads but required extensive manual setup.
 
-A survey of nearly 200 said the same: 92% ranked these three above all others, and most had quit a self-learning attempt at least once — half more than three times.
+[competitors]
+[caption: With competitors, setup felt like half the learning journey]
 
-The existing tools didn't help much. StudyFetch and Knowt turn any material into flashcards and quizzes but leave setup, structure, and progress up to you; Duolingo and Mimo offer polished, gamified paths you can't bring your own material into. The obvious fix: combine both sides into one product. That became the brief.
+On the other side, well-known platforms like Duolingo, Mimo, and Brilliant offered polished, gamified paths but no way to upload your own materials.
 
-[product comparison table]
-[caption: There were also education platforms with AI features, but those lean toward formal education — not quite what I was after.]
+So I combined the best of both: user-owned materials, a low-friction start, and a guided game path.
 
-## Hard to start
+The interviews and survey surfaced three core problems, each shaping a part of Lexie:
 
-The first problem: cut the number of actions and decisions, and get people learning fast.
+## Problem one: hard to start
 
-First up is onboarding. The conventional move is to make it long — easy questions that get people invested and more likely to stick around. But every extra question raises expectations, and with AI products those are still shaky, so better to let people just try something themselves.
+The goal was to reduce actions and decisions and get people learning quickly. First came onboarding.
+
+Conventional onboarding is long to make users feel invested, but every question raises expectations that AI products could not always meet. I decided to keep it short.
 
 [onboarding]
-[caption: Onboarding stays short — just enough to get out of the way.]
+[caption: Just enough onboarding to get out of the way]
 
-Next comes the course. Apps that let you upload your own material make you configure everything yourself — scope, difficulty, the format of each task — with no sense of progression. So I had Lexie build the course automatically, turning anything you upload into a progressive learning path — editable in plain language if you need.
+Next, course creation. Learners may not know a subject well enough to configure a course in detail, so I let Lexie make those decisions from a natural-language prompt instead of complex settings.
 
 [course creation]
-[caption: You can start a course from a single word — someone new to a subject shouldn't be expected to know its topics or terminology yet.]
+[caption: You can also just move the slider to adjust the course depth]
 
-There's a tradeoff: control shifts from the interface toward the material you pick and the prompt you write. But lowering the barrier to entry mattered more — deeper tuning could come later.
+There is a tradeoff: control shifts from the interface toward the material users choose and the prompts they write. But lowering the barrier to entry mattered more; deeper customization could come later.
 
-## Hard to track progress
+## Problem two: hard to track progress
 
-The survey showed most self-learning happened in short phone sessions — on a commute, or right before or after sleep. So instead of building yet another throwaway quiz generator, I focused on a long-term relationship with the user and a real sense of progress. How?
+My survey showed that most self-directed learning happened in short mobile sessions — during a commute or before bed. Yet progress requires a long-term relationship. How could the two be combined?
 
-Duolingo was the obvious reference. Digging into the research, I understood why it's built that way — it's grounded in science:
+Duolingo was the obvious reference. I reviewed research on learning and found three core principles behind its approach:
 
-**Chunking.** Short levels, five to fifteen minutes each, so they fit in working memory and actually get finished.
+**Chunking.** Stages take five to fifteen minutes, so they fit within working memory and get finished.
 
-**Retrieval practice.** Using an exercise not to test knowledge but as the learning itself — the feedback of success or failure helps you retain material far better than rereading it.
+**Retrieval practice.** Learning through exercises improves retention more than rereading.
 
-**Spacing.** Every chunk mixes new and old material, so you review what you've covered without getting overwhelmed by what's new.
+**Spacing.** Mixing new and previous material reinforces learning without overload.
 
-I built Lexie on the same principles, with tweaks: passive "review the concept" and "flashcard" steps — no answers required, but room for harder concepts — alongside active formats like choose the correct answer, match the pairs, and highlight the mistake. Every level ends on encouragement, whatever the result, with the numbers to back it up.
+I built Lexie around these principles, creating a familiar game path of short stages and varied exercises. The user taps “Continue learning”; Lexie chooses what comes next.
+
+[game path structure]
+[caption: The anatomy of a game path]
+
+Exercises ranged from familiar formats like “Choose the Correct Answer” and “Match the Pairs” to more specific ones like “Highlight the Mistake” and “Fill in the Blanks.”
+
+[active exercise formats]
+[caption: Every answer, right or wrong, comes with an explanation]
+
+Unusually for a game path, I also added lower-intensity stages such as “Review the Concept” and “Flashcards” to reinforce difficult topics.
 
 [review the concept]
-[caption: Breaking a concept into cards makes memorization a little more focused and active.]
+[caption: Breaking a concept into cards makes memorization more focused and active]
 
-[level result]
-[caption: The result screen stays positive, whatever the score.]
+Each stage ends with encouragement and progress numbers, regardless of the result.
 
-## Hard to stay focused and understand the material
+[stage result]
+[caption: Different result messages keep things from feeling repetitive]
 
-This was the one I set out to solve with AI — an assistant reachable from any step of any level, but not a simple chatbot. Its AI carries memory across all your courses and within each one: it remembers what you studied, what came easily, and where you stumbled. Over time it becomes a genuine tutor, pulling examples from what you know well and going deeper on what you find hard.
+## Problem three: hard to stay focused and understand
 
-But memory alone isn't enough. Research on tutoring systems shows the students who need help most ask for it least, while those constantly asking for hints are just farming answers. So the hint had to appear only when actually needed.
+This is where AI comes in: an adaptive tutor set up to remember each user's weak points and mistakes, provide relevant examples, and encourage them when stuck.
+
+But how could Lexie prevent users from farming answers through AI hints while still helping those who needed them?
 
 [hint button in the fill-in-the-blanks task]
-[caption: The button appears on any active level and essentially opens the same AI chat — except it requests a hint right away.]
+[caption: Hints are generated on the fly; Learn More opens chat with the prompt ready]
 
-I spent weeks on this feature alone, running dozens of tests to find the right moment for it to appear without interrupting someone still thinking. What worked: 45 seconds of inactivity after a wrong attempt, or 90 seconds with no attempt at all — and never the first time new material appears.
+After a couple of weeks of testing across users and stages, I settled on this system: a hint appears after 45 seconds of inactivity following a wrong attempt, or after 90 seconds with no attempt — and never when new material first appears.
 
-That way, answer-farmers have to wait the button out or ask in the chat every time — enough friction to make it not worth it — while anyone genuinely stuck gets it right when they need it.
+Answer farmers must wait or ask in the chat every time — enough friction to discourage them — while anyone genuinely stuck gets timely help.
 
 ## The finishing touches
 
-The last details: a simple daily streak so the material doesn't fade between sessions, plus smart reminders you can pin to a part of the day in onboarding or settings — or leave entirely up to the app.
+The final details included a daily streak counter to reinforce the habit, plus smart reminders users could schedule — or leave up to the app.
 
 [reminders]
-[caption: Lexie learns when you tend to open it and gradually gets more precise about sending reminders at the right time.]
+[caption: Lexie learns when you tend to open it and gets better at timing reminders]
 
-## When the scale changed dramatically
+## The plot twist
 
-That's when StudyPal came into the picture — the old name for StudyPaths. It was a live product built on exactly what Lexie was rethinking: flashcards and quizzes with no single path or sense of progress. The overlap was so close that the founders offered to acquire Lexie before I'd even defended my thesis. Rather than sell, I joined their team to do the redesign myself.
+Shortly before my thesis defense, Studypal — an American startup — approached the studio where I worked to redesign its product. By a lucky coincidence, its app let users upload materials and create quizzes and flashcards — exactly the space I already knew well.
 
-StudyPal had 150K+ active users, but it was still a startup — no budget for long migrations or expensive rebuilds. Whatever I did had to be careful.
+[Studypal legacy]
+[caption: Before the redesign, Studypal was a collection of study tools]
 
-## Starting with an audit
+The overlap was so close that the founders offered to acquire Lexie.
 
-With weeks of research already behind me, I went straight into a product audit: mapping the architecture, cleaning up flows, going through the interfaces. Then, to see whether these users wanted change, I ran a similar survey — asking, among other things, about a separate game-like path mode and an option to call the AI.
+Instead, I joined the team to lead the redesign. But with more than 150,000 active users worldwide, every decision had to be handled carefully.
 
-[in-app banner]
-[caption: We ran a small but noticeable banner across every platform.]
+The core experience is already covered above, so I'll focus on the most interesting adaptations at scale.
 
-About 6% responded, overwhelmingly positive about the game-path mode — so we got to work, teasing it in parallel:
+## How I redesigned Studypal
 
-[StudyPaths teaser]
-[caption: Yes — StudyPaths was originally just the name of the mode.]
+I started with a product audit and user survey about learning habits, difficulties, and new concepts such as a gamified path or a live AI call. Around 6% responded, and the overwhelming majority reacted positively.
 
-## Building on top, not tearing down
+Still, thousands relied on the existing tools daily. I kept them available on their own and used them as the foundation of Studypaths — the same game-path concept as Lexie — which eventually became the product's core.
 
-Lexie was built from scratch; here, hundreds of thousands of users relied on the existing tools, so I couldn't just rip them out. I turned that into an advantage: the game path became a separate, optional mode running on those same tools, which stayed for the people already used to them.
+[Studypaths onboarding]
+[caption: Whoops, spoiler: Studypal would eventually become Studypaths — but not quite yet]
 
-This was essentially my second time building the same mode, so I could have gone all in — branching courses, new step types, detailed stats. But I moved iteratively, rather than shift the whole development focus or spend on things that might never get adopted.
+I defined the core learning experience and overall design direction; the other two designers extended that direction across the remaining flows and broader visual system.
+
+Most mechanics carried over from Lexie, refined by what worked the first time. For example, I added bonus stages, a course mastery map, and level-based progression.
 
 [main path screen]
-[caption: So the new mode stayed fairly simple — a single-line game path with sequential levels and a preview of your progress.]
+[caption: The main screen after the redesign]
 
-Much of the rest was inherited almost unchanged — the proactive AI with memory (now with a few personalities to choose from), smart reminders, and the daily-streak system.
+Bonus stages appear every seven to twelve stages — just beyond two average sessions — and award extra XP, encouraging one more push. The mastery map shows users where they are in the course, reinforcing progress.
+
+[bonus stages and mastery map]
+[caption: A yummy bonus stage nudges users to learn more while still feeling like a reward]
+
+As for level-based progression, users felt daily streaks were not enough. I added six milestones, each with a different decorative frame around the level number.
+
+XP requirements follow a softened exponential curve: new users level up quickly, while later progress slows to sustain motivation.
 
 [streak and level widgets]
-[caption: We also added levels on top of streaks so long-term progress would feel more tangible.]
+[caption: Reaching the final frame takes 1,050 stages — about 122 hours of learning]
 
 ## What didn't make it
 
-Not everything we planned made it to production. We figured a detailed course map would sharpen the sense of progress and give better context, but in testing almost no one found it useful.
+Alongside the features we shipped, we tested a few more ideas through prototypes and small surveys. Some never made it past that stage.
+
+One example was a detailed course map. I thought it would provide context, but almost no existing users found it useful in testing.
 
 [course map]
-[caption: It might have come down to how the map was presented, but we decided to focus on polishing the more essential pieces instead.]
+[caption: Diamond completion icons did not survive testing either]
 
-And the call with the AI from the survey? The feedback was positive, but not exactly enthusiastic. I designed it anyway — a call that looks like an ordinary video call, using animated sprites for emotions to avoid real-time video generation in the test. But once we ran the numbers, the whole stack — the product's AI, an AI for fast text generation, and a real-time voice model — was too expensive to maintain and too complex to build for a feature nobody was really asking for. So we killed that one too, before it ever shipped.
+The live AI call introduced in the survey was another concept. I designed a few mockups, but prototyping revealed it was too expensive and complex to build and maintain, so we moved it to the backlog.
 
 [call with AI]
-[caption: The call with the AI was designed to feel like a normal video call.]
+[caption: Behind the simple UI, several AI models coordinate in real time]
 
 ## Outcome
 
-The redesign rolled out gradually to all 150K+ users. With almost no analytics in the product, the strongest adoption signal came from support tickets: within three or four weeks, questions and feedback about the game path outnumbered those about the standalone tools.
+The redesign eventually reached all 150,000+ users. With almost no product analytics, support tickets were the strongest adoption signal: within three or four weeks, questions and feedback about Studypaths outnumbered those about the standalone tools.
 
-Most weren't complaints — they were clarifying questions, even thank-yous. Users said it was easier to just start a game course — everything decided for them, new and old material mixed in — and to drop into the familiar tools for a specific topic when needed. Adoption was so clear that before long the founders symbolically renamed StudyPal to StudyPaths.
+Most were clarifying questions or thank-you messages. Users found it easier to jump into a game-like course than configure everything themselves.
+
+In a symbolic move, the founders soon renamed Studypal to Studypaths.
 
 ## What I'd do differently
 
-There's no point pretending otherwise — it was a big stroke of luck to come across a product tackling the exact problem I'd already spent so long on. But two things I'd do differently.
+There's no point hiding it: I was lucky to encounter a product tackling the exact problem I had spent so long exploring. But I would do two things differently.
 
-First, I'd go deeper on the technical side of working with AI: what input counts as legitimate, how to keep output consistent, reduce hallucinations, handle context once there's too much of it. We solved it all by trial and error, but I'd have saved real time and energy understanding it upfront.
+First, I would go deeper into AI's technical side: validating input, keeping output consistent, reducing hallucinations, and managing growing context. We solved these through trial and error, but earlier exploration would have saved considerable time.
 
-Second, I'd push harder for basic analytics before rolling things out. The redesign worked, but I can't put exact numbers on how well.
+Second, I would push harder for basic analytics before rollout. The redesign worked, but I cannot quantify how well.
 
-Still, there's something great about having moved on from the team while the game path is still there.
+Still, there is something deeply satisfying about having moved on from the team while Studypaths remains the product's core experience.

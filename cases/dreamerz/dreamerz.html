@@ -58,23 +58,25 @@
         <div><dt>Team</dt><dd>2 founders + me → product team of 6</dd></div>
         <div><dt>Timeline</dt><dd>Summer 2024 → Spring 2025</dd></div>
       </dl>
-      <div id="b-intro" style="margin-top: 36px;">
-        <p class="cs-p">The challenge was to prevent leaderboards and earning mechanics from feeling casino-like, and instead position the experience as casual, low-pressure play for everyday people, where the money was a bonus, not the point.</p>
-        <p class="cs-p">I owned the player-facing experience from the first launch — and it worked: 70%+ day-one activation, 27k+ active players.</p>
+      <div class="reveal" data-delay="150" id="b-intro" style="margin-top: 36px;">
+        <p class="cs-p">The challenge was to make leaderboards and earning mechanics feel like casual, low-pressure play for a broad audience rather than a casino-like experience — with money as a bonus, not the point.</p>
+        <p class="cs-p">I owned the player-facing experience from launch — helping turn that positioning into strong adoption: 70%+ day-one activation and 27,000+ active players.</p>
       </div>
     </div>
-    <div class="cs-hero" id="b-hero">
-      <video autoplay muted loop playsinline width="1600" height="1200" poster="videos/hero-poster.jpg">
-        <source src="videos/hero.mp4" type="video/mp4; codecs=hvc1">
-        <source src="videos/hero-compat.mp4" type="video/mp4">
-      </video>
+    <div class="reveal" data-delay="180">
+      <div class="cs-hero" id="b-hero">
+        <video autoplay muted loop playsinline width="1600" height="1200" poster="videos/hero-poster.jpg">
+          <source src="videos/hero.mp4" type="video/mp4; codecs=hvc1">
+          <source src="videos/hero-compat.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
 
     <div class="cs-body">
 
       <h2 class="cs-h">Win them with the brand, keep them with the mechanics</h2>
-      <p class="cs-p">We started as a Telegram mini-app — Telegram had just shipped a built-in wallet a regular user could set up in seconds, without foreign apps and confusing setups.</p>
-      <p class="cs-p">That ease was our edge. Though the space we were entering looked like this:</p>
+      <p class="cs-p">We started with Telegram as the entry point to a full web app, largely because its newly integrated wallet took seconds to set up.</p>
+      <p class="cs-p">That ease was our edge — but the space we were entering looked like this:</p>
 
       <div class="media wide"><img src="images/Competitors.webp" loading="lazy" alt="Screenshots of gaming apps on Telegram" /></div>
       <p class="cs-caption">You know the vibe: loud, intense, and full of crypto in-jokes</p>
@@ -85,7 +87,7 @@
 
       <div class="media wide"><img src="images/Brand.webp" loading="lazy" alt="Dreamerz brand preview" /></div>
 
-      <p class="cs-p">We created games where skill matters as much as luck, so the competition felt more honest — think a quiz.</p>
+      <p class="cs-p">We created games where skill meaningfully shaped the outcome, making competition feel fairer — think a quiz.</p>
 
       <div class="media wide">
         <video autoplay muted loop playsinline width="1080" height="1080" poster="videos/quiz-poster.jpg">
@@ -93,9 +95,9 @@
         </video>
       </div>
 
-      <p class="cs-p">For users who chose to play for real rewards, the value had to feel real and stable — so I pushed for stablecoins, essentially digital dollars, over volatile coins.</p>
+      <p class="cs-p">For users who played for real rewards, their value had to feel tangible and stable — so I pushed for stablecoins, essentially dollar-pegged tokens, over volatile coins.</p>
 
-      <p class="cs-p">Still, we knew our early adopters would come from the crypto crowd, and we'd already made a string of high-risk calls. We needed something out of the ordinary to win them over.</p>
+      <p class="cs-p">Still, our early adopters would be crypto-native users, while our positioning broke with category conventions. We needed something distinctive enough to win them over.</p>
 
       <h2 class="cs-h">Enter tournaments</h2>
       <p class="cs-p">If competition drives excitement, why not <mark class="cs-mark">make the leaderboard the heart of the platform</mark>?</p>
@@ -106,12 +108,12 @@
       <div class="media wide"><img src="images/Free tournament.webp" loading="lazy" alt="MVP free tournament screenshot" /></div>
       <p class="cs-caption">Main hub for newcomers</p>
 
-      <p class="cs-p"><mark class="cs-mark">One side effect: we dropped from two currencies to one.</mark> Previously, coins had lived outside tournaments, XP inside — auto-entry made that distinction pointless.</p>
+      <p class="cs-p">One side effect: we dropped from two currencies to one. Previously, coins had lived outside tournaments, XP inside — auto-entry made that distinction pointless.</p>
 
       <p class="cs-p">XP stayed for a reason, though: “coins” kept making people think they could withdraw.</p>
 
       <h2 class="cs-h">Which tournament am I even in?</h2>
-      <p class="cs-p">The MVP had one tournament, so a binary UI state was easy. With five tournament types, a player could lose track — which one am I in? How much is on the line?</p>
+      <p class="cs-p">The MVP had one tournament, so the UI only needed two states: in or out. With five tournament types, a player could lose track — which one am I in? How much is on the line?</p>
       <p class="cs-p">I tried signaling the difference through entry cost, different icons and combinations of colors.</p>
 
       <div class="media wide"><img src="images/Icon variants.webp" loading="lazy" alt="Tournament branding discovery" /></div>
@@ -121,7 +123,7 @@
 
       <div class="media wide"><img src="images/Tournament icons.webp" loading="lazy" alt="Tournament final icons" /></div>
 
-      <p class="cs-p">That's how I landed on a dual-coding system: each tournament carried its own color and icon across the interface, so players always knew where they stood.</p>
+      <p class="cs-p">That's how I landed on a visual coding system: each tournament carried its own color and icon across the interface, so players could identify their tournament at a glance.</p>
 
       <div class="media wide">
         <video autoplay muted loop playsinline width="1080" height="1080" poster="videos/tournaments-poster.jpg">
@@ -139,12 +141,12 @@
       </div>
       <p class="cs-caption">A triumphant popup makes the win feel even better and guides users onward</p>
 
-      <p class="cs-p">Even here, we saw hundreds of users start without paying a cent, then win paid tournaments using money they had earned in-game. The free tournament as a hub was already doing its job.</p>
+      <p class="cs-p">We saw hundreds of users start for free, then enter paid tournaments using rewards earned in-game. The free tournament was already working as a hub.</p>
 
       <h2 class="cs-h">Scaling up</h2>
       <p class="cs-p">Interest was real, so we relaunched invite-only and kicked off a big ad campaign — wider reach, sharper focus on our most committed users.</p>
 
-      <p class="cs-p">I reimagined the existing invite-a-friend feature for the invite-only phase, and exclusivity went through the roof.</p>
+      <p class="cs-p">I reimagined the existing invite-a-friend feature for the invite-only phase, and exclusivity went through the roof. We saw users sharing their invite codes on X.</p>
 
       <div class="media wide"><img src="images/Invite-only.webp" loading="lazy" alt="Invite-feature design" /></div>
       <p class="cs-caption">Invite keys outlived the campaign — the scarcity and the metaphor made people feel more like insiders</p>
@@ -153,46 +155,41 @@
       <p class="cs-p"><mark class="cs-mark">We were one of a kind</mark>, so borrowed solutions needed heavy adapting before we could even test them, and we were constantly talking to users, too.</p>
 
       <h2 class="cs-h">Iterating on a live product</h2>
-      <p class="cs-p">By winter we had tens of thousands of active users and were regularly running tournaments worth thousands of dollars. We shifted from pure growth to supporting and refining the live product.</p>
-      <p class="cs-p">At this scale, plenty of decisions got a second look — quests were the clearest example. I redesigned the page and rolled it out as an A/B test, tracking adoption. Completion lifted by about a third.</p>
+      <p class="cs-p">By winter we had nearly 20,000 active users and were regularly running tournaments with prize pools worth thousands of dollars. We shifted from pure growth to supporting and refining the live product.</p>
+      <p class="cs-p">At this scale, plenty of decisions got a second look — quests were the clearest example. I redesigned the page and rolled it out as an A/B test, tracking adoption. Quest completion increased by around 20%.</p>
 
       <div class="media wide"><img src="images/Redesigned quests.webp" loading="lazy" alt="Quests redesign" /></div>
       <p class="cs-caption">Icons and statuses unified, and the expected actions became clearer</p>
 
-      <p class="cs-p">New features followed the same principle. Like when a player ran out of XP — the points that determine their place in the tournament — we gave them a two-step path back in: first through rescue quests, and then, if those ran out too, by inviting friends.</p>
+      <p class="cs-p">New features also came directly from user needs. When a player ran out of XP — the points that determine their place in the tournament — we gave them a two-step path back in: first through rescue quests, and then, if those ran out too, by inviting friends.</p>
 
       <div class="media wide"><img src="images/Rescue quests.webp" loading="lazy" alt="Rescue quests" /></div>
       <p class="cs-caption">XP is easy to lose and hard to regain, so earning it back was one of users' top requests</p>
 
-      <p class="cs-p">I also added a daily login bonus — simple gamification, but it multiplied how often people came back.</p>
+      <p class="cs-p">I also added a daily login bonus — simple gamification, but it increased how often people came back.</p>
 
       <div class="media tall"><img src="images/Daily login.webp" loading="lazy" alt="Daily login popup" /></div>
       <p class="cs-caption">Longer streaks, bigger rewards — and a bigger edge in the active tournament</p>
 
       <h2 class="cs-h">Outcome</h2>
-      <p class="cs-p">After we moved out of invite-only and opened to the public, day-one activation held above <strong>70%</strong>.</p>
-      <p class="cs-p">From that point on, in a couple of months Dreamerz reached <strong>27,000+ active users</strong> who completed onboarding and joined at least one tournament.</p>
+      <p class="cs-p">After we moved out of invite-only and opened to the public, day-one activation — completing onboarding and playing at least one tournament game — held above 70%.</p>
+      <p class="cs-p">From that point on, in a couple of months Dreamerz reached 27,000+ active users.</p>
       <p class="cs-p">That's the whole team — design, engineering, QA, marketing, and support — pulling together. And our charming mascot, too.</p>
 
       <div class="media wide"><img src="images/Onboarding.webp" loading="lazy" alt="A screen from the onboarding flow" /></div>
-      <p class="cs-caption">Auto-entry made onboarding dramatically smoother — a major reason activation climbed this high</p>
+      <p class="cs-caption">Auto-entry made onboarding dramatically smoother</p>
 
-      <p class="cs-p">But the thing I'm proudest of: we built an audience of ordinary people.</p>
+      <p class="cs-p">But the thing I'm proudest of: we built a broad, mainstream audience.</p>
       <p class="cs-p">Crypto audiences have telltale signs — random usernames, meme avatars and referral links in the bios. We had a few, but <mark class="cs-mark">the overwhelming majority had real names and real photos</mark>.</p>
       <p class="cs-p">In interviews they described “a cool app full of mini-games where you can actually win some money, too” — which I count as a win.</p>
 
       <h2 class="cs-h">Why it ended — and what I keep</h2>
       <p class="cs-p">Dreamerz was live for just under a year. After a strong launch, fast growth, and long conversations with investors, the company couldn't close a deal and eventually wound down — settling up with every winner and advertiser. It wasn't a design or development failure; the business just didn't come together. That happens.</p>
-      <p class="cs-p">Quietly, it was the most I'd learned in a single year. Our infrastructure was growing faster than the systems we had built for it, so I found myself continuously learning from people who had navigated similar challenges at scale.</p>
-      <p class="cs-p">And much of what made Dreamerz work sat outside design itself: research, planning, negotiation, and constant prioritization. That's what I'm taking with me.</p>
+      <p class="cs-p">Looking back, it was the most I'd learned in a single year. The product and team were scaling faster than our processes, so I found myself continuously learning from people who had navigated similar challenges at scale.</p>
+      <p class="cs-p">Much of what made Dreamerz work sat outside design itself: research, planning, negotiation, and constant prioritization. That's what I'm taking with me.</p>
 
-      <p class="cs-p">…oh, and the body text really is a touch too small at 12 pt. Won't happen again.</p>
+      <p class="cs-p">…oh, and some body text really is a touch too small at 12 pt. Won't happen again.</p>
 
-    </div>
-
-    <div class="cs-next">
-      <span class="lbl">NEXT</span>
-      <a href="../lexie-studypaths/lexie-studypaths.html">Lexie × StudyPaths <span class="go">→</span></a>
     </div>
 
     <footer class="foot reveal" data-delay="180">

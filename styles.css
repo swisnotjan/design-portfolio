@@ -378,6 +378,7 @@ a { color: inherit; }
   text-decoration: none;
   color: inherit;
 }
+.case[hidden] { display: none !important; }
 .case-main { padding-top: 14px; max-width: var(--col); margin-inline: auto; }
 
 /* case icon — visible only in list layout */
