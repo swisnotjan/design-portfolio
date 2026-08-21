@@ -1,6 +1,6 @@
-# Dreamerz — making a friendly competitive app
+# Dreamerz — building a friendly competitive app
 
-Dreamerz was a social gaming platform with competitive mini-games, quests and the chance to earn real rewards.
+An approachable social gaming platform with competitive mini-games, quests, and the chance to earn real rewards.
 
 **Role:** Product Designer
 **Team:** 2 founders + me → product team of 6
