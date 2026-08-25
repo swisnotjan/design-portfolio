@@ -292,7 +292,7 @@ a { color: inherit; }
 .btn:active { transform: scale(.97); }
 
 .btn-icon { width: 13px; height: 13px; flex-shrink: 0; }
-.btn-email { display: none; }
+.btn.btn-email, .foot-links .foot-email { display: none !important; }
 /* copy button — JS drives width transitions */
 .btn-copy { overflow: hidden; }
 .bcopy-icon { position: relative; width: 13px; height: 13px; flex-shrink: 0; }
@@ -893,6 +893,9 @@ a.case:hover .case-title { color: var(--ink); }
 @media (max-width: 480px) {
   :root { --pad: 20px; }
   body { text-wrap: wrap; }
-  .btn-copy, .foot-copy { display: none; }
-  .btn-email, .foot-email { display: inline-flex; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .btn-copy, .foot-copy { display: none !important; }
+  .btn.btn-email, .foot-links .foot-email { display: inline-flex !important; }
 }
