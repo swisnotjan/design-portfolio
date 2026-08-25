@@ -43,8 +43,6 @@ Various clients, 2021 – 2023
 - Designed mobile and web interfaces for early-stage startups and small businesses across consumer and lifestyle; delivered end-to-end UI, prototypes, and developer-ready handoffs
 
 ## Personal Projects
-Yonder — Native macOS app for tracking world clocks and team timezones. Designed and shipped with AI-assisted development, distributed via Homebrew with a dedicated product website. yonder.site
-
 Todoodle — Task management widget for Figma, built and published to Figma Community. 300+ active users. figma.com/community/widget/1615397206941614227
 
 ## Skills

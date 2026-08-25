@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lexie × Studypaths — how a thesis took over a live product</title>
 <meta name="description" content="An AI-guided learning concept that moved from a master's thesis into an American product used worldwide." />
-<link rel="icon" href="../../assets/avatar.jpg" type="image/jpeg" />
-<link rel="apple-touch-icon" href="../../assets/avatar.jpg" />
+<link rel="icon" href="../../assets/avatar.png" type="image/png" />
+<link rel="apple-touch-icon" href="../../assets/avatar.png" />
 <link rel="stylesheet" href="../../styles.css" />
 <script>
   /* pre-paint: apply dark mode before first render (no flash) */
@@ -67,9 +67,8 @@
     </div>
     <div class="reveal" data-delay="180">
       <div class="cs-hero" id="b-hero">
-        <video autoplay muted loop playsinline width="1600" height="1200" poster="videos/Hero-poster.jpg">
-          <source src="videos/Hero.web.mp4" type="video/mp4; codecs=hvc1">
-          <source src="videos/Hero.web-compat.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1600" height="1200" poster="videos/hero-poster.jpg">
+          <source data-src="videos/hero.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -83,7 +82,7 @@
       <p class="cs-p">Existing solutions split into two camps. For example, StudyFetch, Knowt, and MagicSchool created tools like flashcards and quizzes from uploads but required extensive manual setup.</p>
 
       <div class="media wide">
-        <img src="images/Competitors.png" alt="Competitor learning apps with extensive manual setup" width="1080" height="1080" />
+        <img src="images/competitors.webp" srcset="images/competitors-540.webp 540w, images/competitors-720.webp 720w, images/competitors.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Competitor learning apps with extensive manual setup" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">With competitors, setup felt like half the learning journey</p>
 
@@ -96,8 +95,8 @@
       <p class="cs-p">Conventional onboarding is long to make users feel invested, but every question raises expectations that AI products could not always meet. I decided to keep it short.</p>
 
       <div class="media tall">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Onboarding.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/onboarding.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">Just enough onboarding to get out of the way</p>
@@ -105,8 +104,8 @@
       <p class="cs-p">Next, course creation. Learners may not know a subject well enough to configure a course in detail, so I let Lexie make those decisions from a natural-language prompt instead of complex settings.</p>
 
       <div class="media tall">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Course-creation.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/course-creation.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">You can also just move the slider to adjust the course depth</p>
@@ -123,15 +122,15 @@
       <p class="cs-p">I built Lexie around these principles, creating a familiar game path of short stages and varied exercises. The user taps “Continue learning”; Lexie chooses what comes next.</p>
 
       <div class="media wide">
-        <img src="images/Path.png" alt="Anatomy of the Lexie game path" width="1080" height="1080" />
+        <img src="images/path.webp" srcset="images/path-540.webp 540w, images/path-720.webp 720w, images/path.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Anatomy of the Lexie game path" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">The anatomy of a game path</p>
 
       <p class="cs-p">Exercises ranged from familiar formats like “Choose the Correct Answer” and “Match the Pairs” to more specific ones like “Highlight the Mistake” and “Fill in the Blanks.”</p>
 
       <div class="media wide">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Match-the-pairs.web.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/match-the-pairs.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">Every answer, right or wrong, comes with an explanation</p>
@@ -139,8 +138,8 @@
       <p class="cs-p">Unusually for a game path, I also added lower-intensity stages such as “Review the Concept” and “Flashcards” to reinforce difficult topics.</p>
 
       <div class="media tall">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Review-the-concept.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/review-the-concept.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">Breaking a concept into cards makes memorization more focused and active</p>
@@ -148,8 +147,8 @@
       <p class="cs-p">Each stage ends with encouragement and progress numbers, regardless of the result.</p>
 
       <div class="media tall">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Level-result.web.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/level-result.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">Different result messages keep things from feeling repetitive</p>
@@ -159,8 +158,8 @@
       <p class="cs-p">But how could Lexie prevent users from farming answers through AI hints while still helping those who needed them?</p>
 
       <div class="media tall">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Fill-in-the-blanks-hint.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/fill-in-the-blanks-hint.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">Hints are generated on the fly; Learn More opens chat with the prompt ready</p>
@@ -172,7 +171,7 @@
       <p class="cs-p">The final details included a daily streak counter to reinforce the habit, plus smart reminders users could schedule — or leave up to the app.</p>
 
       <div class="media tall">
-        <img src="images/Reminders.png" alt="Studypaths reminder settings" width="1080" height="1080" />
+        <img src="images/reminders.webp" srcset="images/reminders-540.webp 540w, images/reminders-720.webp 720w, images/reminders.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Studypaths reminder settings" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">Lexie learns when you tend to open it and gets better at timing reminders</p>
 
@@ -180,7 +179,7 @@
       <p class="cs-p">Shortly before my thesis defense, Studypal — an American startup — approached the studio where I worked to redesign its product. By a lucky coincidence, its app let users upload materials and create quizzes and flashcards — exactly the space I already knew well.</p>
 
       <div class="media wide">
-        <img src="images/Studypal legacy.png" alt="Studypal before the redesign" width="1080" height="1080" />
+        <img src="images/studypal-legacy.webp" srcset="images/studypal-legacy-540.webp 540w, images/studypal-legacy-720.webp 720w, images/studypal-legacy.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Studypal before the redesign" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">Before the redesign, Studypal was a collection of study tools</p>
 
@@ -193,8 +192,8 @@
       <p class="cs-p">Still, thousands relied on the existing tools daily. I kept them available on their own and used them as the foundation of Studypaths — the same game-path concept as Lexie — which eventually became the product's core.</p>
 
       <div class="media wide">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Studypaths-onboarding.web.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/studypaths-onboarding.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">Whoops, spoiler: Studypal would eventually become Studypaths — but not quite yet</p>
@@ -204,15 +203,15 @@
       <p class="cs-p">Most mechanics carried over from Lexie, refined by what worked the first time. For example, I added bonus stages, a course mastery map, and level-based progression.</p>
 
       <div class="media wide">
-        <img src="images/Main path screen.png" alt="Studypaths main learning path" width="1080" height="1080" />
+        <img src="images/main-path-screen.webp" srcset="images/main-path-screen-540.webp 540w, images/main-path-screen-720.webp 720w, images/main-path-screen.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Studypaths main learning path" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">The main screen after the redesign</p>
 
       <p class="cs-p">Bonus stages appear every seven to twelve stages — just beyond two average sessions — and award extra XP, encouraging one more push. The mastery map shows users where they are in the course, reinforcing progress.</p>
 
       <div class="media wide">
-        <video autoplay muted loop playsinline width="1080" height="1080">
-          <source src="videos/Bonus-stages-and-mastery-map.web.mp4" type="video/mp4">
+        <video muted loop playsinline preload="none" width="1080" height="1080">
+          <source data-src="videos/bonus-stages-and-mastery-map.mp4" type="video/mp4">
         </video>
       </div>
       <p class="cs-caption">A yummy bonus stage nudges users to learn more while still feeling like a reward</p>
@@ -221,7 +220,7 @@
       <p class="cs-p">XP requirements follow a softened exponential curve: new users level up quickly, while later progress slows to sustain motivation.</p>
 
       <div class="media tall">
-        <img src="images/Levels.png" alt="Studypaths level progression" width="1080" height="1080" />
+        <img src="images/levels.webp" srcset="images/levels-540.webp 540w, images/levels-720.webp 720w, images/levels.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Studypaths level progression" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">Reaching the final frame takes 1,050 stages — about 122 hours of learning</p>
 
@@ -231,14 +230,14 @@
       <p class="cs-p">One example was a detailed course map. I thought it would provide context, but almost no existing users found it useful in testing.</p>
 
       <div class="media wide">
-        <img src="images/Course map.png" alt="Studypaths course map" width="1080" height="1080" />
+        <img src="images/course-map.webp" srcset="images/course-map-540.webp 540w, images/course-map-720.webp 720w, images/course-map.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Studypaths course map" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">Diamond completion icons did not survive testing either</p>
 
       <p class="cs-p">The live AI call introduced in the survey was another concept. I designed a few mockups, but prototyping revealed it was too expensive and complex to build and maintain, so we moved it to the backlog.</p>
 
       <div class="media tall">
-        <img src="images/Call with ai.png" alt="Lexie AI call interface" width="1080" height="1080" />
+        <img src="images/call-with-ai.webp" srcset="images/call-with-ai-540.webp 540w, images/call-with-ai-720.webp 720w, images/call-with-ai.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" alt="Lexie AI call interface" width="1080" height="1080" loading="lazy" decoding="async" />
       </div>
       <p class="cs-caption">Behind the simple UI, several AI models coordinate in real time</p>
 

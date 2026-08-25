@@ -287,6 +287,7 @@
   /* ---- copy button + "c" shortcut ---- */
   function initCopyBtn() {
     var btn = document.getElementById("copy-btn");
+    if (!btn) return;
     var EASE = "cubic-bezier(.32,.72,.32,1)";
     var LABELS = { idle: "Copy email", hover: EMAIL, copied: "Copied!" };
     var state = "idle";
@@ -375,19 +376,17 @@
       }
     }
 
-    if (btn) {
-      btn.addEventListener("mouseenter", function () { if (state === "idle")  goHover(); });
-      btn.addEventListener("mouseleave", function () { if (state === "hover") goIdle(); });
-      btn.addEventListener("click",      function (e) { e.preventDefault(); doCopy(); });
-    }
+    btn.addEventListener("mouseenter", function () { if (state === "idle")  goHover(); });
+    btn.addEventListener("mouseleave", function () { if (state === "hover") goIdle(); });
+    btn.addEventListener("click",      function (e) { e.preventDefault(); doCopy(); });
 
-    // keyboard shortcut — always works regardless of button visibility
+    // Physical KeyC works across keyboard layouts; this initializer runs only on Home.
     document.addEventListener("keydown", function (e) {
       if (e.defaultPrevented) return;
       var tag = (e.target && e.target.tagName) || "";
       if (/INPUT|TEXTAREA|SELECT/.test(tag) || e.target.isContentEditable) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key === "c" || e.key === "C") { doCopy(); }
+      if (e.code === "KeyC") { doCopy(); }
     });
   }
 
@@ -492,6 +491,58 @@
     });
   }
 
+  /* ---- load videos near the viewport; play only while visible ---- */
+  function initVideos() {
+    var videos = $all("video");
+    if (!videos.length) return;
+
+    function load(video) {
+      if (video.getAttribute("data-loaded") === "true") return;
+      $all("source[data-src]", video).forEach(function (source) {
+        source.src = source.getAttribute("data-src");
+        source.removeAttribute("data-src");
+      });
+      video.setAttribute("data-loaded", "true");
+      video.load();
+    }
+
+    function play(video) {
+      load(video);
+      var promise = video.play();
+      if (promise && promise.catch) promise.catch(function () {});
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      videos.forEach(play);
+      return;
+    }
+
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var constrainedConnection = connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType || ""));
+    var loadMargin = constrainedConnection ? "0px" :
+      (matchMedia("(max-width: 720px)").matches ? "120px 0px" : "300px 0px");
+
+    var loadObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        load(entry.target);
+        loadObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: loadMargin, threshold: 0 });
+
+    var playObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) play(entry.target);
+        else entry.target.pause();
+      });
+    }, { threshold: 0.08 });
+
+    videos.forEach(function (video) {
+      loadObserver.observe(video);
+      playObserver.observe(video);
+    });
+  }
+
   /* ---- boot ---- */
   function boot() {
     initTheme();
@@ -500,6 +551,7 @@
     initCopyBtn();
     initFootCopy();
     initReveal();
+    initVideos();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
