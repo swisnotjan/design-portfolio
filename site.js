@@ -284,6 +284,90 @@
     }
   }
 
+  /* ---- copy button + "c" shortcut ---- */
+  function initCopyBtn() {
+    var btn = document.getElementById("copy-btn");
+    if (!btn) return;
+    var EASE = "cubic-bezier(.32,.72,.32,1)";
+    var LABELS = { idle: "Copy email", hover: EMAIL, copied: "Copied!" };
+    var state = "idle", revertTimer = null;
+    function measureW(text, copied) {
+      var ghost = btn.cloneNode(true);
+      ghost.style.cssText = "position:fixed;top:-999px;left:-999px;visibility:hidden;width:auto;pointer-events:none;transition:none";
+      ghost.querySelector(".bcopy-lbl").textContent = text;
+      ghost.classList.toggle("is-copied", copied);
+      document.body.appendChild(ghost);
+      var width = ghost.getBoundingClientRect().width;
+      document.body.removeChild(ghost);
+      return width;
+    }
+    function slideLabel(text, dir) {
+      var label = btn.querySelector(".bcopy-lbl"), outY = dir === "up" ? "-5px" : "5px", inY = dir === "up" ? "6px" : "-6px";
+      label.style.transition = "transform .14s ease, opacity .14s";
+      label.style.transform = "translateY(" + outY + ")"; label.style.opacity = "0";
+      setTimeout(function () {
+        label.textContent = text; label.style.transition = "none"; label.style.transform = "translateY(" + inY + ")";
+        label.offsetHeight;
+        label.style.transition = "transform .22s " + EASE + ", opacity .18s"; label.style.transform = "translateY(0)"; label.style.opacity = "1";
+      }, 140);
+    }
+    function animateWidth(width) {
+      btn.style.transition = "none"; btn.style.width = btn.getBoundingClientRect().width + "px"; btn.offsetHeight;
+      btn.style.transition = "background .18s, transform .14s " + EASE + ", width .32s " + EASE; btn.style.width = width + "px";
+    }
+    function setState(next, direction) {
+      state = next; btn.classList.toggle("is-copied", next === "copied");
+      slideLabel(LABELS[next], direction); animateWidth(measureW(LABELS[next], next === "copied"));
+    }
+    function copy() {
+      if (state === "copied") return;
+      function done() {
+        setState("copied", "up"); clearTimeout(revertTimer);
+        revertTimer = setTimeout(function () { setState(btn.matches(":hover") ? "hover" : "idle", "down"); }, 2000);
+      }
+      function fallback() {
+        var textarea = document.createElement("textarea");
+        textarea.value = EMAIL; textarea.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(textarea); textarea.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(textarea); done();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(done, fallback); else fallback();
+    }
+    btn.addEventListener("mouseenter", function () { if (state === "idle") setState("hover", "up"); });
+    btn.addEventListener("mouseleave", function () { if (state === "hover") setState("idle", "down"); });
+    btn.addEventListener("click", function (event) { event.preventDefault(); copy(); });
+    document.addEventListener("keydown", function (event) {
+      var tag = (event.target && event.target.tagName) || "";
+      if (event.defaultPrevented || /INPUT|TEXTAREA|SELECT/.test(tag) || event.target.isContentEditable || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.code === "KeyC") copy();
+    });
+  }
+
+  /* ---- footer copy button ---- */
+  function initFootCopy() {
+    var btn = document.getElementById("foot-copy");
+    if (!btn) return;
+    var original = "Copy email", timer = null, ease = "cubic-bezier(.32,.72,.32,1)";
+    var label = document.createElement("span"), underline = document.createElement("span");
+    label.style.display = "inline-block"; label.textContent = btn.textContent.trim(); btn.textContent = "";
+    underline.className = "fcp-line"; btn.appendChild(label); btn.appendChild(underline);
+    function measure(text) {
+      var ghost = label.cloneNode(false); ghost.textContent = text;
+      ghost.style.cssText = "position:fixed;top:-999px;left:-999px;visibility:hidden;display:inline-block";
+      document.body.appendChild(ghost); var width = ghost.getBoundingClientRect().width; document.body.removeChild(ghost); return width;
+    }
+    function change(text, direction) {
+      underline.style.width = measure(text) + "px";
+      label.style.transition = "transform .13s ease, opacity .13s"; label.style.transform = "translateY(" + (direction === "up" ? "-4px" : "4px") + ")"; label.style.opacity = "0";
+      setTimeout(function () { label.textContent = text; label.style.transition = "none"; label.style.transform = "translateY(" + (direction === "up" ? "5px" : "-5px") + ")"; label.offsetHeight; label.style.transition = "transform .2s " + ease + ", opacity .16s"; label.style.transform = "translateY(0)"; label.style.opacity = "1"; }, 130);
+    }
+    requestAnimationFrame(function () { underline.style.transition = "none"; underline.style.width = measure(original) + "px"; btn.style.minWidth = btn.getBoundingClientRect().width + "px"; requestAnimationFrame(function () { underline.style.transition = ""; }); });
+    btn.addEventListener("click", function () {
+      clearTimeout(timer); change("Copied!", "up"); timer = setTimeout(function () { change(original, "down"); }, 2000);
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).catch(function () {});
+    });
+  }
+
   /* ---- reveal on load (staggered) ---- */
   function initReveal() {
     var els = $all(".reveal");
@@ -354,6 +438,8 @@
     initTheme();
     initFace();
     initSignature();
+    initCopyBtn();
+    initFootCopy();
     initReveal();
     initVideos();
   }

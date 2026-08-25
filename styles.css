@@ -292,6 +292,15 @@ a { color: inherit; }
 .btn:active { transform: scale(.97); }
 
 .btn-icon { width: 13px; height: 13px; flex-shrink: 0; }
+.btn-email { display: none; }
+/* copy button — JS drives width transitions */
+.btn-copy { overflow: hidden; }
+.bcopy-icon { position: relative; width: 13px; height: 13px; flex-shrink: 0; }
+.bcopy-i { position: absolute; inset: 0; width: 13px; height: 13px; transition: opacity .3s, filter .3s, transform .3s var(--ease); will-change: opacity, filter, transform; }
+.bcopy-i--copy  { opacity: 1; filter: blur(0px); transform: scale(1); }
+.bcopy-i--check { opacity: 0; filter: blur(2px); transform: scale(0.25); }
+.btn-copy.is-copied .bcopy-i--copy  { opacity: 0; filter: blur(2px); transform: scale(0.25); }
+.btn-copy.is-copied .bcopy-i--check { opacity: 1; filter: blur(0px); transform: scale(1); }
 
 /* secondary button */
 .btn-sec {
@@ -517,6 +526,11 @@ a.case:hover .case-title { color: var(--ink); }
   transition: color .18s, text-decoration-color .4s ease;
 }
 .foot-links a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+.foot-email { display: none; }
+.foot-copy { color: var(--muted); appearance: none; font: inherit; background: none; border: none; padding: 0; cursor: pointer; display: inline-flex; flex-direction: column; align-items: flex-end; transition: color .18s; }
+.foot-copy:hover { color: var(--ink); }
+.fcp-line { height: 1px; background: var(--line); transition: width .3s ease, background .4s ease; }
+.foot-copy:hover .fcp-line { background: var(--ink); }
 /* animated handwritten signature (draws on enter) */
 .sig { display: block; }
 .sig svg { display: block; width: 132px; height: auto; overflow: visible; }
@@ -879,4 +893,6 @@ a.case:hover .case-title { color: var(--ink); }
 @media (max-width: 480px) {
   :root { --pad: 20px; }
   body { text-wrap: wrap; }
+  .btn-copy, .foot-copy { display: none; }
+  .btn-email, .foot-email { display: inline-flex; }
 }
