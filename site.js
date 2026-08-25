@@ -284,94 +284,6 @@
     }
   }
 
-  /* ---- footer copy button ---- */
-  function initFootCopy() {
-    var btn = document.getElementById("foot-copy");
-    if (!btn) return;
-
-    var ORIG = "Copy email";
-    var EASE = "cubic-bezier(.32,.72,.32,1)";
-    var revertTimer = null;
-
-    // text label span
-    var lbl = document.createElement("span");
-    lbl.style.display = "inline-block";
-    lbl.textContent = btn.textContent.trim();
-    btn.textContent = "";
-    btn.appendChild(lbl);
-
-    // custom underline span — width animated in JS
-    var uline = document.createElement("span");
-    uline.className = "fcp-line";
-    btn.appendChild(uline);
-
-    // initialize: pin button min-width to "Copy email" width so right edge never moves
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        uline.style.transition = "none";
-        uline.style.width = lbl.getBoundingClientRect().width + "px";
-        btn.style.minWidth = btn.getBoundingClientRect().width + "px";
-        requestAnimationFrame(function () {
-          uline.style.transition = ""; /* restore CSS transition */
-        });
-      });
-    });
-
-    // measure what a given text string will render as
-    function measureW(text) {
-      var g = lbl.cloneNode(false);
-      g.textContent = text;
-      g.style.cssText = "position:fixed;top:-999px;left:-999px;visibility:hidden;transition:none;display:inline-block";
-      document.body.appendChild(g);
-      var w = g.getBoundingClientRect().width;
-      document.body.removeChild(g);
-      return w;
-    }
-
-    function slideLabel(text, dir) {
-      var outY = dir === "up" ? "-4px" : "4px";
-      var inY  = dir === "up" ?  "5px" : "-5px";
-
-      // underline smoothly resizes to match new text width
-      uline.style.transition = "width .3s ease, background .4s ease";
-      uline.style.width = measureW(text) + "px";
-
-      // text slides out
-      lbl.style.transition = "transform .13s ease, opacity .13s";
-      lbl.style.transform  = "translateY(" + outY + ")";
-      lbl.style.opacity    = "0";
-      setTimeout(function () {
-        lbl.textContent = text;
-        lbl.style.transition = "none";
-        lbl.style.transform  = "translateY(" + inY + ")";
-        lbl.style.opacity    = "0";
-        lbl.offsetHeight;
-        lbl.style.transition = "transform .2s " + EASE + ", opacity .16s";
-        lbl.style.transform  = "translateY(0)";
-        lbl.style.opacity    = "1";
-      }, 130);
-    }
-
-    function doCopy() {
-      clearTimeout(revertTimer);
-      slideLabel("Copied!", "up");
-      revertTimer = setTimeout(function () { slideLabel(ORIG, "down"); }, 2000);
-    }
-
-    btn.addEventListener("click", function () {
-      doCopy();
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(EMAIL).catch(function () {});
-      } else {
-        var ta = document.createElement("textarea");
-        ta.value = EMAIL; ta.style.cssText = "position:fixed;opacity:0";
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand("copy"); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-    });
-  }
-
   /* ---- reveal on load (staggered) ---- */
   function initReveal() {
     var els = $all(".reveal");
@@ -442,7 +354,6 @@
     initTheme();
     initFace();
     initSignature();
-    initFootCopy();
     initReveal();
     initVideos();
   }

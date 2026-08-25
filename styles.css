@@ -291,7 +291,7 @@ a { color: inherit; }
 .btn:hover { background: color-mix(in oklab, var(--ink) 88%, black); }
 .btn:active { transform: scale(.97); }
 
-.btn-icon { width: 16px; height: 16px; flex-shrink: 0; }
+.btn-icon { width: 13px; height: 13px; flex-shrink: 0; }
 
 /* secondary button */
 .btn-sec {
@@ -517,28 +517,6 @@ a.case:hover .case-title { color: var(--ink); }
   transition: color .18s, text-decoration-color .4s ease;
 }
 .foot-links a:hover { color: var(--ink); text-decoration-color: var(--ink); }
-/* foot copy button — flex column so custom underline sits below text */
-.foot-copy {
-  color: var(--muted);
-  appearance: none;
-  font: inherit;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  transition: color .18s;
-}
-.foot-copy:hover { color: var(--ink); }
-/* animated underline bar — width driven by JS */
-.fcp-line {
-  height: 1px;
-  background: var(--line);
-  transition: width .3s ease, background .4s ease;
-}
-.foot-copy:hover .fcp-line { background: var(--ink); }
 /* animated handwritten signature (draws on enter) */
 .sig { display: block; }
 .sig svg { display: block; width: 132px; height: auto; overflow: visible; }
