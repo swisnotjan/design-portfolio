@@ -291,7 +291,7 @@ a { color: inherit; }
 .btn:hover { background: color-mix(in oklab, var(--ink) 88%, black); }
 .btn:active { transform: scale(.97); }
 
-.btn-icon { width: 13px; height: 13px; flex-shrink: 0; }
+.btn-icon { width: 16px; height: 16px; flex-shrink: 0; }
 
 /* secondary button */
 .btn-sec {
