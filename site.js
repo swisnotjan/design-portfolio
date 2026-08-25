@@ -284,112 +284,6 @@
     }
   }
 
-  /* ---- copy button + "c" shortcut ---- */
-  function initCopyBtn() {
-    var btn = document.getElementById("copy-btn");
-    if (!btn) return;
-    var EASE = "cubic-bezier(.32,.72,.32,1)";
-    var LABELS = { idle: "Copy email", hover: EMAIL, copied: "Copied!" };
-    var state = "idle";
-    var revertTimer = null;
-
-    // Measure rendered pixel width of the button for a given label text + optional class
-    function measureW(labelText, extraClass) {
-      var ghost = btn.cloneNode(true);
-      var gs = ghost.style;
-      gs.cssText = "position:fixed;top:-999px;left:-999px;visibility:hidden;width:auto;pointer-events:none;transition:none";
-      ghost.querySelector(".bcopy-lbl").textContent = labelText;
-      if (extraClass === "copied") ghost.classList.add("is-copied"); else ghost.classList.remove("is-copied");
-      document.body.appendChild(ghost);
-      var w = ghost.getBoundingClientRect().width;
-      document.body.removeChild(ghost);
-      return w;
-    }
-
-    // Slide label: slide current out, snap new in from opposite side, slide to center
-    function slideLabel(newText, dir) {
-      var lbl = btn.querySelector(".bcopy-lbl");
-      var outY = dir === "up" ? "-5px" : "5px";
-      var inY  = dir === "up" ?  "6px" : "-6px";
-      lbl.style.transition = "transform .14s ease, opacity .14s";
-      lbl.style.transform  = "translateY(" + outY + ")";
-      lbl.style.opacity    = "0";
-      setTimeout(function () {
-        lbl.textContent = newText;
-        lbl.style.transition = "none";
-        lbl.style.transform  = "translateY(" + inY + ")";
-        lbl.style.opacity    = "0";
-        lbl.offsetHeight; // reflow
-        lbl.style.transition = "transform .22s " + EASE + ", opacity .18s";
-        lbl.style.transform  = "translateY(0)";
-        lbl.style.opacity    = "1";
-      }, 140);
-    }
-
-    // Animate button width from current px → target px
-    function animW(toW) {
-      var fromW = btn.getBoundingClientRect().width;
-      btn.style.transition = "none";
-      btn.style.width      = fromW + "px";
-      btn.offsetHeight;
-      btn.style.transition = "background .18s, transform .14s " + EASE + ", width .32s " + EASE;
-      btn.style.width      = toW + "px";
-    }
-
-    function goHover() {
-      state = "hover";
-      slideLabel(LABELS.hover, "up");
-      animW(measureW(LABELS.hover));
-    }
-    function goIdle() {
-      state = "idle";
-      btn.classList.remove("is-copied");
-      slideLabel(LABELS.idle, "down");
-      animW(measureW(LABELS.idle));
-    }
-    function goCopied() {
-      state = "copied";
-      btn.classList.add("is-copied");
-      slideLabel(LABELS.copied, "up");
-      animW(measureW(LABELS.copied, "copied"));
-      clearTimeout(revertTimer);
-      revertTimer = setTimeout(function () {
-        var hover = btn.matches && btn.matches(":hover");
-        if (hover) { state = "hover"; slideLabel(LABELS.hover, "down"); animW(measureW(LABELS.hover)); }
-        else        { goIdle(); }
-      }, 2000);
-    }
-
-    function doCopy() {
-      if (state === "copied") return;
-      function done() { goCopied(); }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(EMAIL).then(done, fallback);
-      } else { fallback(); }
-      function fallback() {
-        var ta = document.createElement("textarea");
-        ta.value = EMAIL; ta.style.cssText = "position:fixed;opacity:0";
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand("copy"); } catch (e) {}
-        document.body.removeChild(ta);
-        done();
-      }
-    }
-
-    btn.addEventListener("mouseenter", function () { if (state === "idle")  goHover(); });
-    btn.addEventListener("mouseleave", function () { if (state === "hover") goIdle(); });
-    btn.addEventListener("click",      function (e) { e.preventDefault(); doCopy(); });
-
-    // Physical KeyC works across keyboard layouts; this initializer runs only on Home.
-    document.addEventListener("keydown", function (e) {
-      if (e.defaultPrevented) return;
-      var tag = (e.target && e.target.tagName) || "";
-      if (/INPUT|TEXTAREA|SELECT/.test(tag) || e.target.isContentEditable) return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.code === "KeyC") { doCopy(); }
-    });
-  }
-
   /* ---- footer copy button ---- */
   function initFootCopy() {
     var btn = document.getElementById("foot-copy");
@@ -548,7 +442,6 @@
     initTheme();
     initFace();
     initSignature();
-    initCopyBtn();
     initFootCopy();
     initReveal();
     initVideos();

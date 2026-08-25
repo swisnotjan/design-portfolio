@@ -291,24 +291,7 @@ a { color: inherit; }
 .btn:hover { background: color-mix(in oklab, var(--ink) 88%, black); }
 .btn:active { transform: scale(.97); }
 
-/* copy button — JS drives width transitions */
-.btn-copy { overflow: hidden; }
-/* stacked cross-fading icons */
-.bcopy-icon { position: relative; width: 13px; height: 13px; flex-shrink: 0; }
-.bcopy-i {
-  position: absolute;
-  inset: 0;
-  width: 13px;
-  height: 13px;
-  transition: opacity .3s, filter .3s, transform .3s var(--ease);
-  will-change: opacity, filter, transform;
-}
-/* default: copy in, check out */
-.bcopy-i--copy  { opacity: 1; filter: blur(0px); transform: scale(1); }
-.bcopy-i--check { opacity: 0; filter: blur(2px); transform: scale(0.25); }
-/* copied: check in, copy out */
-.btn-copy.is-copied .bcopy-i--copy  { opacity: 0; filter: blur(2px); transform: scale(0.25); }
-.btn-copy.is-copied .bcopy-i--check { opacity: 1; filter: blur(0px); transform: scale(1); }
+.btn-icon { width: 13px; height: 13px; flex-shrink: 0; }
 
 /* secondary button */
 .btn-sec {
@@ -579,6 +562,7 @@ a.case:hover .case-title { color: var(--ink); }
   font-family: var(--mono);
   color: var(--muted);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   white-space: nowrap;
   display: inline-block;
@@ -916,4 +900,5 @@ a.case:hover .case-title { color: var(--ink); }
 
 @media (max-width: 480px) {
   :root { --pad: 20px; }
+  body { text-wrap: wrap; }
 }
