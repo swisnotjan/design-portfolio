@@ -14,7 +14,7 @@
   --bg:    #ffffff;   /* background */
   --ink:   #111111;   /* primary text + interactive */
   --muted: #888888;   /* secondary text + UI elements */
-  --line:  #ebebeb;   /* borders + surface fills */
+  --line:  #e2e2e2;   /* borders + surface fills */
 
   --fs:     14px;    /* base font size (tweakable) */
   --col:    540px;   /* text column */
@@ -898,4 +898,8 @@ a.case:hover .case-title { color: var(--ink); }
 @media (hover: none) and (pointer: coarse) {
   .btn-copy, .foot-copy { display: none !important; }
   .btn.btn-email, .foot-links .foot-email { display: inline-flex !important; }
+  .intro .tip-host { display: inline; position: static; }
+  .intro .tip-host > .tip { display: none; }
+  .intro .tip-host.lnk-nc { text-decoration: none; cursor: inherit; }
+  .intro .tip-host.lnk-nc:hover { color: inherit; text-decoration: none; }
 }

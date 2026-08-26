@@ -409,7 +409,9 @@
 
     var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     var constrainedConnection = connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType || ""));
-    var loadMargin = constrainedConnection ? "0px" :
+    var isCasePage = !!$(".case-page");
+    var loadMargin = constrainedConnection ? "0px" : isCasePage ?
+      (matchMedia("(max-width: 720px)").matches ? "600px 0px" : "900px 0px") :
       (matchMedia("(max-width: 720px)").matches ? "120px 0px" : "300px 0px");
 
     var loadObserver = new IntersectionObserver(function (entries) {
