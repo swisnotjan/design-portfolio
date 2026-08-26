@@ -85,7 +85,7 @@
     </div>
     <div class="reveal" data-delay="180">
       <div class="cs-hero" id="b-hero">
-        <video muted loop playsinline preload="none" width="1600" height="1200" poster="videos/hero-poster.jpg">
+        <video muted loop playsinline preload="none" loading="lazy" width="1600" height="1200" poster="videos/hero-poster.jpg">
           <source data-src="videos/hero.mp4" type="video/mp4">
         </video>
       </div>
@@ -97,19 +97,19 @@
       <p class="cs-p">We started with Telegram as the entry point to a full web app, largely because its newly integrated wallet took seconds to set up.</p>
       <p class="cs-p">That ease was our edge — but the space we were entering looked like this:</p>
 
-      <div class="media wide"><img src="images/Competitors.webp" srcset="images/competitors-540.webp 540w, images/competitors-720.webp 720w, images/Competitors.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Screenshots of gaming apps on Telegram" /></div>
+      <div class="media wide"><img src="images/Competitors.webp" srcset="images/competitors-720.webp 720w, images/Competitors.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Screenshots of gaming apps on Telegram" /></div>
       <p class="cs-caption">You know the vibe: loud, intense, and full of crypto in-jokes</p>
 
       <p class="cs-p">Early research made one thing clear: people would play, but they wouldn't stay unless the app felt trustworthy.</p>
 
       <p class="cs-p">So I shaped the brand to feel light, calm, and approachable — with a friendly explanatory tone, soft visuals, and dreaminess over pushiness.</p>
 
-      <div class="media wide"><img src="images/Brand.webp" srcset="images/brand-540.webp 540w, images/brand-720.webp 720w, images/Brand.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Dreamerz brand preview" /></div>
+      <div class="media wide"><img src="images/Brand.webp" srcset="images/brand-720.webp 720w, images/Brand.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Dreamerz brand preview" /></div>
 
       <p class="cs-p">We created games where skill meaningfully shaped the outcome, making competition feel fairer — think a quiz.</p>
 
       <div class="media wide">
-        <video muted loop playsinline preload="none" width="1080" height="1080" poster="videos/quiz-poster.jpg">
+        <video muted loop playsinline preload="none" loading="lazy" width="1080" height="1080" poster="videos/quiz-poster.jpg">
           <source data-src="videos/quiz.mp4" type="video/mp4">
         </video>
       </div>
@@ -124,7 +124,7 @@
       <p class="cs-p">At first, joining the free tournament was a manual step. Watching Hotjar session recordings, I noticed users playing casually outside any tournament, then drifting away for good.</p>
       <p class="cs-p">My hypothesis: auto-entry would fix it — drop every new player straight into the free tournament right after onboarding, no extra step. That one call kept paying off as the product grew.</p>
 
-      <div class="media wide"><img src="images/free-tournament.webp" srcset="images/free-tournament-540.webp 540w, images/free-tournament-720.webp 720w, images/free-tournament.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="MVP free tournament screenshot" /></div>
+      <div class="media wide"><img src="images/free-tournament.webp" srcset="images/free-tournament-720.webp 720w, images/free-tournament.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="MVP free tournament screenshot" /></div>
       <p class="cs-caption">Main hub for newcomers</p>
 
       <p class="cs-p">One side effect: we dropped from two currencies to one. Previously, coins had lived outside tournaments, XP inside — auto-entry made that distinction pointless.</p>
@@ -135,17 +135,17 @@
       <p class="cs-p">The MVP had one tournament, so the UI only needed two states: in or out. With five tournament types, a player could lose track — which one am I in? How much is on the line?</p>
       <p class="cs-p">I tried signaling the difference through entry cost, different icons and combinations of colors.</p>
 
-      <div class="media wide"><img src="images/icon-variants.webp" srcset="images/icon-variants-540.webp 540w, images/icon-variants-720.webp 720w, images/icon-variants.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Tournament branding discovery" /></div>
+      <div class="media wide"><img src="images/icon-variants.webp" srcset="images/icon-variants-720.webp 720w, images/icon-variants.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Tournament branding discovery" /></div>
       <p class="cs-caption">Turns out, even the starting point and softness of an icon's light rays can affect whether users want to join</p>
 
       <p class="cs-p">Dozens of in-depth interviews and hallway tests later, a strong metaphor emerged: flying machines, from a paper plane up to a space rocket. Exclusive tournaments got emoji instead — easy for advertisers to sign off on, and quick for us to drop in.</p>
 
-      <div class="media wide"><img src="images/tournament-icons.webp" srcset="images/tournament-icons-540.webp 540w, images/tournament-icons-720.webp 720w, images/tournament-icons.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Tournament final icons" /></div>
+      <div class="media wide"><img src="images/tournament-icons.webp" srcset="images/tournament-icons-720.webp 720w, images/tournament-icons.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Tournament final icons" /></div>
 
       <p class="cs-p">That's how I landed on a visual coding system: each tournament carried its own color and icon across the interface, so players could identify their tournament at a glance.</p>
 
       <div class="media wide">
-        <video muted loop playsinline preload="none" width="1080" height="1080" poster="videos/tournaments-poster.jpg">
+        <video muted loop playsinline preload="none" loading="lazy" width="1080" height="1080" poster="videos/tournaments-poster.jpg">
           <source data-src="videos/tournaments.mp4" type="video/mp4">
         </video>
       </div>
@@ -154,7 +154,7 @@
       <p class="cs-p">The color even carries through to the win screen.</p>
 
       <div class="media wide">
-        <video muted loop playsinline preload="none" width="1080" height="1080" poster="videos/winning-popups-poster.jpg">
+        <video muted loop playsinline preload="none" loading="lazy" width="1080" height="1080" poster="videos/winning-popups-poster.jpg">
           <source data-src="videos/winning-popups.mp4" type="video/mp4">
         </video>
       </div>
@@ -167,7 +167,7 @@
 
       <p class="cs-p">I reimagined the existing invite-a-friend feature for the invite-only phase, and exclusivity went through the roof. We saw users sharing their invite codes on X.</p>
 
-      <div class="media wide"><img src="images/Invite-only.webp" srcset="images/invite-only-540.webp 540w, images/invite-only-720.webp 720w, images/Invite-only.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Invite-feature design" /></div>
+      <div class="media wide"><img src="images/Invite-only.webp" srcset="images/invite-only-720.webp 720w, images/Invite-only.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Invite-feature design" /></div>
       <p class="cs-caption">Invite keys outlived the campaign — the scarcity and the metaphor made people feel more like insiders</p>
 
       <p class="cs-p">I'd been the only product designer until now, working directly with the founders; from here we built out a full product team and new pipelines from scratch.</p>
@@ -177,17 +177,17 @@
       <p class="cs-p">By winter we had nearly 20,000 active users and were regularly running tournaments with prize pools worth thousands of dollars. We shifted from pure growth to supporting and refining the live product.</p>
       <p class="cs-p">At this scale, plenty of decisions got a second look — quests were the clearest example. I redesigned the page and rolled it out as an A/B test, tracking adoption. Quest completion increased by around 20%.</p>
 
-      <div class="media wide"><img src="images/redesigned-quests.webp" srcset="images/redesigned-quests-540.webp 540w, images/redesigned-quests-720.webp 720w, images/redesigned-quests.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Quests redesign" /></div>
+      <div class="media wide"><img src="images/redesigned-quests.webp" srcset="images/redesigned-quests-720.webp 720w, images/redesigned-quests.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Quests redesign" /></div>
       <p class="cs-caption">Icons and statuses unified, and the expected actions became clearer</p>
 
       <p class="cs-p">New features also came directly from user needs. When a player ran out of XP — the points that determine their place in the tournament — we gave them a two-step path back in: first through rescue quests, and then, if those ran out too, by inviting friends.</p>
 
-      <div class="media wide"><img src="images/rescue-quests.webp" srcset="images/rescue-quests-540.webp 540w, images/rescue-quests-720.webp 720w, images/rescue-quests.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Rescue quests" /></div>
+      <div class="media wide"><img src="images/rescue-quests.webp" srcset="images/rescue-quests-720.webp 720w, images/rescue-quests.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Rescue quests" /></div>
       <p class="cs-caption">XP is easy to lose and hard to regain, so earning it back was one of users' top requests</p>
 
       <p class="cs-p">I also added a daily login bonus — simple gamification, but it increased how often people came back.</p>
 
-      <div class="media tall"><img src="images/daily-login.webp" srcset="images/daily-login-540.webp 540w, images/daily-login-720.webp 720w, images/daily-login.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Daily login popup" /></div>
+      <div class="media tall"><img src="images/daily-login.webp" srcset="images/daily-login-720.webp 720w, images/daily-login.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="Daily login popup" /></div>
       <p class="cs-caption">Longer streaks, bigger rewards — and a bigger edge in the active tournament</p>
 
       <h2 class="cs-h">Outcome</h2>
@@ -195,7 +195,7 @@
       <p class="cs-p">From that point on, in a couple of months Dreamerz reached 27,000+ active users.</p>
       <p class="cs-p">That's the whole team — design, engineering, QA, marketing, and support — pulling together. And our charming mascot, too.</p>
 
-      <div class="media wide"><img src="images/Onboarding.webp" srcset="images/onboarding-540.webp 540w, images/onboarding-720.webp 720w, images/Onboarding.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="A screen from the onboarding flow" /></div>
+      <div class="media wide"><img src="images/Onboarding.webp" srcset="images/onboarding-720.webp 720w, images/Onboarding.webp 1080w" sizes="(max-width: 720px) calc(100vw - 32px), 540px" width="1080" height="1080" loading="lazy" decoding="async" alt="A screen from the onboarding flow" /></div>
       <p class="cs-caption">Auto-entry made onboarding dramatically smoother</p>
 
       <p class="cs-p">But the thing I'm proudest of: we built a broad, mainstream audience.</p>
