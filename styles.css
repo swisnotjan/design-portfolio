@@ -105,8 +105,6 @@
   border-radius: 6px;
   font-size: .857em;
   width: max-content;
-  max-width: 295px;
-  white-space: normal;
   text-align: left;
   opacity: 0;
   pointer-events: none;
@@ -114,16 +112,10 @@
   z-index: 20;
   line-height: 1.5;
 }
-.tip-host:hover > .tip { opacity: 1; transform: translateX(-50%) translateY(0); }
-.tip-host:hover > .tip-link { pointer-events: auto; }
-
-/* clickable tooltip variant */
-.tip-link {
-  pointer-events: none; /* invisible tip must not block hover on elements below */
-  text-decoration: none;
-  display: block;
-}
-.tip-link:hover { background: color-mix(in srgb, var(--ink) 88%, transparent); }
+.tip-host:hover > .tip,
+.tip-host:focus-within > .tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+.tip-line { display: block; white-space: nowrap; }
+.keep-with-punctuation { white-space: nowrap; }
 /* inline arrow — flows at end of last text line */
 .tip-ext {
   display: inline;
@@ -160,7 +152,8 @@
 }
 .app-icon--yonder  { filter: drop-shadow(0 3px 7px rgba(71,193,245,.45)); }
 .app-icon--todoodle { filter: drop-shadow(0 3px 7px rgba(253,180,0,.45)); }
-.tip-host:hover .app-icon { transform: rotate(-8deg); }
+.tip-host:hover .app-icon,
+.tip-host:focus-within .app-icon { transform: rotate(-8deg); }
 
 * { box-sizing: border-box; }
 
@@ -184,6 +177,11 @@ body {
 ::selection { background: color-mix(in srgb, var(--ink) 10%, transparent); }
 
 a { color: inherit; }
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
 
 /* ---- layout shell ---- */
 .page {
@@ -893,6 +891,12 @@ a.case:hover .case-title { color: var(--ink); }
 @media (max-width: 480px) {
   :root { --pad: 20px; }
   body { text-wrap: wrap; }
+  .cs-meta { grid-template-columns: 1fr; }
+  .cs-meta > div {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .cs-meta > div:last-child { border-bottom: none; }
 }
 
 @media (hover: none) and (pointer: coarse) {
