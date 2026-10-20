@@ -9,30 +9,31 @@ linkedin.com/in/asimonovsky
 
 ## Summary
 
-Product Designer shipping end to end — and building with AI. Led the redesign of a product serving 150K+ users across 12 markets, grew a social app from 0 to 27K+ active users with 70%+ Day-1 activation, and worked with teams across the UK and US. I independently design, build, and release my own products.
+Product Designer focused on consumer products, with strengths in interaction design, visual craft, and product thinking. Led the core learning-experience redesign for an AI-powered learning app and owned design for a social gaming app from launch through major releases. Worked with teams across the UK and US. I also independently design, build, and ship products using AI-assisted development.
 
 ## Experience
 **Senior Product Designer at ubernatural**
 
 International product studio, Jan 2024 – Feb 2026 
 
-- Led the redesign of Studypaths, an AI-powered learning app serving 150K+ users across 12 markets, from research synthesis through launch.
-- Took Dreamerz from 0 to 27K+ active users globally; owned end-to-end product design across two major releases and delivered a 70%+ Day-1 activation.
-- Delivered product strategy and design for Daily Mail / DMG Media, Verto (YC-backed fintech), and Lingopal (Series A AI startup).
-- Built the design function, mentored designers, and introduced practical generative-AI workflows into the team’s product-design practice.
+- Led the core learning-experience redesign for Studypaths, an AI-powered learning app serving 150K+ users across 12 markets. Introduced a guided learning path while preserving existing study tools.
+- Owned player-facing design for Dreamerz, a social gaming app, from launch through two major releases. The product reached 27K+ active users globally with Day-1 activation above 70%.
+- Used interviews and behavioral analytics to improve onboarding, tournaments, and engagement. An A/B-tested quests redesign increased completion by approximately 20%.
+- Delivered product strategy and design for DMG Media / Daily Mail, Verto (YC-backed fintech), and Lingopal (Series A AI startup).
+- Joined as the studio's first designer, working directly with founders and engineering leads, mentoring designers, and introducing AI-assisted workflows.
 
 **Product Designer at Pink Rabbit Tech** 
 
 Russia's largest health & wellness platform, Feb 2023 – Jan 2024
 
-- Launched PINK, a content and lifestyle editorial platform, reaching 30K+ monthly visits; owned product architecture, end-to-end design, and launch implementation.
-- Designed the company’s largest nationwide, multi-channel promotional campaign, delivering a ~35% relative lift in purchase conversion versus baseline over three days.
+- Launched PINK, a content and lifestyle editorial platform that reached 30K+ monthly visits; owned product architecture and end-to-end design, and supported implementation through launch.
+- Designed e-commerce features, a checkout redesign, and a nationwide promotional experience. During the three-day campaign, purchase conversion was approximately 35% above baseline.
 
 **Product Designer at Okko (Contract / Part-time)** 
 
 Russia's leading streaming platform, Sep – Dec 2023
 
-- Designed targeted in-app discovery flows and contextual prompts to help parents discover Kids Mode across a streaming platform with 5.7M subscribers.
+- Designed targeted in-app discovery flows and contextual prompts to help parents discover Kids Mode on a streaming platform with 5.7M subscribers, working within an established design system.
 
 **UX/UI Designer**
 
@@ -47,18 +48,16 @@ Designed and built a macOS time-zone app for distributed teams. yonder.site
 
 **Todoodle, 2026**
 
-Designed, built, and published a Figma task-management widget used by 600+ people. figma.com/community/widget/1615397206941614227
+Designed, built, and published a Figma checklist widget used by 700+ people. figma.com/community/widget/1615397206941614227
 
 ## Skills
 Tools — Figma, Framer, Lottie
 
-Design — Interaction Design, Visual Design, Motion Design, Prototyping, Mobile Design
+Design — Interaction design, visual design, product strategy, information architecture, mobile apps, prototyping, design systems, accessibility (WCAG).
 
 Research — User Research, Usability Testing, A/B Testing, Analytics (Hotjar, Google Analytics)
 
-Systems — Design Systems, Information Architecture, Accessibility (WCAG)
-
-Development — AI-assisted development (Cursor, Claude Code)
+Development — AI-assisted development (Codex, Claude Code)
 
 Languages – English (Professional working proficiency), German (Elementary), Russian (Native)
 
