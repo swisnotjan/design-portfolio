@@ -2,12 +2,17 @@
 <html lang="en" data-feed="filled" data-links="inline" data-cw="same" data-personality="sprinkled">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W44FKX8TG6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-W44FKX8TG6');
+  if (/^(www\.)?simonovsky\.com$/.test(location.hostname)) {
+    var analyticsTag = document.createElement('script');
+    analyticsTag.async = true;
+    analyticsTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-W44FKX8TG6';
+    document.head.appendChild(analyticsTag);
+    gtag('js', new Date());
+    gtag('config', 'G-W44FKX8TG6');
+  }
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -105,7 +110,7 @@
       <h2 class="sect-label">Selected work</h2>
       <div class="feed">
 
-        <a class="case" href="cases/lexie-studypaths/lexie-studypaths.html">
+        <a class="case" data-case-id="studypaths" href="cases/studypaths/">
           <span class="case-icon" aria-hidden="true">→</span>
           <div class="thumb">
             <video muted loop playsinline preload="none" loading="lazy" width="1600" height="1200" aria-hidden="true">
@@ -114,13 +119,14 @@
           </div>
           <div class="case-main">
             <div class="case-head">
-              <span class="case-title">Lexie × Studypaths — how a thesis took over a live product <span class="arrow">→</span></span>
+              <span class="case-title">Lexie × Studypaths — redesigning the app for 150K+ users <span class="arrow">→</span></span>
             </div>
             <p class="case-desc">An AI-guided learning concept that moved from a master's thesis into an American product used worldwide.</p>
+            <span class="btn-sec case-cta">Read case study<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
           </div>
         </a>
 
-        <a class="case" href="cases/dreamerz/dreamerz.html">
+        <a class="case" data-case-id="dreamerz" href="cases/dreamerz/">
           <span class="case-icon" aria-hidden="true">→</span>
           <div class="thumb">
             <video muted loop playsinline preload="none" loading="lazy" width="1600" height="1200" aria-hidden="true">
@@ -129,9 +135,10 @@
           </div>
           <div class="case-main">
             <div class="case-head">
-              <span class="case-title">Dreamerz — building a friendly competitive app <span class="arrow">→</span></span>
+              <span class="case-title">Dreamerz — from launch to 27K+ active players <span class="arrow">→</span></span>
             </div>
             <p class="case-desc">An approachable social gaming platform with competitive mini-games, quests, and the chance to earn real rewards.</p>
+            <span class="btn-sec case-cta">Read case study<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
           </div>
         </a>
 
@@ -167,6 +174,7 @@
     </footer>
   </main>
 
+  <script src="analytics.js"></script>
   <script src="site.js"></script>
 </body>
 </html>

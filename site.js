@@ -322,14 +322,17 @@
     function copy() {
       if (state === "copied") return;
       function done() {
+        document.dispatchEvent(new CustomEvent("portfolio:email-copied", { detail: { placement: "intro" } }));
         setState("copied", "up"); clearTimeout(revertTimer);
         revertTimer = setTimeout(function () { setState(btn.matches(":hover") ? "hover" : "idle", "down"); }, 2000);
       }
       function fallback() {
         var textarea = document.createElement("textarea");
         textarea.value = EMAIL; textarea.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(textarea); textarea.select();
-        try { document.execCommand("copy"); } catch (e) {}
-        document.body.removeChild(textarea); done();
+        var copied = false;
+        try { copied = document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(textarea);
+        if (copied) done();
       }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(done, fallback); else fallback();
     }
@@ -364,7 +367,9 @@
     requestAnimationFrame(function () { underline.style.transition = "none"; underline.style.width = measure(original) + "px"; btn.style.minWidth = btn.getBoundingClientRect().width + "px"; requestAnimationFrame(function () { underline.style.transition = ""; }); });
     btn.addEventListener("click", function () {
       clearTimeout(timer); change("Copied!", "up"); timer = setTimeout(function () { change(original, "down"); }, 2000);
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).catch(function () {});
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(function () {
+        document.dispatchEvent(new CustomEvent("portfolio:email-copied", { detail: { placement: "footer" } }));
+      }).catch(function () {});
     });
   }
 
