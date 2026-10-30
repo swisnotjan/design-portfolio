@@ -1,3 +1,5 @@
+const mobileLayout = window.matchMedia('(max-width: 700px), (hover: none) and (pointer: coarse)');
+const popupResetters = [];
 const tabs = [...document.querySelectorAll('[data-calendar]')];
 function showCalendar(index) {
   tabs.forEach((tab, i) => {
@@ -9,6 +11,7 @@ function showCalendar(index) {
 }
 tabs.forEach((tab, i) => tab.addEventListener('click', () => showCalendar(i)));
 document.querySelector('.calendar-tabs').addEventListener('keydown', event => {
+  if (event.ctrlKey || event.metaKey || event.altKey) return;
   let index = tabs.indexOf(document.activeElement);
   if (index < 0) return;
   if (event.key === 'ArrowRight') index = (index + 1) % tabs.length;
@@ -21,12 +24,17 @@ document.querySelector('.calendar-tabs').addEventListener('keydown', event => {
   tabs[index].focus();
 });
 showCalendar(1);
+// Download and decode all calendar views in parallel, including hidden panels.
+document.querySelectorAll('.calendar-panel img').forEach(image => {
+  image.decode?.().catch(() => {});
+});
 
 const viewer = document.querySelector('#viewer');
 const preview = document.querySelector('#viewer-image');
 let previousFocus;
 document.querySelectorAll('[data-image]').forEach(button => {
   button.addEventListener('click', () => {
+    if (mobileLayout.matches) return;
     previousFocus = button;
     preview.src = button.dataset.image;
     preview.alt = button.querySelector('img')?.alt || '';
@@ -55,7 +63,7 @@ document.querySelectorAll('[data-popup]').forEach(card => {
     card.style.setProperty('--dy', y + 'px');
   }
   card.addEventListener('pointerdown', event => {
-    if (event.button !== 0) return;
+    if (mobileLayout.matches || event.button !== 0) return;
     card.style.zIndex = ++topLayer;
     drag = {pointer: event.pointerId, startX: event.clientX, startY: event.clientY, x, y};
     card.setPointerCapture(event.pointerId);
@@ -64,7 +72,7 @@ document.querySelectorAll('[data-popup]').forEach(card => {
     event.preventDefault();
   });
   card.addEventListener('pointermove', event => {
-    if (!drag || event.pointerId !== drag.pointer) return;
+    if (mobileLayout.matches || !drag || event.pointerId !== drag.pointer) return;
     move(drag.x + event.clientX - drag.startX, drag.y + event.clientY - drag.startY);
   });
   function endDrag() {
@@ -74,7 +82,14 @@ document.querySelectorAll('[data-popup]').forEach(card => {
   card.addEventListener('pointerup', endDrag);
   card.addEventListener('pointercancel', endDrag);
   card.addEventListener('lostpointercapture', endDrag);
+  popupResetters.push(() => {
+    x = 0; y = 0; endDrag();
+    card.style.removeProperty('--dx');
+    card.style.removeProperty('--dy');
+    card.style.removeProperty('z-index');
+  });
   card.addEventListener('keydown', event => {
+    if (mobileLayout.matches) return;
     const directions = {ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1]};
     const direction = directions[event.key];
     if (!direction) return;
@@ -84,3 +99,20 @@ document.querySelectorAll('[data-popup]').forEach(card => {
     move(x + direction[0] * step, y + direction[1] * step);
   });
 });
+
+const previewButtons = [...document.querySelectorAll('[data-image]')];
+const popupCards = [...document.querySelectorAll('[data-popup]')];
+const popupLabels = popupCards.map(card => card.getAttribute('aria-label'));
+function syncMobileLayout() {
+  const mobile = mobileLayout.matches;
+  if (mobile && viewer.open) viewer.close();
+  previewButtons.forEach(button => { button.disabled = mobile; });
+  popupCards.forEach((card, index) => {
+    card.tabIndex = mobile ? -1 : 0;
+    card.setAttribute('aria-label', mobile ? card.querySelector('img').alt : popupLabels[index]);
+  });
+  document.querySelector('.popup-playground').setAttribute('aria-label', mobile ? 'Окна интерфейса' : 'Перетаскиваемые окна интерфейса');
+  popupResetters.forEach(reset => reset());
+}
+mobileLayout.addEventListener('change', syncMobileLayout);
+syncMobileLayout();
