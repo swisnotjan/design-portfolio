@@ -30,7 +30,6 @@
   --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 }
 
-
 /* case feed image width */
 :root[data-cw="wide"]  { --feed-w: 1400px; }
 :root[data-cw="wider"] { --feed-w: min(calc(100vw - 48px), 1800px); }
@@ -50,8 +49,6 @@
   right: 20px;
   z-index: 50;
   appearance: none;
-  width: 34px;
-  height: 34px;
   border: 1px solid var(--line);
   border-radius: 50%;
   background: var(--bg);
@@ -257,7 +254,6 @@ a { color: inherit; }
   transition: color .18s, text-decoration-color .4s ease;
 }
 .lnk:hover { color: var(--ink); text-decoration-color: var(--ink); }
-.lnk-q { font-style: italic; color: var(--muted); }
 
 /* contact row */
 .contact {
@@ -319,39 +315,6 @@ a { color: inherit; }
 .btn-sec svg { width: 13px; height: 13px; flex-shrink: 0; }
 .btn-sec:hover { color: var(--ink); border-color: var(--muted); }
 .btn-sec:active { transform: scale(.97); }
-.copy-hint {
-  color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.copy-hint kbd {
-  font-family: var(--mono);
-  border: 1px solid var(--line);
-  border-bottom-width: 2px;
-  border-radius: 5px;
-  padding: 1px 5px;
-  color: var(--muted);
-  background: var(--line);
-}
-
-/* secondary inline meta links (cv / linkedin) */
-.metalinks {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 22px;
-}
-.metalinks a {
-  color: var(--muted);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color .18s;
-}
-.metalinks a:hover { color: var(--ink); }
-.metalinks a svg { width: 14px; height: 14px; flex: none; opacity: .85; }
 
 /* ---- section label ---- */
 .sect-label {
@@ -493,10 +456,6 @@ a.case:hover .case-title { color: var(--ink); }
 /* non-clickable cards */
 .case.static { cursor: default; }
 
-/* ---- links placement ---- */
-:root[data-links="inline"] .footer-links { display: none; }
-:root[data-links="footer"] .intro-links  { display: none; }
-
 /* ---- footer ---- */
 .foot {
   margin-top: 96px;
@@ -600,14 +559,7 @@ a.case:hover .case-title { color: var(--ink); }
   from { transform: translateX(-0.45em) rotate(-10deg); }
   to   { transform: translateX(0.45em)  rotate( 10deg); }
 }
-.foot-note { color: var(--muted); }
-
-/* ---- personality gating ---- */
-:root[data-personality="minimal"] .copy-hint,
-:root[data-personality="minimal"] .p-extra { display: none; }
-:root[data-personality="winks"] .p-extra { display: none; }
 /* sprinkled: everything shows */
-
 
 /* ---- reveal-on-load animation ---- */
 @media (prefers-reduced-motion: no-preference) {
@@ -617,26 +569,6 @@ a.case:hover .case-title { color: var(--ink); }
     transition: opacity .6s var(--ease), transform .6s var(--ease);
   }
 }
-
-/* ---- toast ---- */
-.toast {
-  position: fixed;
-  left: 50%;
-  bottom: 28px;
-  transform: translate(-50%, 14px);
-  background: var(--ink);
-  color: var(--bg);
-  padding: 9px 15px;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px -8px rgba(0,0,0,.4);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .22s, transform .28s var(--ease);
-  z-index: 90;
-  display: flex; align-items: center; gap: 8px;
-}
-.toast.show { opacity: 1; transform: translate(-50%, 0); }
-.toast .tface { font-family: var(--mono); color: color-mix(in oklab, var(--bg) 70%, var(--ink)); }
 
 /* =========================================================
    CASE STUDY PAGE
@@ -717,25 +649,6 @@ a.case:hover .case-title { color: var(--ink); }
 .cs-meta > div:last-child { border-right: none; }
 .cs-meta dt { color: var(--muted); margin-bottom: 4px; letter-spacing: .01em; }
 .cs-meta dd { margin: 0; color: var(--ink); }
-
-/* intro with userpics */
-.cs-intro-people {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 24px 0 0;
-}
-.pics { display: flex; }
-.pics span {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--line);
-  border: 2px solid var(--bg);
-  margin-left: -9px;
-  box-shadow: 0 0 0 .5px var(--line);
-  background-image: repeating-linear-gradient(135deg, color-mix(in oklab, var(--ink) 7%, transparent) 0 1px, transparent 1px 5px);
-}
-.pics span:first-child { margin-left: 0; }
-.cs-intro-people .who { color: var(--muted); }
 
 /* generic blocks */
 .cs-body { margin-top: 12px; }
@@ -819,74 +732,12 @@ a.case:hover .case-title { color: var(--ink); }
   margin: 0 0 36px;
 }
 .media + .cs-caption { margin-top: -22px; }
-
-/* highlight / pull stat */
-.cs-highlight {
-  margin: 56px 0;
-  padding: 34px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 26px;
-}
 .stat .n {
   font-weight: 600; letter-spacing: -0.02em;
   color: var(--ink);
 }
 .stat .n em { font-style: normal; color: var(--ink); }
 .stat .l { color: var(--muted); margin-top: 4px; line-height: 1.4; }
-
-/* sidenote */
-.sidenote {
-  position: relative;
-  margin: 30px 0;
-  padding: 16px 18px 16px 20px;
-  background: var(--line);
-  border-radius: 12px;
-  color: var(--muted);
-  line-height: 1.55;
-}
-.sidenote::before {
-  content: "note";
-  position: absolute;
-  top: -8px; left: 16px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: var(--bg);
-  padding: 0 6px;
-}
-.sidenote b { color: var(--ink); font-weight: 600; }
-
-/* pull quote */
-.pullquote {
-  line-height: 1.4;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 48px 0;
-}
-.pullquote .mark { color: var(--ink); }
-
-/* next case */
-.cs-next {
-  margin-top: 80px;
-  padding-top: 28px;
-}
-.cs-next .lbl { color: var(--muted); letter-spacing: .02em; }
-.cs-next a {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  text-decoration: none;
-  color: var(--ink);
-  margin-top: 10px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  transition: color .18s;
-}
-.cs-next a:hover { color: var(--ink); }
-.cs-next a .go { font-weight: 400; color: var(--muted); transition: transform .2s var(--ease); }
-.cs-next a:hover .go { transform: translateX(4px); color: var(--ink); }
 
 @media (max-width: 720px) {
   .page { padding-top: 64px; }

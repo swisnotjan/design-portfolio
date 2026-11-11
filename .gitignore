@@ -1,4 +1,10 @@
 .DS_Store
+/.local/
+/.claude/
+/.playwright-cli/
+/output/
+/tmp/
+/.venv/
 .github-pages
-.backups/
-portfolio-videos/
+__pycache__/
+*.py[cod]

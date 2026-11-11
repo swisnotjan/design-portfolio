@@ -10,7 +10,6 @@
     schibsted: '"Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif',
     system:    'ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif'
   };
-  window.PF_FONTS = FONTS;
 
   /* ---- apply tweak state to <html> ---- */
   function readStore() {
@@ -31,16 +30,12 @@
       if (lead) lead.textContent = t.bio;
     }
   }
-  // expose so the React panel can call it live
-  window.applyTweaks = applyTweaks;
-  window.__pfStore = STORE;
   // apply persisted on load (head snippet does an early pass too; this is the safety net)
   applyTweaks(readStore());
 
   /* ---- helpers ---- */
   function $(s, r) { return (r || document).querySelector(s); }
   function $all(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
-  function level() { return document.documentElement.getAttribute("data-personality") || "winks"; }
 
   /* ---- theme toggle (light / dark) ---- */
   function initTheme() {
@@ -217,49 +212,6 @@
       clearTimeout(holdTimer);
       holdTimer = setTimeout(revertEyes, EYE_HOLD);
     });
-  }
-
-  /* ---- !! exclaim position tweaker ---- */
-  function initExclaimTweaks() {
-    var s = { top: -1.10, right: -0.70, rotate: 29 };
-    var panel = document.createElement("div");
-    panel.style.cssText = "position:fixed;bottom:80px;right:16px;z-index:9999;background:var(--bg,#fff);color:var(--ink,#111);border:1px solid var(--line,#e0e0e0);border-radius:10px;padding:12px 14px;font:11px/1.5 var(--font,system-ui);box-shadow:0 4px 20px rgba(0,0,0,.14);min-width:180px";
-    var head = document.createElement("div");
-    head.style.cssText = "display:flex;justify-content:space-between;align-items:center;margin-bottom:10px";
-    var ttl = document.createElement("span");
-    ttl.textContent = "!! position";
-    ttl.style.cssText = "font-weight:600;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint,#aaa)";
-    var cls = document.createElement("button");
-    cls.textContent = "×";
-    cls.style.cssText = "appearance:none;border:0;background:0;font:13px/1 inherit;cursor:pointer;color:var(--muted,#777);padding:0";
-    cls.onclick = function () { document.body.removeChild(panel); };
-    head.appendChild(ttl); head.appendChild(cls);
-    panel.appendChild(head);
-    [
-      { key: "top",    label: "top (em)",    min: -2,   max: 0.5, step: 0.05 },
-      { key: "right",  label: "right (em)",  min: -1.5, max: 0.5, step: 0.05 },
-      { key: "rotate", label: "rotate (°)",  min: -10,  max: 90,  step: 1    },
-    ].forEach(function (f) {
-      var row = document.createElement("div");
-      row.style.cssText = "display:flex;flex-direction:column;gap:3px;margin-bottom:9px";
-      var lbl = document.createElement("div");
-      lbl.style.cssText = "display:flex;justify-content:space-between;font-size:10px;color:var(--muted,#777)";
-      var nm = document.createElement("span"); nm.textContent = f.label;
-      var vl = document.createElement("span"); vl.textContent = s[f.key]; vl.style.fontVariantNumeric = "tabular-nums";
-      lbl.appendChild(nm); lbl.appendChild(vl);
-      var sl = document.createElement("input");
-      sl.type = "range"; sl.min = f.min; sl.max = f.max; sl.step = f.step; sl.value = s[f.key];
-      sl.style.cssText = "width:100%;cursor:pointer;accent-color:var(--ink,#111)";
-      sl.addEventListener("input", function () {
-        s[f.key] = parseFloat(sl.value);
-        vl.textContent = s[f.key].toFixed(2);
-        var ex = document.querySelector(".bear-exclaim");
-        if (ex) { ex.style.top = s.top + "em"; ex.style.right = s.right + "em"; ex.style.transform = "rotate(" + s.rotate + "deg)"; }
-      });
-      row.appendChild(lbl); row.appendChild(sl);
-      panel.appendChild(row);
-    });
-    document.body.appendChild(panel);
   }
 
   /* ---- footer signature: draw when scrolled into view ---- */

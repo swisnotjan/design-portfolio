@@ -36,7 +36,7 @@
     var where = placement(link);
     if (url.protocol === "mailto:") track("contact_click", { method: "email", placement: where });
     else if (/^(www\.)?linkedin\.com$/.test(url.hostname)) track("contact_click", { method: "linkedin", placement: where });
-    else if (url.origin === location.origin && (/\/cv\/?$/.test(url.pathname) || /\.pdf$/i.test(url.pathname))) {
+    else if (url.origin === location.origin && /\.pdf$/i.test(url.pathname)) {
       track("cv_open", { placement: where });
     } else if (url.hostname === "yonder.site" || url.hostname === "www.figma.com") {
       track("project_open", { project_id: url.hostname === "yonder.site" ? "yonder" : "todoodle", placement: where });
