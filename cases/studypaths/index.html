@@ -17,6 +17,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lexie × Studypaths — redesigning the app for 150K+ users</title>
+<link rel="alternate" type="text/markdown" href="studypaths.md" />
+<link rel="describedby" type="text/plain" href="/llms.txt" />
+
 <meta name="description" content="An AI-guided learning concept that moved from a master's thesis into an American product used worldwide." />
 <link rel="canonical" href="https://simonovsky.com/cases/studypaths/" />
 <meta property="og:type" content="website" />
@@ -43,6 +46,16 @@
       if (th === "dark" || (th === null && sysDark))
         document.documentElement.setAttribute("data-theme", "dark");
     } catch (e) {}
+  })();
+
+  /* Reveal is optional: keep content readable if the main script fails. */
+  (function () {
+    if (!window.matchMedia || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var root = document.documentElement;
+    root.setAttribute("data-reveal", "pending");
+    window.setTimeout(function () {
+      if (root.getAttribute("data-reveal") === "pending") root.removeAttribute("data-reveal");
+    }, 1800);
   })();
 </script>
 <script>

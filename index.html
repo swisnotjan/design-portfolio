@@ -30,6 +30,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Alexander Simonovsky</title>
+<link rel="canonical" href="https://simonovsky.com/" />
+<link rel="alternate" type="text/markdown" href="portfolio.md" />
+<link rel="describedby" type="text/plain" href="/llms.txt" />
+
 <meta name="description" content="Product designer focused on consumer and AI-powered products." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://simonovsky.com/" />
@@ -55,6 +59,16 @@
       if (th === "dark" || (th === null && sysDark))
         document.documentElement.setAttribute("data-theme", "dark");
     } catch (e) {}
+  })();
+
+  /* Reveal is optional: keep content readable if the main script fails. */
+  (function () {
+    if (!window.matchMedia || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var root = document.documentElement;
+    root.setAttribute("data-reveal", "pending");
+    window.setTimeout(function () {
+      if (root.getAttribute("data-reveal") === "pending") root.removeAttribute("data-reveal");
+    }, 1800);
   })();
 </script>
 </head>

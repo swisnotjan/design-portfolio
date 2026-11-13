@@ -328,10 +328,13 @@
   /* ---- reveal on load (staggered) ---- */
   function initReveal() {
     var els = $all(".reveal");
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var root = document.documentElement;
+    if (root.getAttribute("data-reveal") !== "pending" || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      root.removeAttribute("data-reveal");
       els.forEach(function (el) { el.classList.add("in"); });
       return;
     }
+    root.setAttribute("data-reveal", "ready");
     els.forEach(function (el, i) {
       var d = parseFloat(el.getAttribute("data-delay")) || (i * 70);
       setTimeout(function () { el.classList.add("in"); }, 90 + d);

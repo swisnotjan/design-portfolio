@@ -563,7 +563,7 @@ a.case:hover .case-title { color: var(--ink); }
 
 /* ---- reveal-on-load animation ---- */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal { opacity: 0; transform: translateY(8px); }
+  html[data-reveal] .reveal:not(.in) { opacity: 0; transform: translateY(8px); }
   .reveal.in {
     opacity: 1; transform: none;
     transition: opacity .6s var(--ease), transform .6s var(--ease);

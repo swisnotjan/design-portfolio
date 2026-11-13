@@ -1,0 +1,23 @@
+# Alexander Simonovsky — Product Design Portfolio
+
+> Product designer focused on consumer and AI-powered products. Selected work, independent products, contact information and CV.
+
+## Portfolio
+
+- [Portfolio overview](https://simonovsky.com/portfolio.md): Text version of the homepage, selected work, independent projects and contact links.
+- [CV](https://simonovsky.com/cv.md): Current English CV.
+
+## Case studies
+
+- [Lexie × Studypaths](https://simonovsky.com/cases/studypaths/studypaths.md): AI learning experience redesigned for a product serving 150K+ users.
+- [Dreamerz](https://simonovsky.com/cases/dreamerz/dreamerz.md): Social gaming platform, onboarding, tournaments and quests.
+- [paced.ai](https://simonovsky.com/cases/paced.ai/paced.ai.md): Russian-language case study of an education platform, courses, calendar, grading and design system.
+- [Xi Labs](https://simonovsky.com/cases/xi-labs/xi-labs.md): Homepage preview only; there is no separate HTML case page.
+
+## Optional
+
+- [Homepage](https://simonovsky.com/): Visual portfolio.
+- [Studypaths visual case](https://simonovsky.com/cases/studypaths/): Full illustrated case.
+- [Dreamerz visual case](https://simonovsky.com/cases/dreamerz/): Full illustrated case.
+- [paced.ai visual case](https://simonovsky.com/cases/paced.ai/): Interactive visual case.
+- [CV PDF](https://simonovsky.com/alexander-simonovsky-product-designer-cv.pdf): Downloadable CV.
