@@ -1,6 +1,6 @@
 # Alexander Simonovsky
 
-Senior Product Designer
+Product Designer
 
 Open to remote work and relocation
 
@@ -18,15 +18,15 @@ Jan 2024 - Feb 2026
 
 International product studio
 
-- Led the core learning-experience redesign for Studypaths, an AI-powered learning app serving 150K+ users across 12 markets. Introduced a guided learning path while preserving existing study tools.
+- Led the redesign of Studypaths, an AI learning app with 150K+ users, increasing first-lesson completion from 38% to 49%.
 
-- Owned player-facing design for Dreamerz, a social gaming app, from launch through two major releases. The product reached 27K+ active users globally with Day-1 activation above 70%.
+- Owned player-facing design for Dreamerz, a social gaming app, from launch through two major releases. The app reached 27K+ monthly users with 70%+ Day-1 activation.
 
-- Used interviews and behavioral analytics to improve onboarding, tournaments, and engagement. An A/B-tested quests redesign increased completion by approximately 20%.
+- Used interviews and analytics to improve Dreamerz: free tournaments raised D7 retention from 18% to 22%; redesigned quest statuses and retry flows increased 24-hour quest completion from 40% to 48%.
 
 - Delivered product strategy and design for DMG Media / Daily Mail, Verto (YC-backed fintech), and Lingopal (Series A AI startup).
 
-- Joined as the studio's first designer, working directly with founders and engineering leads, mentoring designers, and introducing AI-assisted workflows.
+- Joined as the studio's first designer; partnered with founders and engineers, mentored designers, and introduced AI-assisted workflows.
 
 ### Product Designer | Pink Rabbit Tech
 
