@@ -8,7 +8,7 @@ An AI-guided learning concept that moved from a master's thesis into an American
 
 I designed Lexie to turn uploaded materials into a game path of bite-sized stages, guided by an adaptive AI tutor.
 
-The team behind a similar product with 150,000+ registered users offered to acquire it. Instead, I joined them to introduce a new game-path mode without disrupting existing users.
+The team behind a similar product with 150,000+ active users offered to acquire it. Instead, I joined them to introduce a new game-path mode without disrupting existing users.
 
 First-lesson completion rose from 38% to 49% in an A/B test. The path eventually gave the product its name.
 
@@ -138,7 +138,7 @@ A live AI call had received positive survey feedback. But waiting several second
 
 In an A/B test with 3,200 new users, 49% completed their first lesson within 24 hours of signing up, compared with 38% in the control group — eleven percentage points higher. The test covered the new start and game path together.
 
-The redesign gradually became available to all 150,000+ registered accounts. Support received more questions and positive feedback about Studypaths, and the founders soon renamed Studypal to Studypaths.
+The redesign gradually became available to all 150,000+ active users. Support received more questions and positive feedback about Studypaths, and the founders soon renamed Studypal to Studypaths.
 
 ## What I'd do differently
 
