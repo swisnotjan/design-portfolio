@@ -1,7 +1,7 @@
-# Widgets for Xi Labs — an AI automation platform
+# Виджеты для Xi Labs — платформы автоматизации с ИИ
 
-A dynamic widget system that gave knowledge workers and creatives faster access to their everyday automations.
+Система виджетов для быстрого доступа к повседневным AI-автоматизациям.
 
-[Video preview](videos/hero.mp4)
+[Видеопревью](videos/hero.mp4)
 
-<!-- Preview-only entry on the homepage; no separate case page is published. -->
+<!-- На главной странице опубликовано только превью; отдельной страницы кейса нет. -->

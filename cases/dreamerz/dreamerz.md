@@ -1,127 +1,128 @@
-# Dreamerz — from launch to 27K+ monthly players
+# Dreamerz — от запуска до 27 000+ пользователей в месяц
 
-An approachable social gaming platform with competitive mini-games, quests, and the chance to earn real rewards.
+Игровая платформа с мини-играми, турнирами, заданиями и возможностью выиграть реальные призы
 
-**Role:** Product Designer
-**Team:** 2 founders + me → product team of 6
-**Timeline:** Summer 2024 → Spring 2025
+**Роль:** Продуктовый дизайнер
+**Команда:** 2 фаундера + я → команда из 6 человек
+**Сроки:** Лето 2024 → весна 2025
 
-The challenge was to make competition engaging and its rules and rewards understandable for a broad audience.
+Челлендж был в том, чтобы сделать соревнования увлекательными, понятными и доступными для широкой аудитории.
 
-I owned the player-facing experience from launch, except the games themselves — helping the team reach 70%+ day-one activation and 27,000+ monthly players.
+Я отвечал за весь player-facing опыт с самого запуска и вместе с командой довел продукт до 70%+ Day-1 Activation и 27 000+ MAU.
 
-[Animated hero illustration]
+[Анимированная иллюстрация в начале кейса]
 
-## Win them with the brand, keep them with the mechanics
+## Как объяснить, что это за продукт
 
-We started with Telegram as the entry point, largely because its wallet took seconds to set up. But the space we were entering looked like this:
+Первой точкой входа сделали Telegram — там можно было завести кошелек за пару кликов. Но приложения с похожей идеей выглядели так:
 
-[Screenshots of gaming apps on Telegram]
-[caption: You know the vibe: loud, intense, and full of in-jokes]
+[Скриншоты игровых приложений в Telegram]
+[caption: Яркие, перегруженные и со своими внутренними мемами]
 
-Early interviews revealed practical doubts: who pays the prizes, what do I need to do, and can I actually withdraw a win?
+На первых интервью возникали логичные вопросы: кто платит за призы, что от меня нужно и как вывести выигрыш?
 
-So I shaped the brand to feel light, calm, and approachable — with a friendly explanatory tone, soft visuals, and dreaminess over pushiness.
+Важно было объяснять, как все работает, а не давить через FOMO, поэтому для бренда я выбрал спокойный тон и мягкую, слегка мечтательную графику.
 
-[Dreamerz brand preview]
+[Визуальный стиль Dreamerz]
 
-We showed entry costs and prize conditions before participation. In tests, I asked people to explain what they could win and lose in their own words.
+Стоимость входа и условия выигрыша всегда показывал заранее — и проверял понятность через тесты.
 
-The team focused on games where skill meaningfully shaped the outcome — think a quiz.
+Игры специально выбирали такие, где результат значительно зависит от навыка, например в квизах.
 
-[Quiz game screenshot]
+[Скриншот викторины]
 
-For users who played for real rewards, their value had to feel tangible and stable — so I pushed for stablecoins, essentially dollar-pegged tokens, over volatile coins.
+Чтобы юзеры, играющие ради денежных призов, чувствовали ценность и стабильность наград, я пропушил использование стейблкоинов, которые привязаны к доллару.
 
-## Enter tournaments
+## Как добавить игре значимости
 
-If competition drives excitement, why not make the leaderboard the heart of the platform?
+Просматривая записи в Hotjar, я заметил, что люди играют вне турнира, а потом уходят. На интервью говорили, что игры нравятся, но возвращаться незачем.
 
-Watching Hotjar recordings, I noticed users playing outside tournaments, then drifting away. In interviews, they described enjoying the games but having little reason to return.
+Раз в соревновании столько удовольствия, почему бы не сделать его ядром всего опыта?
 
-I proposed turning casual play into a free tournament, with automatic entry after onboarding. Same games, but now players had opponents, a place in the table, and a result to improve.
+Я предложил превратить игру вне турнира в отдельный бесплатный турнир и автоматически добавлять туда юзеров после онбординга — так у всех появились соперники и место в таблице, за которое хочется побороться.
 
-[MVP free tournament screenshot]
-[caption: Main hub for newcomers]
+[Бесплатный турнир в MVP]
+[caption: Главный хаб для новичков с небольшими, но все же наградами]
 
-In an A/B test with 2,400 new users, D7 retention rose from 18% to 22%, a four-percentage-point increase. The test covered the new mode as a whole. Paid participation didn't drop.
+В A/B-тесте на 2 400 новичках D7 retention вырос с 18% до 22%, на 4 п.п. Проверяли режим целиком. В платные турниры при этом не стали заходить реже.
 
-Separately, we dropped from two currencies to one. XP stayed for a reason: “coins” kept making people think they could withdraw.
+Заодно вместо двух валют оставили одну — XP. Монетки только путали людей, давая ложное впечатление, что их можно вывести.
 
-## Which tournament am I even in?
+## В каком я вообще турнире?
 
-The MVP had one tournament. As we added paid and advertiser-run tournaments, a player could lose track: which one am I in? How much is on the line?
+В MVP был один турнир. Потом появились платные и рекламные, и стало легко запутаться: где я сейчас играю, сколько на кону?
 
-I tried different icons and combinations of colors. In tests, I asked people to identify their tournament across screens and find another one.
+Для дифференциации пробовал разные цвета и иконки. На тестах просил найти свой турнир на разных экранах, а потом переключиться на другой.
 
-[Tournament branding discovery]
-[caption: Even the softness of an icon’s light rays changed how inviting it felt]
+[Поиск визуального стиля турниров]
+[caption: Важно было найти понятное и одновременно привлекательное сочетание]
 
-A strong metaphor emerged: flying machines, from a paper plane up to a space rocket. Exclusive tournaments got emoji instead — easy for advertisers to sign off on, and quick for us to drop in.
+Остановился на метафоре летающих аппаратов: от бумажного самолетика до ракеты. Она оказалась самой логичной, простой и интересной.
 
-[Tournament final icons]
+А для эксклюзивных турниров взяли эмодзи, потому что их быстро добавить и легко согласовать с рекламодателем.
 
-That's how I landed on a visual coding system: each tournament carried its own color and icon across the interface. Entry costs and prizes stayed explicit alongside them.
+[Итоговые иконки турниров]
 
-[Tournaments screens]
-[caption: The more exclusive the tournament, the bolder its branding]
+Каждый турнир получил свой цвет и иконку на всех экранах. Стоимость входа и выигрыш всегда видны.
 
-That identity carries through to the win screen, too.
+[Экраны турниров]
+[caption: Чем эксклюзивнее турнир, тем он ярче и заметнее]
 
-[Winning popups]
-[caption: A popup celebrates the win and guides players onward]
+Это оформление сохраняется и на попапе окончания турнира.
 
-We saw hundreds of users start for free, then enter paid tournaments using what they'd earned in-game.
+[Окна победы]
+[caption: Триумфально показываем выигрыш и предлагаем следующий шаг]
 
-## Scaling up
+Уже на этом моменте сотни юзеров начинали играть бесплатно, а потом шли в платные турниры, покупая вход за то, что заработали в игре.
 
-With people returning and trying more tournaments, we relaunched invite-only and kicked off a big ad campaign.
+## Расширяемся
 
-I reimagined the existing invite-a-friend feature as shareable keys. We saw users posting their invite codes on X.
+Мы увидели растущий интерес игроков и решили перезапуститься с закрытым доступом по инвайтам и большой рекламной кампанией.
 
-[Invite-feature design]
-[caption: Invite keys outlived the campaign and helped players feel like insiders]
+В это время я переделал обычную механику друзей в ограниченные инвайт-ключи, которые юзеры в итоге шарили друг с другом в социальных сетях.
 
-I'd been the only product designer until now, working directly with the founders. As the product grew, we built out a full product team.
+[Дизайн приглашений]
+[caption: Ключи, кстати, остались и после кампании, они хорошо давали ощущение эксклюзивности]
 
-## Iterating on a live product
+До этого момента я был единственным дизайнером и работал напрямую с фаундерами. Теперь, когда продукт вырос, мы собрали полноценную продуктовую команду.
 
-By winter we had nearly 20,000 monthly players. We shifted from pure growth to refining the live product.
+## Итерирование после запуска
 
-Quests showed where that work was needed. The founders suggested motivational banners, but people were already opening quests and getting stuck afterward. A failed check said “redo” without a clear way to retry. In tests, people assumed it was broken.
+К зиме у нас было почти 20 000 игроков в месяц, и мы сфокусировались на доработке продукта.
 
-I redesigned the statuses, error explanations, and retry flow, and worked with developers on false rejections.
+Например, completion rate квестов был низковат, и фаундеры предлагали добавить мотивирующие баннеры по всему приложению. Но я заметил, что люди уже открывали раздел и застревали в нем.
 
-[Quests redesign]
-[caption: Icons and statuses unified, and the expected actions became clearer]
+Я переделал статусы, объяснения ошибок и повторные попытки и вместе с разработчиками проработал эджкейсы.
 
-In an A/B test with 4,000 users, completion rose from 40% to 48% — eight percentage points, or 20% relative growth. We measured at least one completed quest within 24 hours of first opening the section. Tasks and rewards stayed the same.
+[Редизайн квестов]
+[caption: Привел иконки и статусы к одному виду, прояснил необходимое действие]
 
-When a player ran out of XP, we gave them a two-step path back in: first through rescue quests, then, if those ran out too, by inviting friends. Rewards were capped so games remained the main way to compete.
+В A/B-тесте на 4 000 пользователях хотя бы один квест завершили 48% против 40% — +8 п.п. или +20% относительно контроля. Считали за 24 часа после первого открытия раздела. Сами квесты и награды не меняли.
 
-[Rescue quests]
-[caption: Players often asked for a way to earn back lost XP]
+Еще добавил такую механику: если игрок терял все XP, он мог заработать немного на спасательных квестах. Когда заканчивались и они — можно пригласить друзей. Награды ограничил, чтобы не конкурировать с играми за XP.
 
-Later, I added a daily login bonus to make returning useful in the active tournament. We'd started with the core loop so we could understand and manage it before adding more mechanics.
+[Спасательные квесты]
+[caption: Возможность вернуться в игру была одним из самых популярных реквестов]
 
-[Daily login popup]
-[caption: Longer streaks, bigger rewards — and a bigger edge in the active tournament]
+Позже я добавил ежедневный бонус с XP для текущего турнира и инвайт-ключами. Специально не вводил его с самого начала, чтобы разобраться с core-лупом и только потом добавлять новые механики.
 
-## Outcome
+[Окно ежедневного бонуса]
+[caption: Математика наград основана на данных ретеншена]
 
-After the public launch, 70%+ of new sign-ups completed onboarding and played at least one tournament game within 24 hours — our day-one activation measure.
+## Результат
 
-In a couple of months, Dreamerz reached 27,000+ monthly players — unique users who played in the previous 30 days.
+После публичного запуска 70%+ новичков проходили онбординг и играли хотя бы одну игру в турнире за первые 24 часа. Это была наша метрика Day-1 Activation.
 
-That's the whole team — design, engineering, QA, marketing, and support — pulling together. And our charming mascot, too.
+За пару месяцев дошли до 27 000+ игроков в месяц. Считали уникальных пользователей, сыгравших за последние 30 дней.
 
-[A screen from the onboarding flow]
-[caption: Auto-entry made onboarding dramatically smoother]
+Это общий результат дизайна, разработки, QA, маркетинга, поддержки и нашего очаровательного маскота.
 
-## Why it ended — and what I keep
+[Экран онбординга]
 
-Dreamerz was live for just under a year. The company couldn't close an investment deal and eventually wound down — settling up with every winner and advertiser.
+## Чем все закончилось
 
-Looking back, I'd connect the first game, return visits, and paid participation in one funnel earlier, to see how individual improvements added up to lasting use.
+Dreamerz проработал чуть меньше года. Не удалось закрыть инвестиционный раунд, и проект свернули, рассчитавшись со всеми победителями и рекламодателями.
 
-Much of what made Dreamerz work sat outside design itself: research, planning, negotiation, and constant prioritization. That's what I'm taking with me.
+Моя роль в Dreamerz включала не только дизайн, но и исследования, и планирование, и приоритизацию, и переговоры с командами — это уникальный обширный опыт.
+
+Если бы я начинал все заново, сейчас я бы раньше связал первую игру, возвраты и платное участие в одну воронку, чтобы лучше понимать, как отдельные итерации влияют на ретеншен и прогрессию юзеров в продукте.

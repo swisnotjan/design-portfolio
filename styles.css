@@ -34,57 +34,22 @@
 :root[data-cw="wide"]  { --feed-w: 1400px; }
 :root[data-cw="wider"] { --feed-w: min(calc(100vw - 48px), 1800px); }
 
-/* ---- dark mode ---- */
-[data-theme="dark"] {
-  --bg:    #111111;
-  --ink:   #eeeeee;
-  --muted: #888888;
-  --line:  #4a4a4a;
+/* ---- shared circular navigation button ---- */
+.nav-button {
+  position: fixed; top: 20px; z-index: 50;
+  display: grid; place-items: center; width: 38px; height: 38px;
+  padding: 0; border: 1px solid var(--line); border-radius: 50%;
+  background: #fff; color: var(--muted); cursor: pointer;
+  font: 500 11px/1 var(--font); letter-spacing: .03em;
+  transition: color .18s, border-color .18s, transform .22s var(--ease);
 }
-
-/* ---- theme toggle button ---- */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 50;
-  appearance: none;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--bg);
-  color: var(--muted);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  width: 38px;
-  height: 38px;
-  transition: color .18s, border-color .18s, background .2s;
-}
-.theme-toggle:hover {
-  color: var(--ink);
-  border-color: color-mix(in oklab, var(--ink) 30%, transparent);
-}
-/* press feedback on button itself */
-.theme-toggle:active { transform: scale(0.88); }
-/* icon wrapper: relative container for stacked cross-fading icons */
-.theme-icon-wrap { position: relative; width: 15px; height: 15px; pointer-events: none; }
-.theme-toggle svg {
-  position: absolute;
-  inset: 0;
-  width: 15px;
-  height: 15px;
-  pointer-events: none;
-  transition: opacity .3s, filter .3s, transform .3s var(--ease);
-  will-change: opacity, filter, transform;
-}
-/* light: moon in, sun out */
-.icon-moon { opacity: 1; filter: blur(0px); transform: scale(1); }
-.icon-sun  { opacity: 0; filter: blur(2px); transform: scale(0.25); }
-/* dark: sun in, moon out */
-[data-theme="dark"] .icon-moon { opacity: 0; filter: blur(2px); transform: scale(0.25); }
-[data-theme="dark"] .icon-sun  { opacity: 1; filter: blur(0px); transform: scale(1); }
+.nav-button:hover { color: var(--ink); border-color: #bbb; }
+.nav-button:active { transform: scale(.88); }
+.language-toggle { right: 20px; }
+.back-btn { left: 20px; text-decoration: none; }
+.language-label { display: inline-block; pointer-events: none; }
+.case-copy { display: contents; }
+:root { color-scheme: light; }
 
 /* ---- tooltips ---- */
 .tip-host {
@@ -486,7 +451,11 @@ a.case:hover .case-title { color: var(--ink); }
 .foot-email { display: none; }
 .foot-copy { color: var(--muted); appearance: none; font: inherit; background: none; border: none; padding: 0; cursor: pointer; display: inline-flex; flex-direction: column; align-items: flex-end; transition: color .18s; }
 .foot-copy:hover { color: var(--ink); }
-.fcp-line { height: 1px; background: var(--line); transition: width .3s ease, background .4s ease; }
+.foot-copy > span:first-child { display: inline-block; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-button, .foot-copy, .fcp-line { transition: none; }
+}
+.fcp-line { display: block; width: 100%; flex-shrink: 0; height: 1px; background: var(--line); transition: width .3s ease, background .4s ease; }
 .foot-copy:hover .fcp-line { background: var(--ink); }
 /* animated handwritten signature (draws on enter) */
 .sig { display: block; }
@@ -594,30 +563,6 @@ a.case:hover .case-title { color: var(--ink); }
   border-radius: var(--r);
 }
 
-.back-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 50;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--bg);
-  color: var(--muted);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  text-decoration: none;
-  transition: color .18s, border-color .18s, background .2s;
-}
-.back-btn:hover {
-  color: var(--ink);
-  border-color: color-mix(in oklab, var(--ink) 30%, transparent);
-}
-.back-btn:active { transform: scale(0.88); }
 .back-btn svg { width: 15px; height: 15px; pointer-events: none; transform: translateX(-1px); }
 
 .cs-title {
@@ -675,10 +620,6 @@ a.case:hover .case-title { color: var(--ink); }
   font-weight: inherit;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-}
-[data-theme="dark"] .cs-mark {
-  background: #1e64dc26;
-  color: #6b9ff5;
 }
 
 /* media placeholder */
@@ -747,7 +688,7 @@ a.case:hover .case-title { color: var(--ink); }
   .case-cta { display: inline-flex; min-height: 44px; margin-top: 12px; }
   .cs-meta { margin-top: 28px; }
   .foot { margin-top: 64px; padding-bottom: 36px; }
-  .theme-toggle, .back-btn { width: 44px; height: 44px; }
+  .nav-button { width: 44px; height: 44px; }
 
 }
 
@@ -775,9 +716,9 @@ a.case:hover .case-title { color: var(--ink); }
 }
 
 /* Frosted navigation with a light tint and a solid fallback. */
-.theme-toggle, .back-btn { color: var(--ink); box-shadow: none; }
+.nav-button { color: var(--ink); box-shadow: none; }
 @supports ((backdrop-filter: blur(24px)) or (-webkit-backdrop-filter: blur(24px))) {
-  .theme-toggle, .back-btn {
+  .nav-button {
     background: color-mix(in srgb, var(--bg) 58%, transparent);
     -webkit-backdrop-filter: blur(24px) saturate(130%);
     backdrop-filter: blur(24px) saturate(130%);

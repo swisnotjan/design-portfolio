@@ -1,147 +1,149 @@
-# Lexie × Studypaths — redesigning the app for 150K+ users
+# Lexie × Studypaths — редизайн приложения для 150 000+ юзеров
 
-An AI-guided learning concept that moved from a master's thesis into an American product used worldwide.
+AI-приложение для обучения, которое выросло из магистерского проекта в американский продукт с пользователями по всему миру
 
-**Role:** Product Designer
-**Team:** Solo → embedded product team of 5
-**Timeline:** Winter 2025 → Summer 2025
+**Роль:** Продуктовый дизайнер
+**Команда:** Соло → команда из 5 человек
+**Сроки:** Зима 2025 → лето 2025
 
-I designed Lexie to turn uploaded materials into a game path of bite-sized stages, guided by an adaptive AI tutor.
+Я спроектировал Lexie для диплома из магистратуры — загружаешь в приложение свои материалы и учишься короткими игровыми сессиями, а AI-тьютор подстраивается под ошибки и помогает разбираться.
 
-The team behind a similar product with 150,000+ active users offered to acquire it. Instead, I joined them to introduce a new game-path mode without disrupting existing users.
+Команда похожего продукта со 150 000+ активных пользователей предложила купить Lexie. В итоге я присоединился к ним, чтобы добавить игровой маршрут в их продукт, сохранив привычные сценарии.
 
-First-lesson completion rose from 38% to 49% in an A/B test. The path eventually gave the product its name.
+В A/B-тесте первый урок завершили 49% новичков против 38% в контроле. Позже новый игровой маршрут дал название всему продукту.
 
-[hero illustration]
+[Иллюстрация в начале кейса]
 
-## The gap I wanted to close
+## С чего все началось
 
-If you've ever tried to teach yourself something, you know the problem usually isn't a lack of information, but a lack of guidance.
+Материалы для самообучения найти легко — сложно понять, с чего начать и в каком порядке разбираться.
 
-Across 15 interviews and a survey of around 200 people, a recurring problem emerged: materials were ready, but learners didn't know where to start or what to do next.
+Об этом говорили респонденты 15 интервью и опроса примерно на 200 человек.
 
-In the flows I reviewed then, tools like StudyFetch and Knowt created flashcards and quizzes from uploads but left much of the organization to the learner.
+Я посмотрел, что было на рынке и как устроено обучение в StudyFetch, Knowt и Magic School. Они давали делать флешкарты и квизы из файлов, но планировать учебу приходилось самому.
 
-[competitors]
-[caption: With competitors, setup felt like half the learning journey]
+[Конкуренты]
+[caption: У конкурентов половина опыта — это доскональная настройка]
 
-On the other side, Duolingo, Mimo, and Brilliant offered polished, gamified paths through prepared programs.
+В Duolingo, Mimo и Brilliant наоборот — есть игровые маршруты, но только по готовым программам.
 
-So I combined the best of both: user-owned materials, a low-friction start, and a guided game path.
+Так и появилась идея: строить такой же удобный игровой маршрут, но по материалам пользователя.
 
-## Problem one: hard to start
+## Помогаем начать
 
-The goal was to reduce actions and decisions and get people learning quickly. First came onboarding: I kept it short.
+Чтобы человек быстрее перешел к учебе, я оставил в онбординге только самое необходимое.
 
-[onboarding]
-[caption: Just enough onboarding to get out of the way]
+[Онбординг]
+[caption: Онбординг на пять вопросов]
 
-Next, course creation. Learners may not know a subject well enough to configure a course in detail, so I let Lexie make those decisions from a natural-language prompt instead of complex settings.
+Сложно что-то настраивать, когда еще не разбираешься в материале. Поэтому в Lexie достаточно своими словами описать, чему хочешь научиться — приложение само предложит и соберет курс.
 
-[course creation]
-[caption: A slider lets you adjust the course depth]
+[Создание курса]
+[caption: Глубину курса можно изменить ползунком]
 
-There is a tradeoff: less control upfront, but an easier start. Deeper customization could come later.
+Подробными настройками пришлось пожертвовать ради простого старта. Но их можно было добавить позже.
 
-## Problem two: hard to keep moving
+## Помогаем не бросить
 
-My survey pointed to short mobile sessions — during a commute or before bed. I built a path of small stages around chunking, retrieval practice, and spacing: manageable topics, practice after mistakes, and review over time.
+В опросе люди рассказывали, что учатся обычно с телефона, часто в дороге или перед сном. Под такие короткие сессии я разбил материал на небольшие этапы.
 
-The user taps “Continue learning” and Lexie chooses what comes next.
+Добавил задания на вспоминание, практику после ошибок и периодическое повторение пройденного материала.
 
-[game path structure]
-[caption: The anatomy of a game path]
+Чтобы продолжить учиться, достаточно нажать «Continue Learning» — следующий шаг выберет Lexie.
 
-Exercises included matching pairs and filling gaps, with explanations tied to the material.
+[Структура игрового маршрута]
+[caption: Из чего состоит игровой маршрут]
 
-[active exercise formats]
-[caption: Every answer, right or wrong, comes with an explanation]
+Например, в практике могут попасться упражнения на поиск пар или заполнение пропусков.
 
-I also added “Review the Concept” and flashcards, so learners could work through an explanation before testing themselves.
+[Форматы практических упражнений]
+[caption: Объясняем ответ, даже если он верный]
 
-[review the concept]
-[caption: Concept cards break a difficult topic into smaller parts]
+А для объяснения более сложного материала — Review the Concept или флешкарты.
 
-Each stage ends with encouragement and progress numbers, regardless of the result.
+[Review the Concept]
+[caption: Одна карточка — небольшой чанк информации]
 
-[stage result]
-[caption: Different result messages keep things from feeling repetitive]
+В конце показываем результаты цифрами и, вне зависимости от перформанса поддерживаем и мотивируем.
 
-## Problem three: helping without giving the answer away
+[Результат этапа]
+[caption: Разные формулировки фидбека — чтобы не заскучать]
 
-The tutor was designed to account for weak points and mistakes, provide relevant examples, and encourage learners when stuck.
+## Подсказываем, когда это нужно
 
-In tests, early hints interrupted people still thinking, while a tucked-away chat didn't help those already stuck.
+Я спроектировал AI-тьютора так, чтобы он учитывал ошибки, подбирал подходящие примеры и помогал разобраться с заданием.
 
-[hint button in the fill-in-the-blanks task]
-[caption: Hints are generated on the fly, with a ready-made prompt for further help in chat]
+Про подсказки: на тестах они появлялись слишком рано и сбивали с мысли. А когда помощь уже нужна, чат не всегда было легко найти.
 
-After three rounds of testing, I settled on a starting rule: a hint appears after 45 seconds of inactivity following a wrong attempt, or after 90 seconds with no attempt — and never when new material first appears.
+[Кнопка подсказки в задании на заполнение пропусков]
+[caption: Сначала короткая подсказка, но если нужно — переходим в чат]
 
-## A reason to come back
+После трех раундов тестов выбрал такое правило: показывать подсказку через 45 секунд бездействия после ошибки или через 90 секунд без попыток. Для нового материала подсказки отключены.
 
-The final details included a daily streak counter, plus reminders users could schedule — or leave up to the app.
+## Даем повод вернуться
 
-[reminders]
-[caption: Lexie adapts reminder timing to when you usually open it]
+Добавил стрик и умные напоминания, время для которых можно выбрать самому или целиком доверить приложению.
 
-## The plot twist
+[Напоминания]
+[caption: Напоминание приходит в то время, когда обычно открываешь Lexie]
 
-Shortly before my thesis defense, Studypal — an American startup — approached the studio where I worked to redesign its product. Its app let users upload materials and create quizzes and flashcards — exactly the space I already knew well.
+## Сюжетный поворот
 
-[Studypal legacy]
-[caption: Before the redesign, Studypal was a collection of study tools]
+Незадолго до защиты магистерской в нашу студию за редизайном пришел американский стартап Studypal. В их приложении можно было загружать материалы и делать из них документы, квизы и флешкарты. Задача оказалась очень близка к тому, над чем я уже работал.
 
-I joined the team to lead the redesign. Lexie’s approach now had to work alongside existing habits.
+[Старая версия Studypal]
+[caption: До редизайна Studypal был набором инструментов для учебы]
 
-## How I redesigned Studypal
+Я взялся за редизайн. Но в отличие от Lexie, здесь уже были пользователи со своими привычками.
 
-A product audit and user survey revealed two needs: new users wanted direction, while returning users often knew which tool they needed.
+## Как менялся Studypal
 
-I kept the existing tools available on their own and used them as the foundation of Studypaths. Newcomers got a guided start. Familiar workflows stayed accessible.
+Аудит и опрос показали, что новичкам не хватает гайденса и вовлечения, а постоянные пользователи часто приходят за конкретным инструментом.
 
-[Studypaths onboarding]
-[caption: Whoops, spoiler: Studypal becomes Studypaths later in the story]
+Поэтому я собрал новый игровой маршрут Studypaths из существующих инструментов, оставив их доступными по отдельности — чтобы сохранить гибкость продукта для обеих когорт и добавить кардинально новый опыт.
 
-I defined the core learning experience and overall design direction. The other two designers extended that direction across the remaining flows and broader visual system.
+[Онбординг Studypaths]
+[caption: Упс, спойлер, Studypal переименуется в Studypaths, но это будет позже]
 
-I also defined AI response states and examples with engineers. We reviewed generations across different materials, including how the tutor should respond when the source couldn't support an answer.
+Я отвечал за основной сценарий обучения и направление дизайна. Еще два дизайнера работали над остальными флоу и развивали визуальную систему.
 
-[main path screen]
-[caption: The main screen after the redesign]
+С инженерами проработал состояния и примеры ответов AI. Проверял генерации на разных материалах, в том числе случаи, когда в источнике нет ответа.
 
-With the core path in place, I added bonus stages every seven to twelve stages, awarding extra XP. A compact mastery overview shows progress through the course.
+[Главный экран маршрута]
+[caption: Главный экран после редизайна]
 
-[bonus stages and mastery map]
-[caption: A yummy bonus stage rewards progress and encourages another step]
+В маршрут добавил бонусные этапы с дополнительными XP через каждые 7–12 обычных. Прогресс по темам собрал в компактный обзор, назвал это Mastery map.
 
-Daily streaks showed regularity, but not accumulated activity. I added six milestones, each with a different decorative frame around the level number.
+[Бонусные этапы и карта освоения тем]
+[caption: Бонусный этап так и манит...]
 
-New users level up quickly. Later milestones take longer. Topic mastery stays separate from XP.
+Ежедневный стрик мотивирует регулярно заходить, но плохо показывает глобальный прогресс. Поэтому я добавил сквозную систему уровней — шесть майлстоунов, каждый со своей рамкой.
 
-[streak and level widgets]
-[caption: The final frame takes 1,050 stages, roughly 122 hours of learning]
+Первые уровни набираются быстро, но чем дальше — тем больше нужно времени. Прогресс тем при этом считаем отдельно от XP.
 
-## What didn't make it
+[Виджеты стрика и уровня]
+[caption: Для последней рамки нужно пройти 1 050 этапов — примерно 122 часа обучения]
 
-Not every addition earned its place. One example was a detailed course map. I thought it would provide context, but in tests people returned to the compact overview. The expanded map didn't help them choose their next step.
+## Что не вошло в продукт
 
-[course map]
-[caption: Diamond completion icons did not survive testing either]
+Подробная версия Mastery map не прижилась. Я думал, что она будет помогать ориентироваться, но на тестах люди возвращались к компактному виду: его оказалось достаточно.
 
-A live AI call had received positive survey feedback. But waiting several seconds after each turn broke the conversation in the prototype. Combined with its cost, that put it back in the backlog.
+[Карта курса]
+[caption: От ромбовидных значков прогресса, кстати, тоже отказался после тестов]
 
-[call with AI]
-[caption: Behind the simple UI, several AI models coordinate in real time]
+Еще в опросе людям понравилась идея звонка с AI. Но в прототипе, который мы собрали с разработчиками, паузы по несколько секунд после каждой реплики мешали разговору. Функция была сложной и дорогой — отложили ее в бэклог.
 
-## Outcome
+[Звонок с ИИ]
+[caption: Интерфейс простой, а внутри целая команда AI-моделей, работающих в реальном времени]
 
-In an A/B test with 3,200 new users, 49% completed their first lesson within 24 hours of signing up, compared with 38% in the control group — eleven percentage points higher. The test covered the new start and game path together.
+## Результат
 
-The redesign gradually became available to all 150,000+ active users. Support received more questions and positive feedback about Studypaths, and the founders soon renamed Studypal to Studypaths.
+В A/B-тесте участвовали 3 200 новых пользователей. За первые 24 часа после регистрации урок завершили 49% против 38% в контроле — рост на 11 п.п. Тестировали новый старт вместе с игровым маршрутом.
 
-## What I'd do differently
+Редизайн постепенно раскатили на всех 150 000+ активных пользователей. В поддержку стали чаще писать о новом режиме: задавали вопросы и оставляли положительные отзывы. Вскоре фаундеры переименовали весь продукт в его честь — Studypaths.
 
-I'd check AI content quality and recall after several days earlier. First-lesson completion showed an easier start. It didn't tell us how much people learned.
+## Что я сделал бы иначе
 
-Still, there is something deeply satisfying about having moved on from the team while Studypaths remains the product's core experience.
+Сегодня я бы раньше проверял качество AI-контента и то, что накапливается в контексте и памяти моделей. Первый урок стали проходить чаще, но эта метрика не показывала, сколько юзеры на самом деле усвоили. Это я бы тестировал отдельно.
+
+Я уже не работаю в команде, но приятно знать, что Studypaths до сих пор остается основой продукта.

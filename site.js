@@ -37,33 +37,6 @@
   function $(s, r) { return (r || document).querySelector(s); }
   function $all(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 
-  /* ---- theme toggle (light / dark) ---- */
-  function initTheme() {
-    var btn = document.getElementById("theme-toggle");
-    if (!btn) return;
-    var sysDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-    function apply(dark) {
-      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-      btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-    }
-
-    // Sync aria-label with whatever pre-paint already set
-    apply(document.documentElement.getAttribute("data-theme") === "dark");
-
-    // Follow system preference when user has no stored override
-    sysDark.addEventListener("change", function (e) {
-      if (!localStorage.getItem("pf_theme")) apply(e.matches);
-    });
-
-    btn.addEventListener("click", function () {
-      var nowDark = document.documentElement.getAttribute("data-theme") === "dark";
-      // CSS cross-fade handles the icon animation automatically
-      apply(!nowDark);
-      localStorage.setItem("pf_theme", nowDark ? "light" : "dark");
-    });
-  }
-
   /* ---- footer face ---- */
   function initFace() {
     var el = $(".face");
@@ -241,7 +214,8 @@
     var btn = document.getElementById("copy-btn");
     if (!btn) return;
     var EASE = "cubic-bezier(.32,.72,.32,1)";
-    var LABELS = { idle: "Copy email", hover: EMAIL, copied: "Copied!" };
+    function labels() { return document.documentElement.lang === "ru" ? { idle: "Скопировать почту", hover: EMAIL, copied: "Скопировано!" } : { idle: "Copy email", hover: EMAIL, copied: "Copied!" }; }
+    var labelTimer = null;
     var state = "idle", revertTimer = null;
     function measureW(text, copied) {
       var ghost = btn.cloneNode(true);
@@ -257,7 +231,8 @@
       var label = btn.querySelector(".bcopy-lbl"), outY = dir === "up" ? "-5px" : "5px", inY = dir === "up" ? "6px" : "-6px";
       label.style.transition = "transform .14s ease, opacity .14s";
       label.style.transform = "translateY(" + outY + ")"; label.style.opacity = "0";
-      setTimeout(function () {
+      clearTimeout(labelTimer);
+      labelTimer = setTimeout(function () {
         label.textContent = text; label.style.transition = "none"; label.style.transform = "translateY(" + inY + ")";
         label.offsetHeight;
         label.style.transition = "transform .22s " + EASE + ", opacity .18s"; label.style.transform = "translateY(0)"; label.style.opacity = "1";
@@ -269,7 +244,7 @@
     }
     function setState(next, direction) {
       state = next; btn.classList.toggle("is-copied", next === "copied");
-      slideLabel(LABELS[next], direction); animateWidth(measureW(LABELS[next], next === "copied"));
+      slideLabel(labels()[next], direction); animateWidth(measureW(labels()[next], next === "copied"));
     }
     function copy() {
       if (state === "copied") return;
@@ -288,6 +263,15 @@
       }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(done, fallback); else fallback();
     }
+    function resetLanguage() {
+      clearTimeout(revertTimer); clearTimeout(labelTimer); state = "idle";
+      btn.classList.remove("is-copied"); btn.style.width = "";
+      var label = btn.querySelector(".bcopy-lbl");
+      label.textContent = labels().idle; label.style.cssText = "";
+      btn.setAttribute("aria-label", labels().idle);
+    }
+    document.addEventListener("portfolio:language-changed", resetLanguage);
+    resetLanguage();
     btn.addEventListener("mouseenter", function () { if (state === "idle") setState("hover", "up"); });
     btn.addEventListener("mouseleave", function () { if (state === "hover") setState("idle", "down"); });
     btn.addEventListener("click", function (event) { event.preventDefault(); copy(); });
@@ -302,27 +286,70 @@
   function initFootCopy() {
     var btn = document.getElementById("foot-copy");
     if (!btn) return;
-    var original = "Copy email", timer = null, ease = "cubic-bezier(.32,.72,.32,1)";
+    var timer = null, labelTimer = null, copied = false;
+    var ease = "cubic-bezier(.32,.72,.32,1)";
+    var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     var label = document.createElement("span"), underline = document.createElement("span");
-    label.style.display = "inline-block"; label.textContent = btn.textContent.trim(); btn.textContent = "";
-    underline.className = "fcp-line"; btn.appendChild(label); btn.appendChild(underline);
+    label.style.display = "inline-block";
+    underline.className = "fcp-line";
+    btn.textContent = ""; btn.appendChild(label); btn.appendChild(underline);
+    btn.setAttribute("aria-live", "polite");
+    function labels() {
+      return document.documentElement.lang === "ru" ? { idle: "Скопировать почту", copied: "Скопировано!" } : { idle: "Copy email", copied: "Copied!" };
+    }
     function measure(text) {
       var ghost = label.cloneNode(false); ghost.textContent = text;
-      ghost.style.cssText = "position:fixed;top:-999px;left:-999px;visibility:hidden;display:inline-block";
-      document.body.appendChild(ghost); var width = ghost.getBoundingClientRect().width; document.body.removeChild(ghost); return width;
+      ghost.style.cssText = "position:fixed;top:-999px;left:-999px;visibility:hidden;display:inline-block;white-space:nowrap";
+      ghost.style.font = getComputedStyle(btn).font;
+      ghost.style.letterSpacing = getComputedStyle(btn).letterSpacing;
+      document.body.appendChild(ghost);
+      var width = ghost.getBoundingClientRect().width;
+      ghost.remove(); return width;
     }
     function change(text, direction) {
+      clearTimeout(labelTimer);
       underline.style.width = measure(text) + "px";
-      label.style.transition = "transform .13s ease, opacity .13s"; label.style.transform = "translateY(" + (direction === "up" ? "-4px" : "4px") + ")"; label.style.opacity = "0";
-      setTimeout(function () { label.textContent = text; label.style.transition = "none"; label.style.transform = "translateY(" + (direction === "up" ? "5px" : "-5px") + ")"; label.offsetHeight; label.style.transition = "transform .2s " + ease + ", opacity .16s"; label.style.transform = "translateY(0)"; label.style.opacity = "1"; }, 130);
+      if (motion.matches) { label.textContent = text; return; }
+      label.style.transition = "transform .13s ease, opacity .13s";
+      label.style.transform = "translateY(" + (direction === "up" ? "-4px" : "4px") + ")";
+      label.style.opacity = "0";
+      labelTimer = setTimeout(function () {
+        label.textContent = text;
+        label.style.transition = "none";
+        label.style.transform = "translateY(" + (direction === "up" ? "5px" : "-5px") + ")";
+        label.offsetHeight;
+        label.style.transition = "transform .2s " + ease + ", opacity .16s";
+        label.style.transform = "translateY(0)"; label.style.opacity = "1";
+      }, 130);
     }
-    requestAnimationFrame(function () { underline.style.transition = "none"; underline.style.width = measure(original) + "px"; btn.style.minWidth = btn.getBoundingClientRect().width + "px"; requestAnimationFrame(function () { underline.style.transition = ""; }); });
+    function reset() {
+      clearTimeout(timer); clearTimeout(labelTimer); copied = false;
+      label.textContent = labels().idle;
+      label.style.transition = "none"; label.style.transform = ""; label.style.opacity = "1";
+      var width = measure(labels().idle);
+      btn.style.minWidth = width + "px";
+      underline.style.transition = "none"; underline.style.width = width + "px";
+      requestAnimationFrame(function () { underline.style.transition = ""; });
+    }
+    document.addEventListener("portfolio:language-changed", reset);
+    function done() {
+      copied = true; change(labels().copied, "up"); clearTimeout(timer);
+      timer = setTimeout(function () { copied = false; change(labels().idle, "down"); }, 2000);
+      document.dispatchEvent(new CustomEvent("portfolio:email-copied", { detail: { placement: "footer" } }));
+    }
+    function fallback() {
+      var textarea = document.createElement("textarea");
+      textarea.value = EMAIL; textarea.style.cssText = "position:fixed;opacity:0";
+      document.body.appendChild(textarea); textarea.select();
+      var success = false;
+      try { success = document.execCommand("copy"); } catch (e) {}
+      textarea.remove(); if (success) done();
+    }
     btn.addEventListener("click", function () {
-      clearTimeout(timer); change("Copied!", "up"); timer = setTimeout(function () { change(original, "down"); }, 2000);
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(function () {
-        document.dispatchEvent(new CustomEvent("portfolio:email-copied", { detail: { placement: "footer" } }));
-      }).catch(function () {});
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(EMAIL).then(done, fallback);
+      else fallback();
     });
+    reset();
   }
 
   /* ---- reveal on load (staggered) ---- */
@@ -397,7 +424,6 @@
 
   /* ---- boot ---- */
   function boot() {
-    initTheme();
     initFace();
     initSignature();
     initCopyBtn();

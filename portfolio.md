@@ -1,40 +1,41 @@
-# Alexander Simonovsky
+# Александр Семеновский
 
-Open to work. Remote or relocation.
+Открыт к предложениям / Офис, ремоут или релокейт
 
-Product designer focused on consumer and AI-powered products.
+Продуктовый дизайнер с фокусом на consumer и AI-продуктах.
 
-I led the redesign of an AI learning app serving 150K+ users in 12 markets, helped grow a social app from 0 to 27K+ active users with 70%+ Day-1 activation, and partnered with UK and US teams, including DMG Media, Verto, and Lingopal.
+Вел редизайн AI-продукта для обучения со 150К+ пользователями в 12 странах. Помог запустить и вырастить социальное приложение с 27К+ MAU и 70%+ Day-1 activation. Работал с командами из UK и US, в том числе DMG Media, Verto, Lingopal.
 
-I also build and release my own products — [Yonder](https://yonder.site), and [Todoodle](https://www.figma.com/community/widget/1615397206941614227).
+Разрабатываю и выпускаю свои продукты: [Yonder](https://yonder.site) и [Todoodle](https://www.figma.com/community/widget/1615397206941614227).
 
-## Selected work
+## Избранные проекты
 
-### Lexie × Studypaths — redesigning the app for 150K+ users
+### Lexie × Studypaths — редизайн приложения для 150 000+ юзеров
 
-An AI-guided learning concept that moved from a master's thesis into an American product used worldwide.
+AI-приложение для обучения, которое выросло из магистерского проекта в американский продукт с пользователями по всему миру
 
-[Case text](https://simonovsky.com/cases/studypaths/studypaths.md)
+[Смотреть кейс](/cases/studypaths/) · [Текст кейса](/cases/studypaths/studypaths.md)
 
-### Dreamerz — from launch to 27K+ monthly players
+### Dreamerz — от запуска до 27 000+ пользователей в месяц
 
-An approachable social gaming platform with competitive mini-games, quests, and the chance to earn real rewards.
+Игровая платформа с мини-играми, турнирами, заданиями и возможностью выиграть реальные призы
 
-[Case text](https://simonovsky.com/cases/dreamerz/dreamerz.md)
+[Смотреть кейс](/cases/dreamerz/) · [Текст кейса](/cases/dreamerz/dreamerz.md)
 
-### Widgets for Xi Labs — an AI automation platform
+### Виджеты для Xi Labs, платформы AI-автоматизаций
 
-A dynamic widget system that gave knowledge workers and creatives faster access to their everyday automations.
+Система виджетов для быстрого доступа к автоматизациям в повседневной работе и творческих задачах
 
-[Case text](https://simonovsky.com/cases/xi-labs/xi-labs.md)
+[О проекте](/cases/xi-labs/xi-labs.md)
 
-## Additional case study
+## Еще один кейс
 
-[paced.ai — дизайн учебной платформы](https://simonovsky.com/cases/paced.ai/paced.ai.md)
+[paced.ai: дизайн учебной платформы](/cases/paced.ai/)
 
-## Contact and CV
+## Контакты и резюме
 
-- [Email](mailto:hi@simonovsky.com)
+- [Почта](mailto:hi@simonovsky.com)
 - [LinkedIn](https://www.linkedin.com/in/asimonovsky)
-- [CV text](https://simonovsky.com/cv.md)
-- [CV PDF](https://simonovsky.com/alexander-simonovsky-product-designer-cv.pdf)
+- [Резюме текстом](/cv.md)
+- [Резюме в PDF](/alexander-simonovsky-product-designer-cv.pdf)
+- [In English](/?lang=en)
