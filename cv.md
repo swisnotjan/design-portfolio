@@ -2,13 +2,13 @@
 
 Product Designer
 
-Open to remote work and relocation
+On-site or remote. Open to relocation.
 
 simonovsky.com | hi@simonovsky.com | linkedin.com/in/asimonovsky
 
 ## Summary
 
-Product Designer focused on consumer products, with strengths in interaction design, visual craft, and product thinking. Led the core learning-experience redesign for an AI-powered learning app and owned design for a social gaming app from launch through major releases. Worked with teams across the UK and US. I also independently design, build, and ship products using AI-assisted development.
+Product Designer focused on consumer and AI-powered products, with strengths in interaction design, visual craft, and product thinking. Led the core learning-experience redesign for an AI-powered learning app and owned design for a social gaming app from launch through major releases. Worked with teams across the UK and US. I also independently design, build, and ship products using AI-assisted development.
 
 ## Experience
 
