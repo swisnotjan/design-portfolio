@@ -121,7 +121,12 @@ def render(page, language, root=False):
     toggle.set("lang", target)
     toggle.set("hreflang", target)
     toggle.set("aria-label", "Switch to English" if language == "ru" else "Переключить на русский")
-    return "<!DOCTYPE html>\n" + etree.tostring(document, encoding="unicode", method="html") + "\n"
+    # Keep source comments before <html> when regenerating the localized pages.
+    comments = reversed(list(document.itersiblings(preceding=True)))
+    parts = ["<!DOCTYPE html>"]
+    parts.extend(etree.tostring(comment, encoding="unicode", method="html") for comment in comments)
+    parts.append(etree.tostring(document, encoding="unicode", method="html"))
+    return "\n".join(parts) + "\n"
 
 
 for page in PAGES:
