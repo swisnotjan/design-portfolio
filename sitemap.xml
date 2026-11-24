@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://simonovsky.com/</loc>
+    <loc>https://simonovsky.com/en/</loc>
   </url>
   <url>
-    <loc>https://simonovsky.com/cases/dreamerz/</loc>
+    <loc>https://simonovsky.com/ru/</loc>
   </url>
   <url>
-    <loc>https://simonovsky.com/cases/studypaths/</loc>
+    <loc>https://simonovsky.com/en/cases/dreamerz/</loc>
   </url>
   <url>
-    <loc>https://simonovsky.com/cases/paced.ai/</loc>
+    <loc>https://simonovsky.com/ru/cases/dreamerz/</loc>
+  </url>
+  <url>
+    <loc>https://simonovsky.com/en/cases/studypaths/</loc>
+  </url>
+  <url>
+    <loc>https://simonovsky.com/ru/cases/studypaths/</loc>
+  </url>
+  <url>
+    <loc>https://simonovsky.com/ru/cases/paced.ai/</loc>
   </url>
   <url>
     <loc>https://simonovsky.com/alexander-simonovsky-product-designer-cv.pdf</loc>

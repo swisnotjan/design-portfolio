@@ -43,12 +43,14 @@
   font: 500 11px/1 var(--font); letter-spacing: .03em;
   transition: color .18s, border-color .18s, transform .22s var(--ease);
 }
+.nav-button::before { content: ""; position: absolute; inset: -7px; }
 .nav-button:hover { color: var(--ink); border-color: #bbb; }
 .nav-button:active { transform: scale(.88); }
-.language-toggle { right: 20px; }
+.language-toggle { right: 20px; text-decoration: none; }
 .back-btn { left: 20px; text-decoration: none; }
 .language-label { display: inline-block; pointer-events: none; }
 .case-copy { display: contents; }
+html:has(.case-page) { overflow-anchor: none; }
 :root { color-scheme: light; }
 
 /* ---- tooltips ---- */
@@ -98,6 +100,20 @@
   transition: color .18s, text-decoration-color .4s ease;
 }
 .lnk-nc:hover { color: var(--ink); text-decoration-color: var(--ink); }
+
+/* Expand text targets within the available line and control spacing. */
+:is(.contact .btn, .contact .btn-sec, .foot-links a, .foot-copy, .intro a.lnk) {
+  position: relative;
+}
+:is(.contact .btn, .contact .btn-sec, .foot-links a, .foot-copy, .intro a.lnk, .intro .tip-host.lnk-nc)::after {
+  content: "";
+  position: absolute;
+  inset: -5px -2px;
+}
+.intro :is(a.lnk, .tip-host.lnk-nc)::after { inset-inline: 0; }
+@media (hover: none), (pointer: coarse) {
+  .intro .tip-host.lnk-nc::after { content: none; }
+}
 
 /* app icon */
 .app-icon {
@@ -251,7 +267,7 @@ a { color: inherit; }
 .btn-icon { width: 13px; height: 13px; flex-shrink: 0; }
 .btn.btn-email, .foot-links .foot-email { display: none !important; }
 /* copy button — JS drives width transitions */
-.btn-copy { overflow: hidden; }
+.btn-copy { min-height: 44px; overflow: hidden; }
 .bcopy-icon { position: relative; width: 13px; height: 13px; flex-shrink: 0; }
 .bcopy-i { position: absolute; inset: 0; width: 13px; height: 13px; transition: opacity .3s, filter .3s, transform .3s var(--ease); will-change: opacity, filter, transform; }
 .bcopy-i--copy  { opacity: 1; filter: blur(0px); transform: scale(1); }
@@ -302,6 +318,14 @@ a { color: inherit; }
   text-decoration: none;
   color: inherit;
 }
+/* Limit clicks beside the video while keeping the full text row clickable. */
+:root[data-feed="filled"] a.case { pointer-events: none; }
+:root[data-feed="filled"] a.case :is(.thumb, .case-main) { pointer-events: auto; }
+:root[data-feed="filled"] a.case .case-main {
+  max-width: var(--hero-w);
+  padding-inline: max(0px, calc((min(100%, var(--hero-w)) - var(--col)) / 2));
+}
+
 .case[hidden] { display: none !important; }
 .case-main { padding-top: 14px; max-width: var(--col); margin-inline: auto; }
 
@@ -672,7 +696,8 @@ a.case:hover .case-title { color: var(--ink); }
   color: var(--muted);
   margin: 0 0 36px;
 }
-.media + .cs-caption { margin-top: -22px; }
+.media + .cs-caption,
+.media + .case-copy > .cs-caption:first-child { margin-top: -22px; }
 .stat .n {
   font-weight: 600; letter-spacing: -0.02em;
   color: var(--ink);

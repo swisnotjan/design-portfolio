@@ -111,13 +111,8 @@ function syncMobileLayout() {
     card.tabIndex = mobile ? -1 : 0;
     card.setAttribute('aria-label', mobile ? card.querySelector('img').alt : popupLabels[index]);
   });
-  const ru = document.documentElement.lang === 'ru';
-  document.querySelector('.popup-playground').setAttribute('aria-label', ru ? (mobile ? 'Окна интерфейса' : 'Перетаскиваемые окна интерфейса') : (mobile ? 'Interface dialogs' : 'Draggable interface dialogs'));
+  document.querySelector('.popup-playground').setAttribute('aria-label', mobile ? 'Окна интерфейса' : 'Перетаскиваемые окна интерфейса');
   popupResetters.forEach(reset => reset());
 }
-document.addEventListener('portfolio:language-changed', () => {
-  popupCards.forEach((card, index) => { popupLabels[index] = card.getAttribute('aria-label'); });
-  syncMobileLayout();
-});
 mobileLayout.addEventListener('change', syncMobileLayout);
 syncMobileLayout();

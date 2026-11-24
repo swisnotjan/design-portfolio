@@ -5,11 +5,22 @@
   if (!payload) return;
   var translations = JSON.parse(payload.textContent);
   var button = document.getElementById('language-toggle');
+  var canonical = document.querySelector('link[rel="canonical"]');
+  var route = new URL(canonical.href).pathname.replace(/^\/(?:en|ru)(?=\/|$)/, '') || '/';
+  var ogURL = document.querySelector('meta[property="og:url"]');
+  var markdown = document.querySelector('link[rel="alternate"][type="text/markdown"]');
+  if (!markdown) {
+    markdown = document.createElement('link');
+    markdown.rel = 'alternate';
+    markdown.type = 'text/markdown';
+    markdown.href = translations.markdown;
+  }
   var textEntries = Object.keys(translations.text).map(function (key) {
     return { el: document.querySelector('[data-i18n="' + key + '"]'), text: translations.text[key] };
   });
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var switching = false;
+  var lastSwitch;
   var buttonLabel = document.createElement('span');
   buttonLabel.className = 'language-label';
   button.replaceChildren(buttonLabel);
@@ -52,17 +63,36 @@
       ], 320);
     }));
   }
+  function anchorBounds(block) {
+    var first = block.classList.contains('case-copy') ? block.firstElementChild : block;
+    var last = block.classList.contains('case-copy') ? block.lastElementChild : block;
+    if (!first || !last) return null;
+    var start = first.getBoundingClientRect();
+    var end = last === first ? start : last.getBoundingClientRect();
+    var height = end.bottom - start.top;
+    return start.width && height > 0 ? { top: start.top, bottom: end.bottom, height: height } : null;
+  }
   function apply(language) {
-    var anchor = textEntries.map(function (entry) { return entry.el; }).find(function (el) {
-      var first = el.classList.contains('case-copy') ? el.firstElementChild : el;
-      var last = el.classList.contains('case-copy') ? el.lastElementChild : el;
-      return first && last && last.getBoundingClientRect().bottom > 0 && first.getBoundingClientRect().top < innerHeight;
-    });
-    function anchorTop() {
-      var el = anchor && (anchor.classList.contains('case-copy') ? anchor.firstElementChild : anchor);
-      return el ? el.getBoundingClientRect().top : 0;
+    var scrollY = window.scrollY;
+    var previousLanguage = document.documentElement.lang;
+    // A second toggle at the same spot should undo the previous scroll adjustment.
+    var returning = lastSwitch && lastSwitch.from === language &&
+      lastSwitch.to === previousLanguage && lastSwitch.width === innerWidth &&
+      lastSwitch.height === innerHeight && Math.abs(lastSwitch.end - scrollY) <= 1;
+    var anchor;
+    if (!returning && scrollY > 0) {
+      // Text between the same two illustrations can have different paragraphs
+      // in each language. Keep the reading position within that shared section.
+      var blocks = document.querySelectorAll('.cs-hero, .cs-body > .media, .case-copy, [data-i18n]:not(.case-copy), footer');
+      for (var block of blocks) {
+        if (block.closest('footer') && block.tagName !== 'FOOTER') continue;
+        var bounds = anchorBounds(block);
+        if (!bounds || bounds.bottom <= 0 || bounds.top >= innerHeight) continue;
+        var offset = Math.max(0, bounds.top);
+        anchor = { block: block, offset: offset, progress: (offset - bounds.top) / bounds.height };
+        break;
+      }
     }
-    var top = anchorTop();
     document.documentElement.lang = language;
     textEntries.forEach(function (entry) {
       entry.el.innerHTML = entry.text[language];
@@ -76,24 +106,63 @@
       if (el) el.setAttribute('content', item[language]);
     });
     document.title = translations.title[language];
-    buttonLabel.textContent = language === 'ru' ? 'EN' : 'RU';
-    button.setAttribute('aria-label', language === 'ru' ? 'Switch to English' : 'Переключить на русский');
-    button.lang = language === 'ru' ? 'en' : 'ru';
-    try { localStorage.setItem('pf_language', language); } catch (e) {}
+    canonical.href = new URL(languageURL(language).pathname, canonical.href).href;
+    ogURL.content = canonical.href;
+    if (language === 'ru') document.head.appendChild(markdown);
+    else markdown.remove();
+    updateToggle(language);
+    var prefix = '/' + language;
+    document.querySelectorAll('[data-language-route]').forEach(function (link) {
+      link.setAttribute('href', prefix + link.dataset.languageRoute);
+    });
     document.dispatchEvent(new CustomEvent('portfolio:language-changed'));
-    if (anchor && window.scrollY > 0) window.scrollBy(0, anchorTop() - top);
+    if (returning) {
+      window.scrollTo({ top: lastSwitch.start, behavior: 'instant' });
+    } else if (anchor) {
+      var bounds = anchorBounds(anchor.block);
+      if (bounds) window.scrollTo({
+        top: window.scrollY + bounds.top + bounds.height * anchor.progress - anchor.offset,
+        behavior: 'instant'
+      });
+    }
+    lastSwitch = { from: previousLanguage, to: language, start: scrollY, end: window.scrollY,
+      width: innerWidth, height: innerHeight };
   }
-  var language = 'ru';
-  try { language = localStorage.getItem('pf_language') || 'ru'; } catch (e) {}
+  function routeLanguage() {
+    return /^\/ru(?:\/|$)/.test(location.pathname) ? 'ru' : 'en';
+  }
+  function languageURL(language) {
+    var url = new URL(location.href);
+    url.pathname = '/' + language + route;
+    if (url.searchParams.has('lang')) url.searchParams.delete('lang');
+    return url;
+  }
+  function updateToggle(language) {
+    var target = language === 'ru' ? 'en' : 'ru';
+    button.href = languageURL(target);
+    buttonLabel.textContent = target.toUpperCase();
+    button.setAttribute('aria-label', target === 'en' ? 'Switch to English' : 'Переключить на русский');
+    button.lang = target;
+    button.hreflang = target;
+  }
   var requested = new URLSearchParams(location.search).get('lang');
-  if (requested === 'en' || requested === 'ru') language = requested;
-  apply(language === 'en' ? 'en' : 'ru');
-  button.addEventListener('click', async function () {
+  if (/^\/cases\//.test(location.pathname)) {
+    history.replaceState(null, '', languageURL(requested === 'ru' ? 'ru' : 'en'));
+    apply(routeLanguage());
+  } else {
+    updateToggle(document.documentElement.lang);
+  }
+  window.addEventListener('popstate', function () { apply(routeLanguage()); });
+  button.addEventListener('click', async function (event) {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
     if (switching) return;
     switching = true;
     button.setAttribute('aria-busy', 'true');
     var next = document.documentElement.lang === 'ru' ? 'en' : 'ru';
+    var destination = languageURL(next);
     var motion = !reducedMotion.matches && typeof button.animate === 'function';
+    try { localStorage.setItem('portfolio-language', next); } catch (error) {}
     try {
       if (motion) {
         await Promise.all([
@@ -103,9 +172,7 @@
       }
       var previousMedia = motion ? mediaPositions() : [];
       apply(next);
-      var url = new URL(location.href);
-      url.searchParams.set('lang', next);
-      history.replaceState(null, '', url);
+      history.replaceState(null, '', destination);
       if (motion) {
         await Promise.all([
           moveMedia(previousMedia),
@@ -113,6 +180,8 @@
           animate([buttonLabel], [{ opacity: 0, transform: 'translateY(4px) scale(.9)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }], 180)
         ]);
       }
+    } catch (error) {
+      location.assign(destination);
     } finally {
       switching = false;
       button.removeAttribute('aria-busy');

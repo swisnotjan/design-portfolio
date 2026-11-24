@@ -220,4 +220,4 @@
 
 [hi@simonovsky.com](mailto:hi@simonovsky.com)
 
-[simonovsky.com](https://simonovsky.com)
+[simonovsky.com](https://simonovsky.com/ru/)
