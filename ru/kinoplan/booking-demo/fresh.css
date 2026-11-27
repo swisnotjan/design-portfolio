@@ -1,0 +1,150 @@
+:root {
+  --font-ui: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --space-4:4px; --space-8:8px; --space-12:12px; --space-16:16px;
+  --page-gutter:20px; --status-left:40px; --status-right:40px;
+  --type-caption:12px; --type-body:14px; --type-control:16px;
+  --type-total:18px; --type-time:21px; --type-heading:23px; --type-display:34px;
+  --radius-small:6px; --radius-control:12px; --radius-card:16px;
+}
+.looks,.variants{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:var(--space-4);font-size:var(--type-caption);white-space:nowrap;height:38px}
+.looks{top:2px}.variants{top:40px}.looks span{margin-right:6px}.looks button{border-radius:8px;padding:7px var(--space-12)}.looks button[aria-pressed=true]{background:#25283a;color:white}
+#frame{margin-top:0;background:#181a26;overflow:clip;isolation:isolate;clip-path:inset(0 round 24px)}
+@media(max-width:450px){#frame{clip-path:inset(0)}}
+#app{background:white}.scroll{overflow-x:clip;overscroll-behavior:contain}.sheet{overflow-anchor:none}.sheet:focus{outline:0}
+body[data-look="1"] .fresh-icon,body[data-look="2"] .original-icon,body[data-look="2"] .old-check{display:none}
+body[data-look="2"]{--action:#285fa8;--control:#8391a7;--step-muted:#92a0b7;--ink:#111a32;--night:#181a26;--paper:#fff;--muted:#495a76;--line:#d3deed;--accent:#ffd13a;--danger:#bb163e;--age:#8d211a;color:var(--ink);background:#e7effb}
+[data-look="2"] :is(.status,.brand,.top),body[data-look="2"] #frame{background:var(--night)}
+[data-look="2"] .scroll{background:#fff}
+[data-look="2"] :is(.intro,.smalltxt,.month,.muted,.field small,.showtime p,small){color:var(--muted)}
+[data-look="2"] .top small,[data-look="2"] .city{color:#d9e6ff}
+[data-look="2"] .primary,[data-look="2"] .prem,[data-look="2"] .progress i.on{background:var(--accent);color:var(--ink)}
+[data-look="2"] .primary:disabled{background:#e8eef6;color:var(--muted)}
+[data-look="2"] .primary,[data-look="2"] .secondary{border-radius:var(--radius-control)}
+[data-look="2"] :is(.age,.chips .age,.heading>.age){display:inline-flex;align-items:center;background:#ffb9ab;color:var(--age);border:0;border-radius:var(--radius-small);padding:3px 6px;font:700 var(--type-caption)/16px var(--font-ui);letter-spacing:0}
+[data-look="2"] .vip{background:#ffeba8;color:#634500}
+[data-look="2"] .date.current{background:#173767;border-color:#173767}
+[data-look="2"] .date.current small{color:white}
+[data-look="2"] :is(.date,.showtime,.more,.method,.secondary){border-color:var(--line)}
+[data-look="2"] .error{color:var(--danger);font-size:var(--type-body)}
+[data-look="2"] input[aria-invalid=true]{border-color:var(--danger)}
+[data-look="2"] :is(.method.on,.reserve){background:#eef5ff;color:var(--ink)}
+[data-look="2"] .method.on{border-color:var(--action)}
+[data-look="2"] .radio{border-color:var(--control)}
+[data-look="2"] .on .radio{border-color:var(--action)}
+[data-look="2"] :is(.check a,.textbtn){color:var(--action)}
+[data-look="2"] .check input{appearance:none;border:1.5px solid var(--control);border-radius:var(--radius-small);width:22px;height:22px;background:white}
+[data-look="2"] .check input:checked{background:var(--action) var(--check-image) center/16px no-repeat;border-color:var(--action)}
+[data-look="2"] :is(.fresh-icon,.system-icons svg){stroke-width:1.8}
+[data-look="2"] .seatTools .fresh-icon{width:18px;height:18px}
+[data-look="2"] .seat.sel .fresh-icon{width:14px;height:14px;stroke-width:3}
+[data-look="2"] h2{font-size:var(--type-heading);line-height:1.2;letter-spacing:-.035em}
+[data-look="2"] h3{font-size:var(--type-total);line-height:1.32;letter-spacing:-.02em}
+[data-look="2"] :is(.intro,.method,.field,.primary){font-size:var(--type-control);line-height:1.45}
+[data-look="2"] :is(.ticketline,.showtime p,.legend,.textbtn,.smalltxt){font-size:var(--type-body);line-height:1.45}
+[data-look="2"] .legend{font-size:var(--type-caption)}
+[data-look="2"] :is(.reviewpart,.reviewfilm,#contacts){border:1px solid var(--line);border-radius:var(--radius-card);background:#fff;padding:var(--space-16);margin:var(--space-12) 0}
+[data-look="2"] #contacts{padding:18px}
+[data-look="2"] .field{margin:0 0 20px}
+[data-look="2"] .ticketline{border:0}
+[data-look="2"] .foot{border:0;box-shadow:0 -4px 18px #142d5210}
+[data-look="2"] .reviewpart .mail{margin:9px 0}
+[data-look="2"] #app[data-page=seating] .scroll{padding:0 0 18px}
+[data-look="2"] #app[data-page=seating] .scroll>.heading{background:var(--night);color:white;padding:var(--space-16) 20px 0}
+[data-look="2"] .seatArea{margin:0 0 20px;padding:14px var(--space-16) 20px;border-radius:0 0 22px 22px;background:var(--night)}
+[data-look="2"] #app[data-page=seating] .scroll>:is(h3,.intro,.ticketline){margin-inline:var(--page-gutter)}
+[data-look="2"] .zoomed .num{background:var(--night);isolation:isolate}
+[data-look="2"] .zoomed .num:after{content:"";position:absolute;inset:-16px -14px -16px 0;background:linear-gradient(90deg,var(--night) 50%,transparent);z-index:-1;pointer-events:none}
+[data-look="2"] .seatTools button{background:#253a60;border-color:#506990}
+[data-look="2"] .sheet .heading+p{margin-top:3px}
+
+/* Compact type scale for the 393 × 852 canvas. */
+body[data-look="2"] #app { font-size:var(--type-body); line-height:1.45; }
+body[data-look="2"] .hero h1 { font-size:var(--type-display); line-height:1.08; letter-spacing:-.04em; }
+body[data-look="2"] :is(#app h2,.sheet h2) { font-size:var(--type-heading); line-height:1.22; letter-spacing:-.032em; }
+body[data-look="2"] :is(#app h3,.sheet h3) { font-size:var(--type-control); line-height:1.35; letter-spacing:-.018em; }
+body[data-look="2"] :is(.intro,.field,.method,.sheet p,.secondary,.more) { font-size:var(--type-body); line-height:1.45; }
+body[data-look="2"] .primary { font-size:var(--type-body); line-height:1.35; }
+body[data-look="2"] .field input { font-size:var(--type-control); line-height:1.4; }
+body[data-look="2"] .showtime strong { font-size:var(--type-time); line-height:1.15; letter-spacing:-.035em; }
+body[data-look="2"] .sum strong { font-size:var(--type-total); line-height:1.3; }
+body[data-look="2"] :is(.topline b,.date strong) { font-size:var(--type-body); }
+body[data-look="2"] .sheet { font-size:var(--type-body); }
+
+.status {padding:0;display:flex;justify-content:center;overflow:hidden}
+.status img {display:block;width:100%;height:auto;flex:none}
+#app {background:linear-gradient(to bottom,#181a26 0 50%,white 50% 100%)}
+#app>.scroll {background:white}
+.venue {display:grid;gap:2px;margin:0 0 var(--space-16)}
+.venue strong {font-size:var(--type-body)}.venue small {font-size:var(--type-caption)}
+body[data-look="2"] {--night:#181a26;--age:#8d211a}
+body[data-look="2"] :is(.age,.chips .age,.heading>.age){background:#ffb9ab;color:var(--age)}
+.progress i:not(.on){background:#596579}
+body[data-look="2"] #app[data-scrolled=true] .top {box-shadow:inset 0 -1px #485164}
+body[data-look="2"] .hallSurface {background:var(--night);border-radius:0 0 22px 22px;color:white;margin-bottom:18px}
+body[data-look="2"] .hallSurface>.heading {padding:var(--space-12) var(--page-gutter) 0}
+body[data-look="2"] .hallSurface .seatArea {margin:0;background:transparent}
+body[data-look="2"] .seatTools button {background:#30313b;border-color:#626471;color:white}
+.ticketline .del {display:flex;align-items:center;justify-content:flex-end;margin-right:-4px}
+body[data-look="2"] #contacts {padding:0;border:0;margin:var(--space-16) 0}
+body[data-look="2"] .foot {box-shadow:none}
+body[data-look="2"] #app[data-more-below="true"]>.foot {box-shadow:0 -4px 18px #142d5215;z-index:1}
+body[data-look="2"] .field input {border-color:var(--line);font-weight:400}
+body[data-look="2"] .field input::placeholder {color:var(--muted);opacity:1}
+body[data-look="2"] #frame :focus-visible {outline-color:var(--action)}
+body[data-look="2"] .field input[aria-invalid=true]{border-color:var(--danger)}
+body[data-look="2"] .reviewpart,body[data-look="2"] .reviewfilm {padding:var(--space-12);margin:10px 0}
+body[data-look="2"] .reviewpart>.heading {border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:7px}
+body[data-look="2"] .reviewpart .textbtn {position:relative;min-height:22px}
+body[data-look="2"] .reviewpart .textbtn:after {content:"";position:absolute;inset:-10px 0}
+body[data-look="2"] .reviewpart .ticketline {min-height:34px;padding:5px 0}
+body[data-look="2"] .topline b {display:block;line-height:1.2}
+body[data-look="2"] .topline small {margin-top:2px;line-height:1.24}
+body[data-look="2"] .intro {margin-top:var(--space-4)}
+body[data-look="2"] .sheet .heading+p {margin-top:1px}
+.status {justify-content:space-between;padding-inline:var(--status-left) var(--status-right)}
+.status img {max-height:16px;object-fit:contain}
+.status img:first-child {width:40px}
+.status img:last-child {width:76px}
+body[data-look="2"] .step {color:var(--step-muted)}
+body[data-look="2"] .progress i:not(.on){background:var(--step-muted)}
+body[data-look="2"] .ring circle:not([stroke="#ffbf26"]){stroke:var(--step-muted)}
+body[data-look="2"] .ring circle[stroke="#ffbf26"]{stroke:var(--accent)}
+body[data-look="2"] .map.zoomed {display:grid;padding-inline:0}
+body[data-look="2"] .zoomed .mapContent,body[data-look="2"] .zoomed::before {grid-area:1 / 1}
+body[data-look="2"] .zoomed::before {content:"";position:sticky;left:0;width:40px;background:linear-gradient(90deg,var(--night) 0 19px,transparent 40px);z-index:1;pointer-events:none}
+body[data-look="2"] .zoomed .num{background:transparent;z-index:2;isolation:auto}
+body[data-look="2"] .zoomed .num:after{content:none}
+body[data-look="2"] .ticketline:has(.del){gap:var(--space-8)}
+body[data-look="2"] .ticketline .del{position:relative;width:20px;min-width:20px;margin-left:var(--space-4)}
+body[data-look="2"] .del::after{content:"";position:absolute;inset:0 -12px}
+body[data-look="2"] .method>:is(img,.ic){width:20px;height:20px;object-fit:contain;flex:0 0 20px}
+
+body[data-look="2"] .reviewpart,body[data-look="2"] .reviewfilm{margin:var(--space-12) 0;padding:var(--space-12)}
+body[data-look="2"] .reviewpart .method{border-color:transparent;padding:var(--space-8);min-height:44px;margin:var(--space-4) 0 0}
+body[data-look="2"] .reviewpart .method:not(.on){background:#f4f6fa}
+body[data-look="2"] :is(.num,.screen,.legend,.top small,.city,.seatTools button){color:#d9e1ee}
+body[data-look="2"] .screen{border-color:#d9e1ee}
+body[data-look="2"] .seat.sel::before{background:var(--accent)}
+body[data-look="2"] .zoomed .seat span{color:var(--night)}
+body[data-look="2"] .seat.taken::before{background:#4a5268}
+body[data-look="2"] :is(.tag:not(.vip):not(.age),.chips span:not(.age)){background:#edf1f7;color:var(--ink)}
+body[data-look="2"] :is(.date,.showtime,.sheet,.foot){background:white}
+body[data-look="2"] .date.current{background:var(--night);border-color:var(--night)}
+body[data-look="2"] :is(.step,.legend,.num,.tag,.date small,.chip,.venue small,.seatTools button,.field small,.top small,.month,.city,.smalltxt){font-size:var(--type-caption);line-height:1.35}
+body[data-look="2"] :is(.primary,.venue strong,.topline b,.date strong,.reviewfilm h3){font-size:var(--type-control);line-height:1.3}
+body[data-look="2"] .reviewpart>.heading{padding-bottom:var(--space-8);margin-bottom:var(--space-8)}
+body[data-look="2"] .reviewpart .mail{margin:var(--space-8) 0}
+body[data-look="2"] :is(.sheet .secondary,.more,.method){margin-top:var(--space-8)}
+
+/* Shared layout rails and component roles across the purchase flow. */
+#frame {font-family:var(--font-ui)}
+#frame :is(button,input) {font-family:inherit}
+#frame :is(.brand,.top,.pad,.foot,.sheet) {padding-inline:var(--page-gutter)}
+#frame :is(.heroCopy,.prem) {left:var(--page-gutter)}
+body[data-look="2"] #app[data-page=seating] .scroll {padding-inline:0}
+body[data-look="2"] .hallSurface .seatArea {padding-inline:var(--page-gutter)}
+body[data-look="2"] .seatTools {padding-inline:0}
+body[data-look="2"] :is(.reviewpart,.reviewfilm,.showtime,.date,.method,.field input,.primary,.secondary,.more) {border-radius:var(--radius-control)}
+body[data-look="2"] :is(.field input,.reviewpart,.reviewfilm,.showtime,.date):not([aria-invalid=true]):not(.current) {border-color:var(--line)}
+body[data-look="2"] .field input:focus-visible {border-color:var(--action)}
+body[data-look="2"] .reviewpart>h3 {border:0;padding:0;margin:0 0 var(--space-8)}
