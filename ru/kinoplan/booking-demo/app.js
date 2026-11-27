@@ -35,9 +35,33 @@ function notifyBookingInteraction() {
   if (isEmbedded) window.parent.postMessage({type: "booking-interaction"}, "*");
 }
 
+let anchorFrame;
+function updateBookingAnchor() {
+  if (!isEmbedded || anchorFrame) return;
+  anchorFrame = requestAnimationFrame(() => {
+    anchorFrame = undefined;
+    const button = app.querySelector('[data-show="0"]');
+    if (!button) return;
+    const rect = button.getBoundingClientRect();
+    const viewport = button.closest(".scroll").getBoundingClientRect();
+    const x = rect.right - 10;
+    const y = rect.bottom - 10;
+    window.parent.postMessage({
+      type: "booking-anchor", x, y,
+      visible: x >= viewport.left && x <= viewport.right && y >= viewport.top && y <= viewport.bottom
+    }, "*");
+  });
+}
+if (isEmbedded) {
+  addEventListener("resize", updateBookingAnchor);
+  app.addEventListener("scroll", updateBookingAnchor, {capture: true, passive: true});
+  document.fonts.ready.then(updateBookingAnchor);
+}
+
 function notifyBookingPage() {
   if (window.parent !== window) {
     window.parent.postMessage({type: "booking-page", page: state.page}, "*");
+    updateBookingAnchor();
   }
 }
 window.addEventListener("message", event => {

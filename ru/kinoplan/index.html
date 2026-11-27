@@ -119,7 +119,8 @@ figcaption { margin-top: 8px; text-align: center; font-size: 14px; color: var(--
 .booking-viewport { position: relative; width: min(100%, var(--frame-width)); aspect-ratio: 393 / 852; margin: 0 auto; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: var(--frame); }
 .project-task { padding: 0 0 clamp(40px, 6vw, 68px); }
 .project-task p { max-width: 68ch; margin-top: 13px; }
-.tap-cue { position: absolute; z-index: 1; inset: 78% auto auto 66%; width: 50px; height: 50px; pointer-events: none; color: var(--click); }
+.tap-cue { position: absolute; z-index: 1; top: var(--tap-y, 0px); left: var(--tap-x, 0px); transform: translate(-38%, -38%); visibility: hidden; width: 50px; height: 50px; pointer-events: none; color: var(--click); }
+.tap-cue[data-positioned] { visibility: visible; }
 .tap-cue svg { position: relative; width: 100%; height: 100%; animation: tap-press 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
 .tap-cue::before { content: ""; position: absolute; inset: 6px; border: 3px solid var(--hypothesis); border-radius: 50%; animation: tap-ring 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
 @keyframes tap-press { 0%, 12%, 100% { transform: none; } 20% { transform: scale(.85); } 36% { transform: none; } }
@@ -244,7 +245,7 @@ mark { color: var(--mark-ink); background: var(--mark); padding: .06em .23em; bo
 </p>
 <div class="booking-stage">
   <div class="booking-viewport">
-    <iframe class="booking-frame" src="booking-demo/index.html?v=2" title="Кликабельный прототип покупки билета"></iframe>
+    <iframe class="booking-frame" src="booking-demo/index.html?v=3" title="Кликабельный прототип покупки билета"></iframe>
     <span class="tap-cue" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 9 4.8 11.5 1.9-4.8 4.8-1.9L9 9Z M9 2v3 M2 9h3 M4 4l2 2 M14 4l-2 2 M4 14l2-2"/></svg>
     </span>
@@ -309,6 +310,14 @@ const tapCue = document.querySelector(".tap-cue");
 window.addEventListener("message", event => {
   if (event.source !== bookingFrame.contentWindow) return;
   if (event.data?.type === "booking-interaction") tapCue.hidden = true;
+  if (event.data?.type === "booking-anchor") {
+    const {x, y, visible} = event.data;
+    if (Number.isFinite(x) && Number.isFinite(y)) {
+      tapCue.style.setProperty("--tap-x", x + "px");
+      tapCue.style.setProperty("--tap-y", y + "px");
+    }
+    tapCue.toggleAttribute("data-positioned", visible === true);
+  }
   if (event.data?.type !== "booking-page") return;
   if (event.data.page !== "schedule") tapCue.hidden = true;
   for (const note of bookingNotes) {
