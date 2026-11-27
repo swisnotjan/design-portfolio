@@ -155,3 +155,7 @@ body[data-look="2"] .reviewpart>h3 {border:0;padding:0;margin:0 0 var(--space-8)
   transform: translateX(-50%) scale(var(--scale, 1));
   transform-origin: top center;
 }
+
+.sheet [data-act="leave"] + [data-act="dismiss"] {
+  margin-top: var(--space-8, 8px);
+}
