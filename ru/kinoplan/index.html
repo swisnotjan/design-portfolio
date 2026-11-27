@@ -115,8 +115,16 @@ figcaption { margin-top: 8px; text-align: center; font-size: 14px; color: var(--
 <style>
 #prototype { padding: clamp(50px, 7vw, 84px) 0; }
 .audit-summary p { max-width: 70ch; margin-top: 13px; }
-.booking-stage { --frame-width: 393px; --note-gap: 22px; position: relative; margin-top: 30px; }
+.booking-stage { --frame-width: min(352px, calc((100svh - 48px) * 393 / 852)); --note-gap: 22px; position: relative; margin-top: 30px; }
 .booking-viewport { position: relative; width: min(100%, var(--frame-width)); aspect-ratio: 393 / 852; margin: 0 auto; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: var(--frame); }
+.project-task { padding: 0 0 clamp(40px, 6vw, 68px); }
+.project-task p { max-width: 68ch; margin-top: 13px; }
+.tap-cue { position: absolute; z-index: 1; inset: 78% auto auto 66%; width: 38px; height: 38px; pointer-events: none; color: var(--click); }
+.tap-cue svg { position: relative; width: 100%; height: 100%; padding: 7px; border: 1px solid var(--line); border-radius: 50%; background: var(--page); animation: tap-press 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
+.tap-cue::before { content: ""; position: absolute; inset: 0; border: 2px solid var(--click); border-radius: 50%; animation: tap-ring 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
+@keyframes tap-press { 0%, 12%, 100% { transform: none; } 20% { transform: scale(.85); } 36% { transform: none; } }
+@keyframes tap-ring { 0%, 17% { opacity: 0; transform: scale(.85); } 23% { opacity: .85; } 55%, 100% { opacity: 0; transform: scale(1.9); } }
+@media (prefers-reduced-motion: reduce) { .tap-cue svg, .tap-cue::before { animation: none; } .tap-cue::before { display: none; } }
 .booking-frame { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
 .booking-note { position: absolute; top: var(--position); width: min(265px, calc((100% - var(--frame-width)) / 2 - var(--note-gap))); background: var(--callout); border-radius: 12px; padding: 19px; font-size: 15px; line-height: 1.48; }
 .booking-note[data-side="left"] { right: calc(50% + var(--frame-width) / 2 + var(--note-gap)); }
@@ -132,6 +140,7 @@ mark { color: var(--mark-ink); background: var(--mark); padding: .06em .23em; bo
 .prototype-instruction { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
 .click-icon { width: 34px; height: 34px; flex: none; padding: 7px; border-radius: 50%; background: var(--hypothesis); color: var(--click); }
 @media (max-width: 850px) {
+  .booking-stage { --frame-width: 393px; }
   .booking-viewport { width: min(100%, var(--frame-width), calc((100svh - 24px) * 393 / 852)); }
   .booking-notes { display: grid; gap: 10px; max-width: var(--frame-width); margin: var(--note-gap) auto 0; }
   .booking-note, .booking-note-stack { position: static; width: auto; }
@@ -156,6 +165,10 @@ mark { color: var(--mark-ink); background: var(--mark); padding: .06em .23em; bo
     </div>
   </div>
 </header>
+<section class="project-task" aria-labelledby="task-title">
+  <h2 id="task-title">Задача</h2>
+  <p>Провести UX-аудит мобильного виджета продажи билетов в кино и предложить редизайн, чтобы упростить покупку и снизить риск ухода до оплаты.</p>
+</section>
 <section id="scope" class="scope">
   <h2><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4H5a1 1 0 0 0-1 1v3m12-4h3a1 1 0 0 1 1 1v3m0 8v3a1 1 0 0 1-1 1h-3m-8 0H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="12" r="3"/></svg>Рамки разбора</h2>
   <ol>
@@ -232,6 +245,9 @@ mark { color: var(--mark-ink); background: var(--mark); padding: .06em .23em; bo
 <div class="booking-stage">
   <div class="booking-viewport">
     <iframe class="booking-frame" src="booking-demo/index.html" title="Кликабельный прототип покупки билета"></iframe>
+    <span class="tap-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 9 4.8 11.5 1.9-4.8 4.8-1.9L9 9Z M9 2v3 M2 9h3 M4 4l2 2 M14 4l-2 2 M4 14l2-2"/></svg>
+    </span>
   </div>
   <div class="booking-notes" aria-live="polite">
     <div class="booking-note-stack">
@@ -288,9 +304,13 @@ mark { color: var(--mark-ink); background: var(--mark); padding: .06em .23em; bo
 <script>
 const bookingFrame = document.querySelector(".booking-frame");
 const bookingNotes = document.querySelectorAll("[data-booking-page]");
+const tapCue = document.querySelector(".tap-cue");
 
 window.addEventListener("message", event => {
-  if (event.source !== bookingFrame.contentWindow || event.data?.type !== "booking-page") return;
+  if (event.source !== bookingFrame.contentWindow) return;
+  if (event.data?.type === "booking-interaction") tapCue.hidden = true;
+  if (event.data?.type !== "booking-page") return;
+  if (event.data.page !== "schedule") tapCue.hidden = true;
   for (const note of bookingNotes) {
     note.hidden = note.dataset.bookingPage !== event.data.page;
   }
