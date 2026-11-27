@@ -148,3 +148,10 @@ body[data-look="2"] :is(.reviewpart,.reviewfilm,.showtime,.date,.method,.field i
 body[data-look="2"] :is(.field input,.reviewpart,.reviewfilm,.showtime,.date):not([aria-invalid=true]):not(.current) {border-color:var(--line)}
 body[data-look="2"] .field input:focus-visible {border-color:var(--action)}
 body[data-look="2"] .reviewpart>h3 {border:0;padding:0;margin:0 0 var(--space-8)}
+
+.is-embedded #frame {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(var(--scale, 1));
+  transform-origin: top center;
+}

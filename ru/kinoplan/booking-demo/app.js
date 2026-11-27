@@ -13,7 +13,13 @@ const money=n=>n.toLocaleString('ru-RU')+' ₽';
 const total=()=>state.seats.reduce((n,s)=>n+price(s.r),0);
 const sessionInfo=()=>dates[state.day]+' · '+shows[state.session][0]+' · Зал '+shows[state.session][1];
 const ticketCount=n=>n+' '+(n%100>=11&&n%100<=14?'билетов':n%10===1?'билет':n%10>=2&&n%10<=4?'билета':'билетов');
-function fit(){document.documentElement.style.setProperty('--scale',Math.min(innerWidth/393,innerHeight/852,1.12))}
+const isEmbedded = window.parent !== window;
+document.documentElement.classList.toggle("is-embedded", isEmbedded);
+function fit() {
+  const maxScale = isEmbedded ? 1 : 1.12;
+  const scale = Math.min(innerWidth / 393, innerHeight / 852, maxScale);
+  document.documentElement.style.setProperty("--scale", scale);
+}
 addEventListener('resize',fit);fit();
 function go(page){layer.replaceChildren();app.inert=false;state.page=page;render();app.querySelector('.scroll')?.classList.add('anchor');const title=app.querySelector('h1,h2');title.tabIndex=-1;title.focus({preventScroll:true})}
 function header(step){return '<header class="top"><div class="topline"><button class="back" data-act="back" aria-label="Назад">'+icon('back')+'</button><div><b>Рокки – это я</b><small>'+sessionInfo()+'</small></div><span class="step" aria-label="Шаг '+step+' из 3"><span class="compactText">Шаг '+step+' из 3</span><span class="fraction">'+step+' / 3</span><svg class="ring" aria-hidden="true" viewBox="0 0 44 44">'+[0,1,2].map(i=>'<circle cx="22" cy="22" r="19" pathLength="120" fill="none" stroke="'+(i<step?'#ffbf26':'#565965')+'" stroke-width="3" stroke-dasharray="36 84" transform="rotate('+(-85+i*120)+' 22 22)"/>').join('')+'</svg><span class="progress" aria-hidden="true">'+[1,2,3].map(n=>'<i class="'+(n<=step?'on':'')+'"></i>').join('')+'</span></span></div></header>'}
