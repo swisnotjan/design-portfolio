@@ -119,11 +119,11 @@ figcaption { margin-top: 8px; text-align: center; font-size: 14px; color: var(--
 .booking-viewport { position: relative; width: min(100%, var(--frame-width)); aspect-ratio: 393 / 852; margin: 0 auto; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: var(--frame); }
 .project-task { padding: 0 0 clamp(40px, 6vw, 68px); }
 .project-task p { max-width: 68ch; margin-top: 13px; }
-.tap-cue { position: absolute; z-index: 1; inset: 78% auto auto 66%; width: 50px; height: 50px; pointer-events: none; color: var(--hypothesis); }
-.tap-cue svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 1px 2px var(--panel)); animation: tap-press 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
+.tap-cue { position: absolute; z-index: 1; inset: 78% auto auto 66%; width: 50px; height: 50px; pointer-events: none; color: var(--click); }
+.tap-cue svg { position: relative; width: 100%; height: 100%; animation: tap-press 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
 .tap-cue::before { content: ""; position: absolute; inset: 6px; border: 3px solid var(--hypothesis); border-radius: 50%; animation: tap-ring 2.5s cubic-bezier(.22,.8,.24,1) infinite; }
 @keyframes tap-press { 0%, 12%, 100% { transform: none; } 20% { transform: scale(.85); } 36% { transform: none; } }
-@keyframes tap-ring { 0%, 17% { opacity: 0; transform: scale(.85); } 23% { opacity: .85; } 55%, 100% { opacity: 0; transform: scale(2.7); } }
+@keyframes tap-ring { 0%, 17% { opacity: 0; transform: scale(.85); } 23% { opacity: .85; } 55%, 100% { opacity: 0; transform: scale(3.4); } }
 @media (prefers-reduced-motion: reduce) { .tap-cue svg, .tap-cue::before { animation: none; } .tap-cue::before { display: none; } }
 .booking-frame { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
 .booking-note { position: absolute; top: var(--position); width: min(265px, calc((100% - var(--frame-width)) / 2 - var(--note-gap))); background: var(--callout); border-radius: 12px; padding: 19px; font-size: 15px; line-height: 1.48; }
